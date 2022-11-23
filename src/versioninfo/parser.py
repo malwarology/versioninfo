@@ -47,7 +47,7 @@ def get_wchar(data, cursor):
     return bytestring, decoded, padding, cursor
 
 
-def get_next_header(data, cursor, expected=None, morepads=False):
+def get_next_header(data, cursor, expected=None):
     """Parse the header members that exist in each struct: wLength, wValueLength, wType, szKey, and Padding."""
     h_format = 'HHH'
     wlength, wvaluelength, wtype = struct.unpack_from(h_format, data, offset=cursor)
@@ -91,7 +91,7 @@ def get_next_header(data, cursor, expected=None, morepads=False):
         h_struct['szKey']['Value']['Parsed'] = parsed
 
     # Number the padding memmber: VS_VERSIONINFO structure has Padding2 added later.
-    if morepads:
+    if expected == 'VS_VERSION_INFO':
         h_struct['Padding1'] = padding
     else:
         h_struct['Padding'] = padding
@@ -300,7 +300,7 @@ def get_fileinfo(data, cursor, end):
 
 def get_versioninfo(data, cursor):
     """Parse the outermost VS_VERSIONINFO structure."""
-    vs_versioninfo, cursor = get_next_header(data, cursor, expected='VS_VERSION_INFO', morepads=True)
+    vs_versioninfo, cursor = get_next_header(data, cursor, expected='VS_VERSION_INFO')
     end = vs_versioninfo['wLength']
 
     # If the wValueLength is zero, the VS_FIXEDFILEINFO does not exist.
