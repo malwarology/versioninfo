@@ -12,6 +12,7 @@ import struct
 def convert(entry):
     """Convert objects to JSON serializable formats."""
     if isinstance(entry, bytes):
+        # Base64 is used rather than decoding so that the exact bytes are preserved.
         return base64.standard_b64encode(entry).decode()
     else:
         raise TypeError
@@ -21,6 +22,7 @@ def get_wchar(data, cursor):
     """Parse one WCHAR struct member string including trailing padding."""
     str_bytes = list()
 
+    # Read from the data starting at the cursor by two-byte chunks. Stop at the null terminator.
     for i in range(cursor, len(data), 2):
         chunk = data[i:i+2]
         if chunk == b'\x00\x00':
@@ -31,8 +33,10 @@ def get_wchar(data, cursor):
     bytestring = b''.join(str_bytes)
     decoded = bytestring.decode('utf-16')
 
+    # Advance the cursor to include the two bytes of the null terminator
     cursor += len(bytestring) + 2
 
+    # This needs work. This is a potential point of failure.
     padding = list()
     pad, = struct.unpack_from('H', data, offset=cursor)
     if pad == 0:
@@ -62,6 +66,7 @@ def get_next_header(data, cursor, expected=None, morepads=False):
     if expected is None:
         standard = None
     elif expected == 'StringTable':
+        # StringTable has a big endian hex string DWORD containing language info in the WCHAR szKey.
         lang_id, code_page, = struct.unpack('!HH', bytes.fromhex(decoded))
         parsed = {
             'LanguageID': lang_id,
@@ -69,6 +74,7 @@ def get_next_header(data, cursor, expected=None, morepads=False):
         }
         standard = True
     elif expected == decoded:
+        # This checks if the szKey content matches the expected, if it was included as an input parameter.
         standard = True
 
     h_struct['szKey'] = {
@@ -84,6 +90,7 @@ def get_next_header(data, cursor, expected=None, morepads=False):
     if parsed:
         h_struct['szKey']['Value']['Parsed'] = parsed
 
+    # Number the padding memmber: VS_VERSIONINFO structure has Padding2 added later.
     if morepads:
         h_struct['Padding1'] = padding
     else:
@@ -172,6 +179,7 @@ def get_var(data, cursor, end):
     var, cursor = get_next_header(data, cursor, expected='Translation')
     var_end = start + var['wLength']
 
+    # The Value of Var is an array of DWORDs. Parse it recursively.
     var_children, cursor = get_var_value(data, cursor, var_end)
     var['Children'] = var_children
 
@@ -194,6 +202,7 @@ def get_varfileinfo(data, cursor):
     varfileinfo, cursor = get_next_header(data, cursor, expected='VarFileInfo')
     end = start + varfileinfo['wLength']
 
+    # Children member of VarFileInfo struct is an array of Var structs. Parse it recursively.
     children, cursor = get_var(data, cursor, end)
     varfileinfo['Children'] = children
 
@@ -208,6 +217,8 @@ def get_varfileinfo(data, cursor):
 def get_string(data, cursor, end):
     """Parse one String structure with recursion."""
     string_member, cursor = get_next_header(data, cursor)
+
+    # Each String has only one Value member WCHAR.
     bytestring, decoded, padding, cursor = get_wchar(data, cursor)
 
     string_member['Value'] = {
@@ -235,6 +246,7 @@ def get_stringtable(data, cursor, end):
     stringtable, cursor = get_next_header(data, cursor, expected='StringTable')
     table_end = start + stringtable['wLength']
 
+    # Children member of StringTable struct is an array of String structs. Parse it recursively.
     str_children, cursor = get_string(data, cursor, table_end)
     stringtable['Children'] = str_children
 
@@ -257,6 +269,7 @@ def get_stringfileinfo(data, cursor):
     stringfileinfo, cursor = get_next_header(data, cursor, expected='StringFileInfo')
     end = start + stringfileinfo['wLength']
 
+    # Children member of StringFileInfo struct is an array of StringTable structs. Parse it recursively.
     children, cursor = get_stringtable(data, cursor, end)
     stringfileinfo['Children'] = children
 
@@ -290,10 +303,14 @@ def get_versioninfo(data, cursor):
     vs_versioninfo, cursor = get_next_header(data, cursor, expected='VS_VERSION_INFO', morepads=True)
     end = vs_versioninfo['wLength']
 
+    # If the wValueLength is zero, the VS_FIXEDFILEINFO does not exist.
     if vs_versioninfo['wValueLength'] == 52:
         fixed_file_info, cursor = get_ffi(data, cursor)
         vs_versioninfo['Value'] = fixed_file_info
 
+    # Because VS_VERSION_INFO already has padding in the szKey member,
+    # and VS_FIXEDFILEINFO is only DWORDs, this padding member cannot exist under any conditions.
+    # If a file abuses the format of the structure, this hard-coding may need to be replaced.
     vs_versioninfo['Padding2'] = list()
 
     children = get_fileinfo(data, cursor, end)
