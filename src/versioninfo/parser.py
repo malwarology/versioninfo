@@ -91,11 +91,7 @@ def get_next_header(data, cursor, expected=None):
     if standard is not None:
         h_struct['szKey']['Standard'] = standard
 
-    # Number the padding memmber: VS_VERSIONINFO structure has Padding2 added later.
-    if expected == 'VS_VERSION_INFO':
-        h_struct['Padding1'] = padding
-    else:
-        h_struct['Padding'] = padding
+    h_struct['Padding'] = padding
 
     return h_struct, cursor
 
@@ -318,6 +314,9 @@ def get_versioninfo(data):
     cursor = 0
     vs_versioninfo, cursor = get_next_header(data, cursor, expected='VS_VERSION_INFO')
     end = vs_versioninfo['wLength']
+
+    # Change key name because Padding2 added later.
+    vs_versioninfo['Padding1'] = vs_versioninfo.pop('Padding')
 
     # If the wValueLength is zero, the VS_FIXEDFILEINFO does not exist.
     if vs_versioninfo['wValueLength'] == 52:
