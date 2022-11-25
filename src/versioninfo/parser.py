@@ -154,8 +154,11 @@ def process_language_code(lang_code):
     """Process the contents of a language code tuple and return a dictionary."""
     lang_id, code_page = lang_code
     value = {
-        'LanguageID': lang_id,
-        'CodePageNum': code_page
+        'LangID': f'{lang_id:#06x}',
+        'CodePage': {
+            'Decimal': code_page,
+            'Hexadecimal': f'{code_page:#06x}'
+        }
     }
 
     return value
