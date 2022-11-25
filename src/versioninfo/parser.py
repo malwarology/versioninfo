@@ -321,7 +321,7 @@ def get_versioninfo(data, cursor):
         fixed_file_info, cursor = get_ffi(data, cursor)
         vs_versioninfo['Value'] = fixed_file_info
 
-    padding = get_padding(data, cursor)
+    padding, cursor = get_padding(data, cursor)
     if padding:
         vs_versioninfo['Padding2'] = 0
 
