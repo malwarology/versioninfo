@@ -121,11 +121,26 @@ def get_ffi(data, cursor):
         'dwFileVersionLS': dwfileversionls,
         'dwProductVersionMS': dwproductversionms,
         'dwProductVersionLS': dwproductversionls,
-        'dwFileFlagsMask': f'{dwfileflagsmask:#010x}',
-        'dwFileFlags': dwfileflags,
-        'dwFileOS': dwfileos,
-        'dwFileType': dwfiletype,
-        'dwFileSubtype': dwfilesubtype,
+        'dwFileFlagsMask': {
+            'Decimal': dwfileflagsmask,
+            'Hexadecimal': f'{dwfileflagsmask:#010x}'
+        },
+        'dwFileFlags': {
+            'Decimal': dwfileflags,
+            'Hexadecimal': f'{dwfileflags:#010x}'
+        },
+        'dwFileOS': {
+            'Decimal': dwfileos,
+            'Hexadecimal': f'{dwfileos:#010x}'
+        },
+        'dwFileType': {
+            'Decimal': dwfiletype,
+            'Hexadecimal': f'{dwfiletype:#010x}'
+        },
+        'dwFileSubtype': {
+            'Decimal': dwfilesubtype,
+            'Hexadecimal': f'{dwfilesubtype:#010x}'
+        },
         'dwFileDateMS': dwfiledatems,
         'dwFileDateLS': dwfiledatels
     }
