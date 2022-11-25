@@ -73,16 +73,6 @@ def get_next_header(data, cursor, expected=None):
 
     szkey, decoded, padding, cursor = get_wchar(data, cursor)
 
-    # StringTable has a big endian hex string DWORD containing language info in the WCHAR szKey.
-    parsed = None
-    if expected == 'StringTable':
-        lang_id, code_page, = struct.unpack('!HH', bytes.fromhex(decoded))
-        parsed = {
-            'LanguageID': lang_id,
-            'CodePageNum': code_page
-        }
-        expected = None
-
     # Check if the szKey content matches the expected
     if expected is None:
         standard = None
@@ -100,9 +90,6 @@ def get_next_header(data, cursor, expected=None):
 
     if standard is not None:
         h_struct['szKey']['Standard'] = standard
-
-    if parsed:
-        h_struct['szKey']['Value']['Parsed'] = parsed
 
     # Number the padding memmber: VS_VERSIONINFO structure has Padding2 added later.
     if expected == 'VS_VERSION_INFO':
@@ -257,8 +244,17 @@ def get_string(data, cursor, end):
 def get_stringtable(data, cursor, end):
     """Parse one StringTable and call the recursive function that gets the String children list."""
     start = cursor
-    stringtable, cursor = get_next_header(data, cursor, expected='StringTable')
+    stringtable, cursor = get_next_header(data, cursor)
     table_end = start + stringtable['wLength']
+
+    # StringTable has a big endian hex string DWORD containing language info in the WCHAR szKey.
+    decoded = stringtable['szKey']['Value']['Decoded']
+    lang_id, code_page, = struct.unpack('!HH', bytes.fromhex(decoded))
+    parsed = {
+        'LanguageID': lang_id,
+        'CodePageNum': code_page
+    }
+    stringtable['szKey']['Value']['Parsed'] = parsed
 
     # Children member of StringTable struct is an array of String structs. Parse it recursively.
     str_children, cursor = get_string(data, cursor, table_end)
