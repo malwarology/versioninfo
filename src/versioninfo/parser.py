@@ -78,8 +78,8 @@ def get_next_header(data, cursor, expected=None):
             'CodePageNum': code_page
         }
         standard = True
+    # This checks if the szKey content matches the expected, if it was included as an input parameter.
     elif expected == decoded:
-        # This checks if the szKey content matches the expected, if it was included as an input parameter.
         standard = True
 
     h_struct['szKey'] = {
