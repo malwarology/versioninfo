@@ -224,10 +224,10 @@ def get_string(data, cursor, end):
     string_member, cursor = get_next_header(data, cursor)
 
     # Each String has only one Value member WCHAR.
-    bytestring, decoded, padding, cursor = get_wchar(data, cursor)
+    wchar_str, decoded, padding, cursor = get_wchar(data, cursor)
 
     string_member['Value'] = {
-        'Bytes': bytestring,
+        'Bytes': wchar_str,
         'Decoded': decoded,
         'Padding': padding
     }
