@@ -326,10 +326,9 @@ def get_versioninfo(data):
     if vs_versioninfo['wValueLength'] == 52:
         fixed_file_info, cursor = get_ffi(data, cursor)
         vs_versioninfo['Value'] = fixed_file_info
-
-    padding, cursor = get_padding(data, cursor)
-    if padding:
-        vs_versioninfo['Padding2'] = padding
+        padding, cursor = get_padding(data, cursor)
+        if padding:
+            vs_versioninfo['Padding2'] = padding
 
     children = get_fileinfo(data, cursor, end)
     vs_versioninfo['Children'] = children
