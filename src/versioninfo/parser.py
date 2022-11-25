@@ -102,7 +102,7 @@ def get_next_header(data, cursor, expected=None):
 
 def get_ffi(data, cursor):
     """Parse a VS_FIXEDFILEINFO structure."""
-    ffi_format = 'IHHIIII4sIIIIII'
+    ffi_format = 'IHHIIIIIIIIIII'
     ffi = struct.unpack_from(ffi_format, data, cursor)
 
     (
@@ -121,7 +121,7 @@ def get_ffi(data, cursor):
         'dwFileVersionLS': dwfileversionls,
         'dwProductVersionMS': dwproductversionms,
         'dwProductVersionLS': dwproductversionls,
-        'dwFileFlagsMask': dwfileflagsmask.hex(),
+        'dwFileFlagsMask': f'{dwfileflagsmask:#010x}',
         'dwFileFlags': dwfileflags,
         'dwFileOS': dwfileos,
         'dwFileType': dwfiletype,
