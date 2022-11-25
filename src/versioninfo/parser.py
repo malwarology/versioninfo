@@ -323,7 +323,7 @@ def get_versioninfo(data, cursor):
 
     padding, cursor = get_padding(data, cursor)
     if padding:
-        vs_versioninfo['Padding2'] = 0
+        vs_versioninfo['Padding2'] = padding
 
     children = get_fileinfo(data, cursor, end)
 
