@@ -23,6 +23,7 @@ def get_padding(data, cursor):
     size = 2
     pad_word = b'\x00\x00'
     padding = 0
+
     for i in range(cursor, len(data), size):
         chunk = data[i:i+size]
         if chunk != pad_word:
@@ -36,11 +37,12 @@ def get_padding(data, cursor):
 
 
 def get_wchar(data, cursor):
-    """Parse one WCHAR struct member string including trailing padding."""
+    """Parse one WCHAR struct member string including padding."""
     # Read from the data starting at the cursor by two-byte chunks. Stop at the null terminator.
     size = 2
     terminator = b'\x00\x00'
     wchars = list()
+
     for i in range(cursor, len(data), size):
         chunk = data[i:i+size]
         if chunk == terminator:
@@ -64,11 +66,13 @@ def get_next_header(data, cursor, expected=None):
     """Parse the header members that exist in each struct: wLength, wValueLength, wType, szKey, and Padding."""
     h_format = 'HHH'
     wlength, wvaluelength, wtype = struct.unpack_from(h_format, data, offset=cursor)
+
     h_struct = {
         'wLength': wlength,
         'wValueLength': wvaluelength,
         'wType': wtype
     }
+
     cursor += struct.calcsize(h_format)
 
     szkey, decoded, padding, cursor = get_wchar(data, cursor)
@@ -293,7 +297,7 @@ def get_stringfileinfo(data, cursor):
 
 
 def get_fileinfo(data, cursor, end):
-    """Parse one FileInfo structure, determine its type, and run the approproate parsing function with recursion."""
+    """Parse one FileInfo structure, determine its type, and call the approproate parsing function with recursion."""
     fileinfo_type = get_fileinfo_type(data, cursor)
 
     if fileinfo_type == 'StringFileInfo':
@@ -339,7 +343,7 @@ def get_versioninfo(data):
 
 
 def to_json(data):
-    """Set the initial cursor and parse the data provided as input."""
+    """Parse the version info resource data provided as input."""
     parsed = get_versioninfo(data)
 
     output = json.dumps(parsed, default=convert)
