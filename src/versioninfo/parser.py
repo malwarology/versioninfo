@@ -168,7 +168,7 @@ def get_fileinfo_type(data, cursor):
 def process_language_code(lang_code):
     """Process the contents of a language code tuple and return a dictionary."""
     lang_id, code_page = lang_code
-    low = lang_id & 0x7ff
+    low = lang_id & 0x3ff
     high = (lang_id & 0xfc00) >> 10
     value = {
         'LangID': {
