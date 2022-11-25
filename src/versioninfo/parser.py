@@ -20,31 +20,36 @@ def convert(entry):
 
 def get_wchar(data, cursor):
     """Parse one WCHAR struct member string including trailing padding."""
-    str_bytes = list()
-
     # Read from the data starting at the cursor by two-byte chunks. Stop at the null terminator.
-    for i in range(cursor, len(data), 2):
-        chunk = data[i:i+2]
-        if chunk == b'\x00\x00':
+    size = 2
+    terminator = b'\x00\x00'
+    wchars = list()
+    for i in range(cursor, len(data), size):
+        chunk = data[i:i+size]
+        if chunk == terminator:
             break
         else:
-            str_bytes.append(data[i:i+2])
+            wchars.append(chunk)
 
-    bytestring = b''.join(str_bytes)
-    decoded = bytestring.decode('utf-16')
+    wchar_str = b''.join(wchars)
+    decoded = wchar_str.decode('utf-16')
 
     # Advance the cursor to include the two bytes of the null terminator
-    cursor += len(bytestring) + 2
+    cursor += len(wchar_str) + 2
 
-    # This needs work. This is a potential point of failure.
-    padding = list()
-    pad, = struct.unpack_from('H', data, offset=cursor)
-    if pad == 0:
-        padding.append(pad)
+    # Count padding WORDs.
+    pad_word = b'\x00\x00'
+    padding = 0
+    for i in range(cursor, len(data), size):
+        chunk = data[i:i+size]
+        if chunk != pad_word:
+            break
+        else:
+            padding += 1
 
-    cursor += len(padding) * 2
+    cursor += padding * 2
 
-    return bytestring, decoded, padding, cursor
+    return wchar_str, decoded, padding, cursor
 
 
 def get_next_header(data, cursor, expected=None):
