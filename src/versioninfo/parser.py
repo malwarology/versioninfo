@@ -308,8 +308,9 @@ def get_fileinfo(data, cursor, end):
         return children
 
 
-def get_versioninfo(data, cursor):
+def get_versioninfo(data):
     """Parse the outermost VS_VERSIONINFO structure."""
+    cursor = 0
     vs_versioninfo, cursor = get_next_header(data, cursor, expected='VS_VERSION_INFO')
     end = vs_versioninfo['wLength']
 
@@ -335,8 +336,7 @@ def get_versioninfo(data, cursor):
 
 def to_json(data):
     """Set the initial cursor and parse the data provided as input."""
-    cursor = 0
-    parsed = get_versioninfo(data, cursor)
+    parsed = get_versioninfo(data)
 
     output = json.dumps(parsed, default=convert)
 
