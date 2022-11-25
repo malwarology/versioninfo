@@ -73,22 +73,23 @@ def get_next_header(data, cursor, expected=None):
 
     szkey, decoded, padding, cursor = get_wchar(data, cursor)
 
-    standard = False
+    # StringTable has a big endian hex string DWORD containing language info in the WCHAR szKey.
     parsed = None
-
-    if expected is None:
-        standard = None
-    elif expected == 'StringTable':
-        # StringTable has a big endian hex string DWORD containing language info in the WCHAR szKey.
+    if expected == 'StringTable':
         lang_id, code_page, = struct.unpack('!HH', bytes.fromhex(decoded))
         parsed = {
             'LanguageID': lang_id,
             'CodePageNum': code_page
         }
-        standard = True
-    # This checks if the szKey content matches the expected, if it was included as an input parameter.
+        expected = None
+
+    # Check if the szKey content matches the expected
+    if expected is None:
+        standard = None
     elif expected == decoded:
         standard = True
+    else:
+        standard = False
 
     h_struct['szKey'] = {
         'Value': {
