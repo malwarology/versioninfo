@@ -150,20 +150,26 @@ def get_fileinfo_type(data, cursor):
     return fileinfo_type
 
 
-def get_var_value(data, cursor, end):
-    """Parse one Var value member with recursion."""
-    var_value_format = 'HH'
-    lang_id, code_page, = struct.unpack_from(var_value_format, data, offset=cursor)
+def process_language_code(lang_code):
+    """Process the contents of a language code tuple and return a dictionary."""
+    lang_id, code_page = lang_code
     value = {
         'LanguageID': lang_id,
         'CodePageNum': code_page
     }
 
+    return value
+
+
+def get_var_value(data, cursor, end):
+    """Parse one Var value member with recursion."""
+    var_value_format = 'HH'
+    lang_code = struct.unpack_from(var_value_format, data, offset=cursor)
     cursor += struct.calcsize(var_value_format)
 
     meta = {
         'Type': 'VarValue',
-        'Struct': value
+        'Struct': process_language_code(lang_code)
     }
 
     if cursor >= end:
@@ -249,12 +255,8 @@ def get_stringtable(data, cursor, end):
 
     # StringTable has a big endian hex string DWORD containing language info in the WCHAR szKey.
     decoded = stringtable['szKey']['Value']['Decoded']
-    lang_id, code_page, = struct.unpack('!HH', bytes.fromhex(decoded))
-    parsed = {
-        'LanguageID': lang_id,
-        'CodePageNum': code_page
-    }
-    stringtable['szKey']['Value']['Parsed'] = parsed
+    lang_code = struct.unpack('!HH', bytes.fromhex(decoded))
+    stringtable['szKey']['Value']['Parsed'] = process_language_code(lang_code)
 
     # Children member of StringTable struct is an array of String structs. Parse it recursively.
     str_children, cursor = get_string(data, cursor, table_end)
