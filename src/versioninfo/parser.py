@@ -316,7 +316,7 @@ def get_versioninfo(data, cursor):
     # Because VS_VERSION_INFO already has padding in the szKey member,
     # and VS_FIXEDFILEINFO is only DWORDs, this padding member cannot exist under any conditions.
     # If a file abuses the format of the structure, this hard-coding may need to be replaced.
-    vs_versioninfo['Padding2'] = list()
+    vs_versioninfo['Padding2'] = 0
 
     children = get_fileinfo(data, cursor, end)
 
