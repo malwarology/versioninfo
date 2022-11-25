@@ -18,6 +18,23 @@ def convert(entry):
         raise TypeError
 
 
+def get_padding(data, cursor):
+    """Count the number of padding WORDs."""
+    size = 2
+    pad_word = b'\x00\x00'
+    padding = 0
+    for i in range(cursor, len(data), size):
+        chunk = data[i:i+size]
+        if chunk != pad_word:
+            break
+        else:
+            padding += 1
+
+    cursor += padding * 2
+
+    return padding, cursor
+
+
 def get_wchar(data, cursor):
     """Parse one WCHAR struct member string including trailing padding."""
     # Read from the data starting at the cursor by two-byte chunks. Stop at the null terminator.
@@ -38,16 +55,7 @@ def get_wchar(data, cursor):
     cursor += len(wchar_str) + 2
 
     # Count padding WORDs.
-    pad_word = b'\x00\x00'
-    padding = 0
-    for i in range(cursor, len(data), size):
-        chunk = data[i:i+size]
-        if chunk != pad_word:
-            break
-        else:
-            padding += 1
-
-    cursor += padding * 2
+    padding, cursor = get_padding(data, cursor)
 
     return wchar_str, decoded, padding, cursor
 
