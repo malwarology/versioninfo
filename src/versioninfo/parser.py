@@ -107,8 +107,8 @@ def get_ffi(data, cursor):
     fixed_file_info = {
         'dwSignature': hex(dwsignature),
         'dwStrucVersion': {
-            'major': dwstrucversionms,
-            'minor': dwstrucversionls
+            'Major': dwstrucversionms,
+            'Minor': dwstrucversionls
         },
         'dwFileVersionMS': dwfileversionms,
         'dwFileVersionLS': dwfileversionls,

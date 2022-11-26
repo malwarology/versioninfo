@@ -314,8 +314,8 @@ class TestParserBenign(unittest.TestCase):
             'Struct': {
                 'dwSignature': '0xfeef04bd',
                 'dwStrucVersion': {
-                    'major': 1,
-                    'minor': 0
+                    'Major': 1,
+                    'Minor': 0
                 },
                 'dwFileVersionMS': 393217,
                 'dwFileVersionLS': 498089985,
