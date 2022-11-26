@@ -771,6 +771,17 @@ class TestParserBenign(unittest.TestCase):
 
         self.assertListEqual(expected, output, 'The FileInfo parser output not as expected.')
 
+    def test_get_versioninfo(self):
+        """Test the output from the VS_VERSIONINFO parser."""
+        # Pickle text content: test_get_versioninfo_csrss_win7.txt
+        expected_pickle = THIS_DIR.joinpath('data').joinpath('test_get_versioninfo_csrss_win7.pickle')
+        with open(expected_pickle, 'rb') as fh:
+            expected = pickle.load(fh)
+
+        output = versioninfo.parser.get_versioninfo(self.csrss_win7)
+
+        self.assertDictEqual(expected, output, 'The VS_VERSIONINFO parser output not as expected.')
+
 
 class TestIssues(unittest.TestCase):
     """Check for closed issues on data that caused the issue."""
