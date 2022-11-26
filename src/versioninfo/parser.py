@@ -19,7 +19,7 @@ def convert(entry):
 
 
 def get_padding(data, cursor, end=None):
-    """Count the number of padding WORDs."""
+    """Count the number of padding WORDs and stop when no more padding or hits end."""
     size = 2
     pad_word = b'\x00\x00'
     padding = 0
@@ -36,9 +36,8 @@ def get_padding(data, cursor, end=None):
     return padding, cursor
 
 
-def get_wchar(data, cursor, end=None):
-    """Parse one WCHAR struct member string including padding."""
-    # Read from the data starting at the cursor by two-byte chunks. Stop at the null terminator.
+def get_wchar(data, cursor):
+    """Parse one WCHAR struct member string and stop at the null terminator."""
     size = 2
     terminator = b'\x00\x00'
     wchars = list()
@@ -51,58 +50,47 @@ def get_wchar(data, cursor, end=None):
             wchars.append(chunk)
 
     wchar_str = b''.join(wchars)
-    decoded = wchar_str.decode('utf-16')
 
-    # Advance the cursor to include the two bytes of the null terminator
-    cursor += len(wchar_str) + 2
+    if cursor != len(data):
+        cursor += len(wchar_str) + 2
 
-    # Count padding WORDs.
-    padding, cursor = get_padding(data, cursor, end)
-
-    return wchar_str, decoded, padding, cursor
-
-
-def get_next_header(data, cursor, expected=None, boundary=False):
-    """Parse the header members that exist in each struct: wLength, wValueLength, wType, szKey, and Padding."""
-    h_format = 'HHH'
-    wlength, wvaluelength, wtype = struct.unpack_from(h_format, data, offset=cursor)
-
-    h_struct = {
-        'wLength': wlength,
-        'wValueLength': wvaluelength,
-        'wType': wtype
+    parsed = {
+        'Bytes': wchar_str,
+        'Decoded': wchar_str.decode('utf-16')
     }
+
+    return parsed, cursor
+
+
+def get_header(data, cursor, expected=None, boundary=False):
+    """Parse the header members that exist in each struct: wLength, wValueLength, wType, szKey, and Padding."""
+    sformat = 'HHH'
+    wlength, wvaluelength, wtype = struct.unpack_from(sformat, data, offset=cursor)
 
     if boundary:
         end = cursor + wlength - wvaluelength
     else:
         end = None
 
-    cursor += struct.calcsize(h_format)
+    cursor += struct.calcsize(sformat)
 
-    szkey, decoded, padding, cursor = get_wchar(data, cursor, end)
+    szkey, cursor = get_wchar(data, cursor)
+    padding, cursor = get_padding(data, cursor, end)
 
-    # Check if the szKey content matches the expected
-    if expected is None:
-        standard = None
-    elif expected == decoded:
-        standard = True
-    else:
-        standard = False
-
-    h_struct['szKey'] = {
-        'Value': {
-            'Bytes': szkey,
-            'Decoded': decoded
-        }
+    structure = {
+        'wLength': wlength,
+        'wValueLength': wvaluelength,
+        'wType': wtype,
+        'szKey': szkey,
+        'Padding': padding
     }
 
-    if standard is not None:
-        h_struct['szKey']['Standard'] = standard
+    # Check if the szKey content matches the expected
+    if expected is not None:
+        decoded = structure['szKey']['Decoded']
+        structure['szKey']['Standard'] = True if expected == decoded else False
 
-    h_struct['Padding'] = padding
-
-    return h_struct, cursor
+    return structure, cursor
 
 
 def get_ffi(data, cursor):
@@ -162,8 +150,8 @@ def get_ffi(data, cursor):
 
 def get_fileinfo_type(data, cursor):
     """Determine the type of the FileInfo struct based on the wValueLength member of the immediate child."""
-    file_info, cursor = get_next_header(data, cursor)
-    child_header, cursor = get_next_header(data, cursor)
+    file_info, cursor = get_header(data, cursor)
+    child_header, cursor = get_header(data, cursor)
 
     fileinfo_type = 'StringFileInfo' if not child_header['wValueLength'] else 'VarFileInfo'
 
@@ -199,7 +187,7 @@ def get_var_value(data, cursor, end):
     cursor += struct.calcsize(var_value_format)
 
     meta = {
-        'Type': 'VarValue',
+        'Type': 'Value',
         'Struct': process_language_code(lang_code)
     }
 
@@ -214,12 +202,12 @@ def get_var_value(data, cursor, end):
 def get_var(data, cursor, end):
     """Parse one Var structure with recursion."""
     start = cursor
-    var, cursor = get_next_header(data, cursor, expected='Translation', boundary=True)
+    var, cursor = get_header(data, cursor, expected='Translation', boundary=True)
     var_end = start + var['wLength']
 
     # The Value of Var is an array of DWORDs. Parse it recursively.
     var_children, cursor = get_var_value(data, cursor, var_end)
-    var['Children'] = var_children
+    var['Value'] = var_children
 
     meta = {
         'Type': 'Var',
@@ -237,7 +225,7 @@ def get_var(data, cursor, end):
 def get_varfileinfo(data, cursor):
     """Parse the outer VarFileInfo structure and call the recusive function that gets the Var children list."""
     start = cursor
-    varfileinfo, cursor = get_next_header(data, cursor, expected='VarFileInfo')
+    varfileinfo, cursor = get_header(data, cursor, expected='VarFileInfo')
     end = start + varfileinfo['wLength']
 
     # Children member of VarFileInfo struct is an array of Var structs. Parse it recursively.
@@ -254,16 +242,14 @@ def get_varfileinfo(data, cursor):
 
 def get_string(data, cursor, end):
     """Parse one String structure with recursion."""
-    string_member, cursor = get_next_header(data, cursor)
+    string_member, cursor = get_header(data, cursor)
 
     # Each String has only one Value member WCHAR.
-    wchar_str, decoded, padding, cursor = get_wchar(data, cursor)
+    value, cursor = get_wchar(data, cursor)
+    string_member['Value'] = value
 
-    string_member['Value'] = {
-        'Bytes': wchar_str,
-        'Decoded': decoded,
-        'Padding': padding
-    }
+    padding, cursor = get_padding(data, cursor)
+    string_member['Padding'] = padding
 
     meta = {
         'Type': 'String',
@@ -281,13 +267,13 @@ def get_string(data, cursor, end):
 def get_stringtable(data, cursor, end):
     """Parse one StringTable and call the recursive function that gets the String children list."""
     start = cursor
-    stringtable, cursor = get_next_header(data, cursor)
+    stringtable, cursor = get_header(data, cursor)
     table_end = start + stringtable['wLength']
 
     # StringTable has a big endian hex string DWORD containing language info in the WCHAR szKey.
-    decoded = stringtable['szKey']['Value']['Decoded']
+    decoded = stringtable['szKey']['Decoded']
     lang_code = struct.unpack('!HH', bytes.fromhex(decoded))
-    stringtable['szKey']['Value']['Parsed'] = process_language_code(lang_code)
+    stringtable['szKey']['Parsed'] = process_language_code(lang_code)
 
     # Children member of StringTable struct is an array of String structs. Parse it recursively.
     if cursor >= table_end:
@@ -312,7 +298,7 @@ def get_stringtable(data, cursor, end):
 def get_stringfileinfo(data, cursor):
     """Parse outer StringFileInfo structure and call the recusive function that gets the StringTable children list."""
     start = cursor
-    stringfileinfo, cursor = get_next_header(data, cursor, expected='StringFileInfo')
+    stringfileinfo, cursor = get_header(data, cursor, expected='StringFileInfo')
     end = start + stringfileinfo['wLength']
 
     # Children member of StringFileInfo struct is an array of StringTable structs. Parse it recursively.
@@ -347,7 +333,7 @@ def get_fileinfo(data, cursor, end):
 def get_versioninfo(data):
     """Parse the outermost VS_VERSIONINFO structure."""
     cursor = 0
-    vs_versioninfo, cursor = get_next_header(data, cursor, expected='VS_VERSION_INFO')
+    vs_versioninfo, cursor = get_header(data, cursor, expected='VS_VERSION_INFO')
     end = vs_versioninfo['wLength']
 
     # Change key name because Padding2 added later.
@@ -358,8 +344,7 @@ def get_versioninfo(data):
         fixed_file_info, cursor = get_ffi(data, cursor)
         vs_versioninfo['Value'] = fixed_file_info
         padding, cursor = get_padding(data, cursor)
-        if padding:
-            vs_versioninfo['Padding2'] = padding
+        vs_versioninfo['Padding2'] = padding
 
     children = get_fileinfo(data, cursor, end)
     vs_versioninfo['Children'] = children

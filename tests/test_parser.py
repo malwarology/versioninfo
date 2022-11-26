@@ -17,7 +17,7 @@ THIS_DIR = pathlib.Path(__file__).parent
 class TestHelpers(unittest.TestCase):
     """Check if the helper functions are working."""
 
-    def test_convert_no_bytes(self):
+    def tesT_convert_no_bytes(self):
         """Test that the JSON serialization converter works with no bytes present."""
         testdict = {
             'A': '1',
@@ -54,17 +54,20 @@ class TestHelpers(unittest.TestCase):
             _ = json.dumps(testdict, default=versioninfo.parser.convert)
 
 
-class TestParserFunctionsBenign(unittest.TestCase):
-    """Check each individual parsing function works against a known good Windows EXE."""
+class TestParserBenign(unittest.TestCase):
+    """Check each individual parsing function works against a known good Windows EXEs."""
 
     def setUp(self):
         """Load testing resources from files."""
+        # SHA256: cb1c6018fc5c15483ac5bb96e5c2e2e115bb0c0e1314837d77201bab37e8c03a
         self.csrss_win7 = THIS_DIR.joinpath('data').joinpath('cb1c60_csrss_win7.0x1798-0x1b30.dat').read_bytes()
+        # SHA256: 2527978321a4f9c098f5c27aaf58f36edd3a62ffea85642831d47c2b2ccdd5cf
         self.wscwiz_intel = THIS_DIR.joinpath('data').joinpath('252797_wscwiz_intel.0x18840-0x18e30.dat').read_bytes()
+        # SHA256: fc1d535307725e8d9020ed4d709ee92533bc5a2331ecdabf397e8ff18f5fd366
         filename = 'fc1d53_txkbci_alienware.0x3453a4-0x3458e4.dat'
         self.txkbci_alienware = THIS_DIR.joinpath('data').joinpath(filename).read_bytes()
 
-    def test_benign_get_padding_one(self):
+    def test_get_padding_one(self):
         """Test that the padding reader counts one padding WORD correctly."""
         expected = (1, 40, )
 
@@ -72,7 +75,7 @@ class TestParserFunctionsBenign(unittest.TestCase):
 
         self.assertTupleEqual(expected, output, 'Padding result tuple is not correct.')
 
-    def test_benign_get_padding_zero(self):
+    def test_get_padding_zero(self):
         """Test that the padding reader counts zero padding WORD correctly."""
         expected = (0, 128, )
 
@@ -80,7 +83,7 @@ class TestParserFunctionsBenign(unittest.TestCase):
 
         self.assertTupleEqual(expected, output, 'Padding result tuple is not correct.')
 
-    def test_benign_get_padding_at_end(self):
+    def test_get_padding_at_end(self):
         """Test that the padding reader counts zero padding WORD correctly at the end of the data."""
         expected = (0, 920, )
 
@@ -88,220 +91,222 @@ class TestParserFunctionsBenign(unittest.TestCase):
 
         self.assertTupleEqual(expected, output, 'Padding result tuple is not correct.')
 
-    def test_benign_get_wchar_one(self):
+    def test_get_padding_with_boundary(self):
+        """Test that the padding reader counts zero padding WORD correctly with a boundary."""
+        expected = (1, 1512, )
+
+        output = versioninfo.parser.get_padding(self.wscwiz_intel, 1510, 1512)
+
+        self.assertTupleEqual(expected, output, 'Padding result tuple is not correct.')
+
+    def test_get_wchar_one(self):
         """Test that the wchar reader returns correctly when there is one padding WORD."""
-        expected = (
-            b'V\x00S\x00_\x00V\x00E\x00R\x00S\x00I\x00O\x00N\x00_\x00I\x00N\x00F\x00O\x00',
-            'VS_VERSION_INFO',
-            1,
-            40,
-        )
+        expected = {
+            'Bytes': b'V\x00S\x00_\x00V\x00E\x00R\x00S\x00I\x00O\x00N\x00_\x00I\x00N\x00F\x00O\x00',
+            'Decoded': 'VS_VERSION_INFO'
+        }
 
-        output = versioninfo.parser.get_wchar(self.csrss_win7, 6)
+        parsed, _ = versioninfo.parser.get_wchar(self.csrss_win7, 6)
 
-        self.assertTupleEqual(expected, output, 'Output of wchar reader is not as expected.')
+        self.assertDictEqual(expected, parsed, 'Parsed output of wchar reader is not as expected.')
 
-    def test_benign_get_wchar_zero(self):
-        """Test that the wchar reader returns correctly when there is zero padding WORD."""
-        expected = (
-            b'S\x00t\x00r\x00i\x00n\x00g\x00F\x00i\x00l\x00e\x00I\x00n\x00f\x00o\x00',
-            'StringFileInfo',
-            0,
-            128,
-        )
+    def test_get_wchar_one_cursor(self):
+        """Test the cursor after running the wchar reader when there is one padding WORD."""
+        _, cursor = versioninfo.parser.get_wchar(self.csrss_win7, 6)
 
-        output = versioninfo.parser.get_wchar(self.csrss_win7, 98)
+        self.assertEqual(38, cursor, 'Resulting cursor not as expected.')
 
-        self.assertTupleEqual(expected, output, 'Output of wchar reader is not as expected.')
+    def test_get_wchar_zero(self):
+        """Test that the wchar reader returns correctly when there are zero padding WORDs."""
+        expected = {
+            'Bytes': b'S\x00t\x00r\x00i\x00n\x00g\x00F\x00i\x00l\x00e\x00I\x00n\x00f\x00o\x00',
+            'Decoded': 'StringFileInfo'
+        }
 
-    def test_benign_get_wchar_at_end(self):
+        parsed, _ = versioninfo.parser.get_wchar(self.csrss_win7, 98)
+
+        self.assertDictEqual(expected, parsed, 'Parsed output of wchar reader is not as expected.')
+
+    def test_get_wchar_zero_cursor(self):
+        """Test the cursor after running the wchar reader when there are zero padding WORDs."""
+        _, cursor = versioninfo.parser.get_wchar(self.csrss_win7, 98)
+
+        self.assertEqual(128, cursor, 'Resulting cursor not as expected.')
+
+    def test_get_wchar_at_end(self):
         """Test that the wchar reader returns correctly at the end of the data."""
-        expected = (b'', '', 0, 922, )
+        expected = ({'Bytes': b'', 'Decoded': ''}, 920)
 
         output = versioninfo.parser.get_wchar(self.csrss_win7, 920)
 
         self.assertTupleEqual(expected, output, 'Output of wchar reader is not as expected.')
 
-    def test_benign_header_vs_versioninfo(self):
+    def test_get_header_vs_versioninfo(self):
         """Test the header parser on the VS_VERSION_INFO struct."""
         expected = {
             'wLength': 920,
             'wValueLength': 52,
             'wType': 0,
             'szKey': {
-                'Value': {
-                    'Bytes': b'V\x00S\x00_\x00V\x00E\x00R\x00S\x00I\x00O\x00N\x00_\x00I\x00N\x00F\x00O\x00',
-                    'Decoded': 'VS_VERSION_INFO'
-                },
+                'Bytes': b'V\x00S\x00_\x00V\x00E\x00R\x00S\x00I\x00O\x00N\x00_\x00I\x00N\x00F\x00O\x00',
+                'Decoded': 'VS_VERSION_INFO',
                 'Standard': True
             },
             'Padding': 1
         }
 
-        header, _ = versioninfo.parser.get_next_header(self.csrss_win7, 0, expected='VS_VERSION_INFO')
+        header, _ = versioninfo.parser.get_header(self.csrss_win7, 0, expected='VS_VERSION_INFO')
 
         self.assertDictEqual(expected, header, 'Parsed header output not as expected.')
 
-    def test_benign_header_vs_versioninfo_cursor(self):
+    def test_get_header_vs_versioninfo_cursor(self):
         """Test the cursor after parsing the VS_VERSION_INFO struct."""
-        _, cursor = versioninfo.parser.get_next_header(self.csrss_win7, 0, expected='VS_VERSION_INFO')
+        _, cursor = versioninfo.parser.get_header(self.csrss_win7, 0, expected='VS_VERSION_INFO')
 
         self.assertEqual(40, cursor, 'Resulting cursor not as expected.')
 
-    def test_benign_header_stringfileinfo(self):
+    def test_get_header_stringfileinfo(self):
         """Test the header parser on a StringFileInfo struct."""
         expected = {
             'wLength': 758,
             'wValueLength': 0,
             'wType': 1,
             'szKey': {
-                'Value': {
-                    'Bytes': b'S\x00t\x00r\x00i\x00n\x00g\x00F\x00i\x00l\x00e\x00I\x00n\x00f\x00o\x00',
-                    'Decoded': 'StringFileInfo'
-                },
+                'Bytes': b'S\x00t\x00r\x00i\x00n\x00g\x00F\x00i\x00l\x00e\x00I\x00n\x00f\x00o\x00',
+                'Decoded': 'StringFileInfo',
                 'Standard': True
             },
             'Padding': 0
         }
 
-        header, _ = versioninfo.parser.get_next_header(self.csrss_win7, 92, expected='StringFileInfo')
+        header, _ = versioninfo.parser.get_header(self.csrss_win7, 92, expected='StringFileInfo')
 
         self.assertDictEqual(expected, header, 'Parsed header output not as expected.')
 
-    def test_benign_header_stringfileinfo_cursor(self):
+    def test_get_header_stringfileinfo_cursor(self):
         """Test the cursor after parsing the StringFileInfo struct."""
-        _, cursor = versioninfo.parser.get_next_header(self.csrss_win7, 92, expected='StringFileInfo')
+        _, cursor = versioninfo.parser.get_header(self.csrss_win7, 92, expected='StringFileInfo')
 
         self.assertEqual(128, cursor, 'Resulting cursor not as expected.')
 
-    def test_benign_header_stringtable(self):
+    def test_get_header_stringtable(self):
         """Test the header parser on a StringTable struct."""
         expected = {
             'wLength': 722,
             'wValueLength': 0,
             'wType': 1,
             'szKey': {
-                'Value': {
-                    'Bytes': b'0\x004\x000\x009\x000\x004\x00B\x000\x00',
-                    'Decoded': '040904B0'
-                }
+                'Bytes': b'0\x004\x000\x009\x000\x004\x00B\x000\x00',
+                'Decoded': '040904B0'
             },
             'Padding': 0
         }
 
-        header, _ = versioninfo.parser.get_next_header(self.csrss_win7, 128)
+        header, _ = versioninfo.parser.get_header(self.csrss_win7, 128)
 
         self.assertDictEqual(expected, header, 'Parsed header output not as expected.')
 
-    def test_benign_header_stringtable_cursor(self):
+    def test_get_header_stringtable_cursor(self):
         """Test the cursor after parsing the StringTable struct."""
-        _, cursor = versioninfo.parser.get_next_header(self.csrss_win7, 128)
+        _, cursor = versioninfo.parser.get_header(self.csrss_win7, 128)
 
         self.assertEqual(152, cursor, 'Resulting cursor not as expected.')
 
-    def test_benign_header_string_padding(self):
+    def test_get_header_string_padding(self):
         """Test the header parser on a String struct with padding."""
         expected = {
             'wLength': 76,
             'wValueLength': 22,
             'wType': 1,
             'szKey': {
-                'Value': {
-                    'Bytes': b'C\x00o\x00m\x00p\x00a\x00n\x00y\x00N\x00a\x00m\x00e\x00',
-                    'Decoded': 'CompanyName'
-                }
+                'Bytes': b'C\x00o\x00m\x00p\x00a\x00n\x00y\x00N\x00a\x00m\x00e\x00',
+                'Decoded': 'CompanyName'
             },
             'Padding': 1
         }
 
-        header, _ = versioninfo.parser.get_next_header(self.csrss_win7, 152)
+        header, _ = versioninfo.parser.get_header(self.csrss_win7, 152)
 
         self.assertDictEqual(expected, header, 'Parsed header output not as expected.')
 
-    def test_benign_header_string_padding_cursor(self):
+    def test_get_header_string_padding_cursor(self):
         """Test the cursor after parsing the String struct with padding."""
-        _, cursor = versioninfo.parser.get_next_header(self.csrss_win7, 152)
+        _, cursor = versioninfo.parser.get_header(self.csrss_win7, 152)
 
         self.assertEqual(184, cursor, 'Resulting cursor not as expected.')
 
-    def test_benign_header_string_no_padding(self):
+    def test_get_header_string_no_padding(self):
         """Test the header parser on a String struct with no padding."""
         expected = {
             'wLength': 52,
             'wValueLength': 10,
             'wType': 1,
             'szKey': {
-                'Value': {
-                    'Bytes': b'I\x00n\x00t\x00e\x00r\x00n\x00a\x00l\x00N\x00a\x00m\x00e\x00',
-                    'Decoded': 'InternalName'
-                }
+                'Bytes': b'I\x00n\x00t\x00e\x00r\x00n\x00a\x00l\x00N\x00a\x00m\x00e\x00',
+                'Decoded': 'InternalName'
             },
             'Padding': 0
         }
 
-        header, _ = versioninfo.parser.get_next_header(self.csrss_win7, 436)
+        header, _ = versioninfo.parser.get_header(self.csrss_win7, 436)
 
         self.assertDictEqual(expected, header, 'Parsed header output not as expected.')
 
-    def test_benign_header_string_no_padding_cursor(self):
+    def test_get_header_string_no_padding_cursor(self):
         """Test the cursor after parsing the String struct with no padding."""
-        _, cursor = versioninfo.parser.get_next_header(self.csrss_win7, 436)
+        _, cursor = versioninfo.parser.get_header(self.csrss_win7, 436)
 
         self.assertEqual(468, cursor, 'Resulting cursor not as expected.')
 
-    def test_benign_header_varfileinfo(self):
+    def test_get_header_varfileinfo(self):
         """Test the header parser on a VarFileInfo struct."""
         expected = {
             'wLength': 68,
             'wValueLength': 0,
             'wType': 1,
             'szKey': {
-                'Value': {
-                    'Bytes': b'V\x00a\x00r\x00F\x00i\x00l\x00e\x00I\x00n\x00f\x00o\x00',
-                    'Decoded': 'VarFileInfo'
-                },
+                'Bytes': b'V\x00a\x00r\x00F\x00i\x00l\x00e\x00I\x00n\x00f\x00o\x00',
+                'Decoded': 'VarFileInfo',
                 'Standard': True
             },
             'Padding': 1
         }
 
-        header, _ = versioninfo.parser.get_next_header(self.csrss_win7, 852, expected='VarFileInfo')
+        header, _ = versioninfo.parser.get_header(self.csrss_win7, 852, expected='VarFileInfo')
 
         self.assertDictEqual(expected, header, 'Parsed header output not as expected.')
 
-    def test_benign_header_varfileinfo_cursor(self):
+    def test_get_header_varfileinfo_cursor(self):
         """Test the cursor after parsing the VarFileInfo struct."""
-        _, cursor = versioninfo.parser.get_next_header(self.csrss_win7, 852, expected='VarFileInfo')
+        _, cursor = versioninfo.parser.get_header(self.csrss_win7, 852, expected='VarFileInfo')
 
         self.assertEqual(884, cursor, 'Resulting cursor not as expected.')
 
-    def test_benign_header_var(self):
+    def test_get_header_var(self):
         """Test the header parser on a Var struct."""
         expected = {
             'wLength': 36,
             'wValueLength': 4,
             'wType': 0,
             'szKey': {
-                'Value': {
-                    'Bytes': b'T\x00r\x00a\x00n\x00s\x00l\x00a\x00t\x00i\x00o\x00n\x00',
-                    'Decoded': 'Translation'
-                },
+                'Bytes': b'T\x00r\x00a\x00n\x00s\x00l\x00a\x00t\x00i\x00o\x00n\x00',
+                'Decoded': 'Translation',
                 'Standard': True
             },
             'Padding': 1
         }
 
-        header, _ = versioninfo.parser.get_next_header(self.csrss_win7, 884, expected='Translation')
+        header, _ = versioninfo.parser.get_header(self.csrss_win7, 884, expected='Translation')
 
         self.assertDictEqual(expected, header, 'Parsed header output not as expected.')
 
-    def test_benign_header_var_cursor(self):
+    def test_get_header_var_cursor(self):
         """Test the cursor after parsing the Var struct."""
-        _, cursor = versioninfo.parser.get_next_header(self.csrss_win7, 884, expected='Translation')
+        _, cursor = versioninfo.parser.get_header(self.csrss_win7, 884, expected='Translation')
 
         self.assertEqual(916, cursor, 'Resulting cursor not as expected.')
 
-    def test_benign_get_ffi(self):
+    def test_get_ffi(self):
         """Test parsing of VS_FIXEDFILEINFO struct."""
         expected = {
             'Type': 'VS_FIXEDFILEINFO',
@@ -344,25 +349,25 @@ class TestParserFunctionsBenign(unittest.TestCase):
 
         self.assertDictEqual(expected, output, 'Parsed VS_FIXEDFILEINFO structure not as expected.')
 
-    def test_benign_get_ffi_cursor(self):
+    def test_get_ffi_cursor(self):
         """Test the cursor after parsing the VS_FIXEDFILEINFO struct."""
         _, cursor = versioninfo.parser.get_ffi(self.csrss_win7, 40)
 
         self.assertEqual(92, cursor, 'Resulting cursor not as expected.')
 
-    def test_benign_get_fileinfo_type_stringfileinfo(self):
+    def test_get_fileinfo_type_stringfileinfo(self):
         """Test the FileInfo structure type determiner on StringFileInfo."""
         output = versioninfo.parser.get_fileinfo_type(self.csrss_win7, 92)
 
         self.assertEqual('StringFileInfo', output, 'Expected type for StringFileInfo not correct.')
 
-    def test_benign_get_fileinfo_type_varfileinfo(self):
+    def test_get_fileinfo_type_varfileinfo(self):
         """Test the FileInfo structure type determiner on VarFileInfo."""
         output = versioninfo.parser.get_fileinfo_type(self.csrss_win7, 852)
 
         self.assertEqual('VarFileInfo', output, 'Expected type for VarFileInfo not correct.')
 
-    def test_benign_process_language_code(self):
+    def test_process_language_code(self):
         """Test the language code processor function."""
         expected = {
             'LangID': {
@@ -382,22 +387,22 @@ class TestParserFunctionsBenign(unittest.TestCase):
 
         self.assertDictEqual(expected, output, 'Language code processor output not as expected.')
 
-    def test_benign_var_value_single_len(self):
+    def test_var_value_single_len(self):
         """Test the length of the output from the Var value parser on one Value."""
         output, _ = versioninfo.parser.get_var_value(self.csrss_win7, 916, 920)
 
         self.assertEqual(1, len(output), 'Length of the Var Value parser not as expected.')
 
-    def test_benign_var_value_two_len(self):
+    def test_var_value_two_len(self):
         """Test the length of the output from the Var value parser on two Values."""
         output, _ = versioninfo.parser.get_var_value(self.wscwiz_intel, 1512, 1520)
 
         self.assertEqual(2, len(output), 'Length of the Var Value parser not as expected.')
 
-    def test_benign_var_value_single(self):
+    def test_var_value_single(self):
         """Test the output from the Var value parser on one Value."""
         expected = {
-            'Type': 'VarValue',
+            'Type': 'Value',
             'Struct': {
                 'LangID': {
                     'Hexadecimal': '0x0409',
@@ -417,11 +422,11 @@ class TestParserFunctionsBenign(unittest.TestCase):
 
         self.assertDictEqual(expected, next(iter(output)), 'The Var Value parser output not as expected.')
 
-    def test_benign_var_value_two(self):
+    def test_var_value_two(self):
         """Test the output from the Var value parser on two Values."""
         expected = [
             {
-                'Type': 'VarValue',
+                'Type': 'Value',
                 'Struct': {
                     'LangID': {
                         'Hexadecimal': '0x0000',
@@ -437,7 +442,7 @@ class TestParserFunctionsBenign(unittest.TestCase):
                 }
             },
             {
-                'Type': 'VarValue',
+                'Type': 'Value',
                 'Struct': {
                     'LangID': {
                         'Hexadecimal': '0x0409',
@@ -461,27 +466,27 @@ class TestParserFunctionsBenign(unittest.TestCase):
 
                 self.assertDictEqual(expected, output, 'The Var Value parser output not as expected.')
 
-    def test_benign_var_value_single_cursor(self):
+    def test_var_value_single_cursor(self):
         """Test the cursor after parsing one Var Value."""
         end = 920
         _, cursor = versioninfo.parser.get_var_value(self.csrss_win7, 916, end)
 
         self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
 
-    def test_benign_var_value_two_cursor(self):
+    def test_var_value_two_cursor(self):
         """Test the cursor after parsing two Var Values."""
         end = 1520
         _, cursor = versioninfo.parser.get_var_value(self.wscwiz_intel, 1512, end)
 
         self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
 
-    def test_benign_var_single_len(self):
+    def test_var_single_len(self):
         """Test the length of the output from the Var parser on one Var."""
         output, _ = versioninfo.parser.get_var(self.csrss_win7, 884, 920)
 
         self.assertEqual(1, len(output), 'Length of the Var parser output not as expected.')
 
-    def test_benign_var_two_len(self):
+    def test_var_two_len(self):
         """Test the length of the output from the Var parser on two Vars."""
         output, _ = versioninfo.parser.get_var(self.txkbci_alienware, 124, 196)
 
