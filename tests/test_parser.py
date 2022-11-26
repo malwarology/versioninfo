@@ -6,6 +6,7 @@
 """Unit test versioninfo parser module."""
 import json
 import pathlib
+import pickle
 import struct
 import unittest
 
@@ -681,6 +682,24 @@ class TestParserBenign(unittest.TestCase):
         _, cursor = versioninfo.parser.get_varfileinfo(self.csrss_win7, 852)
 
         self.assertEqual(920, cursor, 'Resulting cursor not as expected.')
+
+    def test_get_strings(self):
+        """Test the output from the String parser."""
+        # Pickle text content: test_get_strings_csrss_win7.txt
+        expected_pickle = THIS_DIR.joinpath('data').joinpath('test_get_strings_csrss_win7.pickle')
+        with open(expected_pickle, 'rb') as fh:
+            expected = pickle.load(fh)
+
+        output, _ = versioninfo.parser.get_strings(self.csrss_win7, 152, 852)
+
+        self.assertListEqual(expected, output, 'The String parser output not as expected.')
+
+    def test_get_strings_cursor(self):
+        """Test the cursor after parsing array of String structures."""
+        end = 852
+        _, cursor = versioninfo.parser.get_strings(self.csrss_win7, 152, end)
+
+        self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
 
 
 class TestIssues(unittest.TestCase):
