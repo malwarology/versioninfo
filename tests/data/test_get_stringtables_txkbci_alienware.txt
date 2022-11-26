@@ -1,0 +1,227 @@
+[
+    {
+        'Type': 'StringTable',
+        'Struct': {
+            'wLength': 1086,
+            'wValueLength': 0,
+            'wType': 1,
+            'szKey': {
+                'Bytes': b'0\x004\x000\x009\x000\x004\x00E\x004\x00',
+                'Decoded': '040904E4',
+                'Parsed': {
+                    'LangID': {
+                        'Hexadecimal': '0x0409',
+                        'Parsed': {
+                            'MajorLanguage': '0b0000001001',
+                            'SubLanguage': '0b000001',
+                        },
+                    },
+                    'CodePage': {
+                        'Decimal': 1252,
+                        'Hexadecimal': '0x04e4'
+                    },
+                },
+            },
+            'Padding': 0,
+            'Children': [
+                {
+                    'Type': 'String',
+                    'Struct': {
+                        'wLength': 100,
+                        'wValueLength': 38,
+                        'wType': 1,
+                        'szKey': {
+                            'Bytes': b'C\x00o\x00m\x00m\x00e\x00n\x00t\x00s\x00',
+                            'Decoded': 'Comments',
+                        },
+                        'Padding': 0,
+                        'Value': {
+                            'Bytes': b'C\x00r\x00e\x00a\x00t\x00e\x00d\x00 \x00b\x00y\x00 \x00I\x00n\x00t\x00e\x00r\x00a\x00c\x00t\x00i\x00v\x00e\x00 \x00E\x00n\x00t\x00e\x00r\x00t\x00a\x00i\x00n\x00m\x00e\x00n\x00t\x00.\x00',
+                            'Decoded': 'Created by Interactive Entertainment.',
+                        },
+                    },
+                },
+                {
+                    'Type': 'String',
+                    'Struct': {
+                        'wLength': 52,
+                        'wValueLength': 10,
+                        'wType': 1,
+                        'szKey': {
+                            'Bytes': b'C\x00o\x00m\x00p\x00a\x00n\x00y\x00N\x00a\x00m\x00e\x00',
+                            'Decoded': 'CompanyName',
+                        },
+                        'Padding': 0,
+                        'Value': {
+                            'Bytes': b'A\x00l\x00i\x00e\x00n\x00w\x00a\x00r\x00e\x00',
+                            'Decoded': 'Alienware',
+                        },
+                    },
+                },
+                {
+                    'Type': 'String',
+                    'Struct': {
+                        'wLength': 108,
+                        'wValueLength': 34,
+                        'wType': 1,
+                        'szKey': {
+                            'Bytes': b'F\x00i\x00l\x00e\x00D\x00e\x00s\x00c\x00r\x00i\x00p\x00t\x00i\x00o\x00n\x00',
+                            'Decoded': 'FileDescription',
+                        },
+                        'Padding': 0,
+                        'Value': {
+                            'Bytes': b'A\x00l\x00i\x00e\x00n\x00w\x00a\x00r\x00e\x00 \x00T\x00a\x00c\x00t\x00X\x00 \x00K\x00e\x00y\x00b\x00o\x00a\x00r\x00d\x00 \x00P\x00r\x00o\x00f\x00i\x00l\x00e\x00r\x00',
+                            'Decoded': 'Alienware TactX Keyboard Profiler',
+                        },
+                    },
+                },
+                {
+                    'Type': 'String',
+                    'Struct': {
+                        'wLength': 50,
+                        'wValueLength': 9,
+                        'wType': 1,
+                        'szKey': {
+                            'Bytes': b'F\x00i\x00l\x00e\x00V\x00e\x00r\x00s\x00i\x00o\x00n\x00',
+                            'Decoded': 'FileVersion',
+                        },
+                        'Padding': 1,
+                        'Value': {
+                            'Bytes': b'1\x00.\x000\x000\x00.\x001\x003\x000\x00',
+                            'Decoded': '1.00.130',
+                        },
+                    },
+                },
+                {
+                    'Type': 'String',
+                    'Struct': {
+                        'wLength': 46,
+                        'wValueLength': 7,
+                        'wType': 1,
+                        'szKey': {
+                            'Bytes': b'I\x00n\x00t\x00e\x00r\x00n\x00a\x00l\x00N\x00a\x00m\x00e\x00',
+                            'Decoded': 'InternalName',
+                        },
+                        'Padding': 1,
+                        'Value': {
+                            'Bytes': b'T\x00X\x00K\x00B\x00C\x00I\x00',
+                            'Decoded': 'TXKBCI',
+                        },
+                    },
+                },
+                {
+                    'Type': 'String',
+                    'Struct': {
+                        'wLength': 62,
+                        'wValueLength': 11,
+                        'wType': 1,
+                        'szKey': {
+                            'Bytes': b'O\x00r\x00i\x00g\x00i\x00n\x00a\x00l\x00F\x00i\x00l\x00e\x00n\x00a\x00m\x00e\x00',
+                            'Decoded': 'OriginalFilename',
+                        },
+                        'Padding': 1,
+                        'Value': {
+                            'Bytes': b'T\x00X\x00K\x00B\x00C\x00I\x00.\x00e\x00x\x00e\x00',
+                            'Decoded': 'TXKBCI.exe',
+                        },
+                    },
+                },
+                {
+                    'Type': 'String',
+                    'Struct': {
+                        'wLength': 116,
+                        'wValueLength': 40,
+                        'wType': 1,
+                        'szKey': {
+                            'Bytes': b'L\x00e\x00g\x00a\x00l\x00C\x00o\x00p\x00y\x00r\x00i\x00g\x00h\x00t\x00',
+                            'Decoded': 'LegalCopyright',
+                        },
+                        'Padding': 0,
+                        'Value': {
+                            'Bytes': b'\xa9\x00 \x002\x000\x000\x009\x00 \x00A\x00l\x00i\x00e\x00n\x00w\x00a\x00r\x00e\x00.\x00 \x00 \x00A\x00l\x00l\x00 \x00r\x00i\x00g\x00h\x00t\x00s\x00 \x00r\x00e\x00s\x00e\x00r\x00v\x00e\x00d\x00.\x00',
+                            'Decoded': '© 2009 Alienware.  All rights reserved.',
+                        },
+                    },
+                },
+                {
+                    'Type': 'String',
+                    'Struct': {
+                        'wLength': 380,
+                        'wValueLength': 170,
+                        'wType': 1,
+                        'szKey': {
+                            'Bytes': b'L\x00e\x00g\x00a\x00l\x00T\x00r\x00a\x00d\x00e\x00m\x00a\x00r\x00k\x00s\x00',
+                            'Decoded': 'LegalTrademarks',
+                        },
+                        'Padding': 0,
+                        'Value': {
+                            'Bytes': b'A\x00l\x00i\x00e\x00n\x00w\x00a\x00r\x00e\x00,\x00 \x00t\x00h\x00e\x00 \x00A\x00l\x00i\x00e\x00n\x00w\x00a\x00r\x00e\x00 \x00l\x00o\x00g\x00o\x00,\x00 \x00a\x00n\x00d\x00 \x00o\x00t\x00h\x00e\x00r\x00 \x00A\x00l\x00i\x00e\x00n\x00w\x00a\x00r\x00e\x00 \x00m\x00a\x00r\x00k\x00s\x00 \x00a\x00r\x00e\x00 \x00o\x00w\x00n\x00e\x00d\x00 \x00b\x00y\x00 \x00A\x00l\x00i\x00e\x00n\x00w\x00a\x00r\x00e\x00 \x00a\x00n\x00d\x00 \x00m\x00a\x00y\x00 \x00b\x00e\x00 \x00r\x00e\x00g\x00i\x00s\x00t\x00e\x00r\x00e\x00d\x00.\x00 \x00 \x00A\x00l\x00l\x00 \x00o\x00t\x00h\x00e\x00r\x00 \x00t\x00r\x00a\x00d\x00e\x00m\x00a\x00r\x00k\x00s\x00 \x00a\x00r\x00e\x00 \x00t\x00h\x00e\x00 \x00p\x00r\x00o\x00p\x00e\x00r\x00t\x00y\x00 \x00o\x00f\x00 \x00t\x00h\x00e\x00i\x00r\x00 \x00r\x00e\x00s\x00p\x00e\x00c\x00t\x00i\x00v\x00e\x00 \x00o\x00w\x00n\x00e\x00r\x00s\x00.\x00',
+                            'Decoded': 'Alienware, the Alienware logo, and other Alienware marks are owned by Alienware and may be registered.  All other trademarks are the property of their respective owners.',
+                        },
+                    },
+                },
+                {
+                    'Type': 'String',
+                    'Struct': {
+                        'wLength': 88,
+                        'wValueLength': 28,
+                        'wType': 1,
+                        'szKey': {
+                            'Bytes': b'P\x00r\x00o\x00d\x00u\x00c\x00t\x00N\x00a\x00m\x00e\x00',
+                            'Decoded': 'ProductName',
+                        },
+                        'Padding': 0,
+                        'Value': {
+                            'Bytes': b'A\x00l\x00i\x00e\x00n\x00w\x00a\x00r\x00e\x00 \x00T\x00a\x00c\x00t\x00X\x00 \x00C\x00I\x00 \x00S\x00o\x00f\x00t\x00w\x00a\x00r\x00e\x00',
+                            'Decoded': 'Alienware TactX CI Software',
+                        },
+                    },
+                },
+                {
+                    'Type': 'String',
+                    'Struct': {
+                        'wLength': 54,
+                        'wValueLength': 9,
+                        'wType': 1,
+                        'szKey': {
+                            'Bytes': b'P\x00r\x00o\x00d\x00u\x00c\x00t\x00V\x00e\x00r\x00s\x00i\x00o\x00n\x00',
+                            'Decoded': 'ProductVersion',
+                        },
+                        'Padding': 1,
+                        'Value': {
+                            'Bytes': b'1\x00.\x000\x000\x00.\x001\x003\x000\x00',
+                            'Decoded': '1.00.130',
+                        },
+                    },
+                },
+            ],
+        },
+    },
+    {
+        'Type': 'StringTable',
+        'Struct': {
+            'wLength': 24,
+            'wValueLength': 0,
+            'wType': 1,
+            'szKey': {
+                'Bytes': b'0\x004\x001\x001\x000\x004\x00E\x004\x00',
+                'Decoded': '041104E4',
+                'Parsed': {
+                    'LangID': {
+                        'Hexadecimal': '0x0411',
+                        'Parsed': {
+                            'MajorLanguage': '0b0000010001',
+                            'SubLanguage': '0b000001',
+                        },
+                    },
+                    'CodePage': {
+                        'Decimal': 1252,
+                        'Hexadecimal': '0x04e4'
+                    },
+                },
+            },
+            'Padding': 0,
+            'Children': [],
+        },
+    },
+]

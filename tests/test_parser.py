@@ -719,6 +719,24 @@ class TestParserBenign(unittest.TestCase):
 
         self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
 
+    def test_get_stringtables_empty(self):
+        """Test the output from the StringTable parser with an empty value."""
+        # Pickle text content: test_get_stringtables_txkbci_alienware.txt
+        expected_pickle = THIS_DIR.joinpath('data').joinpath('test_get_stringtables_txkbci_alienware.pickle')
+        with open(expected_pickle, 'rb') as fh:
+            expected = pickle.load(fh)
+
+        output, _ = versioninfo.parser.get_stringtables(self.txkbci_alienware, 232, 1344)
+
+        self.assertListEqual(expected, output, 'The StringTable parser output not as expected.')
+
+    def test_get_stringtables_empty_cursor(self):
+        """Test the cursor after parsing array of StringTable structures with an empty value."""
+        end = 1344
+        _, cursor = versioninfo.parser.get_stringtables(self.txkbci_alienware, 232, end)
+
+        self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
+
 
 class TestIssues(unittest.TestCase):
     """Check for closed issues on data that caused the issue."""
