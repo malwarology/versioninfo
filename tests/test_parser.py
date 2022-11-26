@@ -782,6 +782,16 @@ class TestParserBenign(unittest.TestCase):
 
         self.assertDictEqual(expected, output, 'The VS_VERSIONINFO parser output not as expected.')
 
+    def test_to_json(self):
+        """Test the output from the JSON output function."""
+        expected = THIS_DIR.joinpath('data').joinpath('cb1c60_csrss_win7.0x1798-0x1b30.json').read_text()
+
+        output = versioninfo.parser.to_json(self.csrss_win7)
+        output_dict = json.loads(output)
+        output_json = json.dumps(output_dict, sort_keys=True, indent=4, default=versioninfo.parser.convert)
+
+        self.assertEqual(expected, output_json, 'The JSON output not as expected.')
+
 
 class TestIssues(unittest.TestCase):
     """Check for closed issues on data that caused the issue."""
