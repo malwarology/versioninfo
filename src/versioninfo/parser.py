@@ -180,8 +180,8 @@ def process_language_code(lang_code):
     return value
 
 
-def get_var_value(data, cursor, end):
-    """Parse one Var value member with recursion."""
+def get_var_values(data, cursor, end):
+    """Parse Var value members recursively."""
     var_value_format = 'HH'
     lang_code = struct.unpack_from(var_value_format, data, offset=cursor)
     cursor += struct.calcsize(var_value_format)
@@ -194,19 +194,19 @@ def get_var_value(data, cursor, end):
     if cursor >= end:
         return [meta], cursor
     else:
-        children, cursor = get_var_value(data, cursor, end)
+        children, cursor = get_var_values(data, cursor, end)
         children.insert(0, meta)
         return children, cursor
 
 
-def get_var(data, cursor, end):
-    """Parse one Var structure with recursion."""
+def get_vars(data, cursor, end):
+    """Parse Var structures recursively."""
     start = cursor
     var, cursor = get_header(data, cursor, expected='Translation', boundary=True)
     var_end = start + var['wLength']
 
     # The Value of Var is an array of DWORDs. Parse it recursively.
-    var_children, cursor = get_var_value(data, cursor, var_end)
+    var_children, cursor = get_var_values(data, cursor, var_end)
     var['Value'] = var_children
 
     meta = {
@@ -217,7 +217,7 @@ def get_var(data, cursor, end):
     if cursor >= end:
         return [meta], cursor
     else:
-        children, cursor = get_var(data, cursor, end)
+        children, cursor = get_vars(data, cursor, end)
         children.insert(0, meta)
         return children, cursor
 
@@ -229,7 +229,7 @@ def get_varfileinfo(data, cursor):
     end = start + varfileinfo['wLength']
 
     # Children member of VarFileInfo struct is an array of Var structs. Parse it recursively.
-    children, cursor = get_var(data, cursor, end)
+    children, cursor = get_vars(data, cursor, end)
     varfileinfo['Children'] = children
 
     meta = {
@@ -240,8 +240,8 @@ def get_varfileinfo(data, cursor):
     return meta, cursor
 
 
-def get_string(data, cursor, end):
-    """Parse one String structure with recursion."""
+def get_strings(data, cursor, end):
+    """Parse String structures recursively."""
     string_member, cursor = get_header(data, cursor)
 
     # Each String has only one Value member WCHAR.
@@ -259,13 +259,13 @@ def get_string(data, cursor, end):
     if cursor >= end:
         return [meta], cursor
     else:
-        children, cursor = get_string(data, cursor, end)
+        children, cursor = get_strings(data, cursor, end)
         children.insert(0, meta)
         return children, cursor
 
 
-def get_stringtable(data, cursor, end):
-    """Parse one StringTable and call the recursive function that gets the String children list."""
+def get_stringtables(data, cursor, end):
+    """Parse StringTable array recursively and call recursive function to parse String children."""
     start = cursor
     stringtable, cursor = get_header(data, cursor)
     table_end = start + stringtable['wLength']
@@ -279,7 +279,7 @@ def get_stringtable(data, cursor, end):
     if cursor >= table_end:
         str_children = list()
     else:
-        str_children, cursor = get_string(data, cursor, table_end)
+        str_children, cursor = get_strings(data, cursor, table_end)
     stringtable['Children'] = str_children
 
     meta = {
@@ -290,7 +290,7 @@ def get_stringtable(data, cursor, end):
     if cursor >= end:
         return [meta], cursor
     else:
-        children, cursor = get_stringtable(data, cursor, end)
+        children, cursor = get_stringtables(data, cursor, end)
         children.insert(0, meta)
         return children, cursor
 
@@ -302,7 +302,7 @@ def get_stringfileinfo(data, cursor):
     end = start + stringfileinfo['wLength']
 
     # Children member of StringFileInfo struct is an array of StringTable structs. Parse it recursively.
-    children, cursor = get_stringtable(data, cursor, end)
+    children, cursor = get_stringtables(data, cursor, end)
     stringfileinfo['Children'] = children
 
     meta = {

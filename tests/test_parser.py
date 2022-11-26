@@ -387,19 +387,19 @@ class TestParserBenign(unittest.TestCase):
 
         self.assertDictEqual(expected, output, 'Language code processor output not as expected.')
 
-    def test_get_var_value_single_len(self):
+    def test_get_var_values_single_len(self):
         """Test the length of the output from the Var value parser on one Value."""
-        output, _ = versioninfo.parser.get_var_value(self.csrss_win7, 916, 920)
+        output, _ = versioninfo.parser.get_var_values(self.csrss_win7, 916, 920)
 
         self.assertEqual(1, len(output), 'Length of the Var Value parser not as expected.')
 
-    def test_get_var_value_two_len(self):
+    def test_get_var_values_two_len(self):
         """Test the length of the output from the Var value parser on two Values."""
-        output, _ = versioninfo.parser.get_var_value(self.wscwiz_intel, 1512, 1520)
+        output, _ = versioninfo.parser.get_var_values(self.wscwiz_intel, 1512, 1520)
 
         self.assertEqual(2, len(output), 'Length of the Var Value parser not as expected.')
 
-    def test_get_var_value_single(self):
+    def test_get_var_values_single(self):
         """Test the output from the Var value parser on one Value."""
         expected = {
             'Type': 'Value',
@@ -418,11 +418,11 @@ class TestParserBenign(unittest.TestCase):
             }
         }
 
-        output, _ = versioninfo.parser.get_var_value(self.csrss_win7, 916, 920)
+        output, _ = versioninfo.parser.get_var_values(self.csrss_win7, 916, 920)
 
         self.assertDictEqual(expected, next(iter(output)), 'The Var Value parser output not as expected.')
 
-    def test_get_var_value_two(self):
+    def test_get_var_values_two(self):
         """Test the output from the Var value parser on two Values."""
         expected = [
             {
@@ -459,40 +459,40 @@ class TestParserBenign(unittest.TestCase):
             }
         ]
 
-        output, _ = versioninfo.parser.get_var_value(self.wscwiz_intel, 1512, 1520)
+        output, _ = versioninfo.parser.get_var_values(self.wscwiz_intel, 1512, 1520)
         for index, entry in enumerate(zip(expected, output)):
             with self.subTest(var_val=index):
                 expected, output, = entry
 
                 self.assertDictEqual(expected, output, 'The Var Value parser output not as expected.')
 
-    def test_get_var_value_single_cursor(self):
+    def test_get_var_values_single_cursor(self):
         """Test the cursor after parsing one Var Value."""
         end = 920
-        _, cursor = versioninfo.parser.get_var_value(self.csrss_win7, 916, end)
+        _, cursor = versioninfo.parser.get_var_values(self.csrss_win7, 916, end)
 
         self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
 
-    def test_get_var_value_two_cursor(self):
+    def test_get_var_values_two_cursor(self):
         """Test the cursor after parsing two Var Values."""
         end = 1520
-        _, cursor = versioninfo.parser.get_var_value(self.wscwiz_intel, 1512, end)
+        _, cursor = versioninfo.parser.get_var_values(self.wscwiz_intel, 1512, end)
 
         self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
 
-    def test_get_var_single_len(self):
+    def test_get_vars_single_len(self):
         """Test the length of the output from the Var parser on one Var."""
-        output, _ = versioninfo.parser.get_var(self.csrss_win7, 884, 920)
+        output, _ = versioninfo.parser.get_vars(self.csrss_win7, 884, 920)
 
         self.assertEqual(1, len(output), 'Length of the Var parser output not as expected.')
 
-    def test_get_var_two_len(self):
+    def test_get_vars_two_len(self):
         """Test the length of the output from the Var parser on two Vars."""
-        output, _ = versioninfo.parser.get_var(self.txkbci_alienware, 124, 196)
+        output, _ = versioninfo.parser.get_vars(self.txkbci_alienware, 124, 196)
 
         self.assertEqual(2, len(output), 'Length of the Var parser output not as expected.')
 
-    def test_get_var_single(self):
+    def test_get_vars_single(self):
         """Test the output from the Var value parser on one Var."""
         expected = {
             'Type': 'Var',
@@ -527,11 +527,11 @@ class TestParserBenign(unittest.TestCase):
             }
         }
 
-        output, _ = versioninfo.parser.get_var(self.csrss_win7, 884, 920)
+        output, _ = versioninfo.parser.get_vars(self.csrss_win7, 884, 920)
 
         self.assertDictEqual(expected, next(iter(output)), 'The Var parser output not as expected.')
 
-    def test_get_var_two(self):
+    def test_get_vars_two(self):
         """Test the output from the Var parser on two Vars."""
         expected = [
             {
@@ -600,24 +600,24 @@ class TestParserBenign(unittest.TestCase):
             },
         ]
 
-        output, _ = versioninfo.parser.get_var(self.txkbci_alienware, 124, 196)
+        output, _ = versioninfo.parser.get_vars(self.txkbci_alienware, 124, 196)
         for index, entry in enumerate(zip(expected, output)):
             with self.subTest(var_val=index):
                 expected, output, = entry
 
                 self.assertDictEqual(expected, output, 'The Var parser output not as expected.')
 
-    def test_get_var_single_cursor(self):
+    def test_get_vars_single_cursor(self):
         """Test the cursor after parsing one Var."""
         end = 920
-        _, cursor = versioninfo.parser.get_var(self.csrss_win7, 884, end)
+        _, cursor = versioninfo.parser.get_vars(self.csrss_win7, 884, end)
 
         self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
 
-    def test_get_var_two_cursor(self):
+    def test_get_vars_two_cursor(self):
         """Test the cursor after parsing two Vars."""
         end = 196
-        _, cursor = versioninfo.parser.get_var(self.txkbci_alienware, 124, end)
+        _, cursor = versioninfo.parser.get_vars(self.txkbci_alienware, 124, end)
 
         self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
 
