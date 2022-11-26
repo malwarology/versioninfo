@@ -7,7 +7,7 @@
 import json
 import pathlib
 import pickle
-import struct
+# import struct
 import unittest
 
 import versioninfo.parser
@@ -737,34 +737,51 @@ class TestParserBenign(unittest.TestCase):
 
         self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
 
+    def test_get_stringfileinfo(self):
+        """Test the output from the StringFileInfo parser."""
+        # Pickle text content: test_get_stringfileinfo_csrss_win7.txt
+        expected_pickle = THIS_DIR.joinpath('data').joinpath('test_get_stringfileinfo_csrss_win7.pickle')
+        with open(expected_pickle, 'rb') as fh:
+            expected = pickle.load(fh)
 
-class TestIssues(unittest.TestCase):
-    """Check for closed issues on data that caused the issue."""
+        output, _ = versioninfo.parser.get_stringfileinfo(self.csrss_win7, 92)
 
-    def test_issue1(self):
-        """Test handling of 0x0000 Language IDs."""
-        wscwiz_intel = THIS_DIR.joinpath('data').joinpath('252797_wscwiz_intel.0x18840-0x18e30.dat').read_bytes()
+        self.assertDictEqual(expected, output, 'The StringFileInfo parser output not as expected.')
 
-        raised = False
-        try:
-            _ = versioninfo.parser.to_json(wscwiz_intel)
-        except struct.error:
-            raised = True
+    def test_get_stringfileinfo_cursor(self):
+        """Test the cursor after parsing StringFileInfo structure."""
+        _, cursor = versioninfo.parser.get_stringfileinfo(self.csrss_win7, 92)
 
-        self.assertFalse(raised, 'Problem with issue #1: Exception raised.')
+        self.assertEqual(852, cursor, 'Resulting cursor not as expected.')
 
-    def test_issue2(self):
-        """Test handling of StringTable with zero children."""
-        filename = 'fc1d53_txkbci_alienware.0x3453a4-0x3458e4.dat'
-        txkbci_alienware = THIS_DIR.joinpath('data').joinpath(filename).read_bytes()
 
-        raised = False
-        try:
-            _ = versioninfo.parser.to_json(txkbci_alienware)
-        except struct.error:
-            raised = True
+# class TestIssues(unittest.TestCase):
+#     """Check for closed issues on data that caused the issue."""
 
-        self.assertFalse(raised, 'Problem with issue #1: Exception raised.')
+#     def test_issue1(self):
+#         """Test handling of 0x0000 Language IDs."""
+#         wscwiz_intel = THIS_DIR.joinpath('data').joinpath('252797_wscwiz_intel.0x18840-0x18e30.dat').read_bytes()
+
+#         raised = False
+#         try:
+#             _ = versioninfo.parser.to_json(wscwiz_intel)
+#         except struct.error:
+#             raised = True
+
+#         self.assertFalse(raised, 'Problem with issue #1: Exception raised.')
+
+#     def test_issue2(self):
+#         """Test handling of StringTable with zero children."""
+#         filename = 'fc1d53_txkbci_alienware.0x3453a4-0x3458e4.dat'
+#         txkbci_alienware = THIS_DIR.joinpath('data').joinpath(filename).read_bytes()
+
+#         raised = False
+#         try:
+#             _ = versioninfo.parser.to_json(txkbci_alienware)
+#         except struct.error:
+#             raised = True
+
+#         self.assertFalse(raised, 'Problem with issue #1: Exception raised.')
 
 
 if __name__ == '__main__':
