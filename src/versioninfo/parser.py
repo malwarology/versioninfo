@@ -314,7 +314,7 @@ def get_stringfileinfo(data, cursor):
 
 
 def get_fileinfo(data, cursor, end):
-    """Parse one FileInfo structure, determine its type, and call the approproate parsing function with recursion."""
+    """Parse FileInfo structures recursively, determine type for each, and call the right recursive parser."""
     fileinfo_type = get_fileinfo_type(data, cursor)
 
     if fileinfo_type == 'StringFileInfo':
