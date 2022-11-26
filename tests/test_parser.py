@@ -492,6 +492,135 @@ class TestParserBenign(unittest.TestCase):
 
         self.assertEqual(2, len(output), 'Length of the Var parser output not as expected.')
 
+    def test_var_single(self):
+        """Test the output from the Var value parser on one Var."""
+        expected = {
+            'Type': 'Var',
+            'Struct': {
+                'wLength': 36,
+                'wValueLength': 4,
+                'wType': 0,
+                'szKey': {
+                    'Bytes': b'T\x00r\x00a\x00n\x00s\x00l\x00a\x00t\x00i\x00o\x00n\x00',
+                    'Decoded': 'Translation',
+                    'Standard': True
+                },
+                'Padding': 1,
+                'Value': [
+                    {
+                        'Type': 'Value',
+                        'Struct': {
+                            'LangID': {
+                                'Hexadecimal': '0x0409',
+                                'Parsed': {
+                                    'MajorLanguage': '0b0000001001',
+                                    'SubLanguage': '0b000001'
+                                }
+                            },
+                            'CodePage': {
+                                'Decimal': 1200,
+                                'Hexadecimal': '0x04b0'
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+
+        output, _ = versioninfo.parser.get_var(self.csrss_win7, 884, 920)
+
+        self.assertDictEqual(expected, next(iter(output)), 'The Var parser output not as expected.')
+
+    def test_var_two(self):
+        """Test the output from the Var parser on two Vars."""
+        expected = [
+            {
+                'Type': 'Var',
+                'Struct': {
+                    'wLength': 36,
+                    'wValueLength': 4,
+                    'wType': 0,
+                    'szKey': {
+                        'Bytes': b'T\x00r\x00a\x00n\x00s\x00l\x00a\x00t\x00i\x00o\x00n\x00',
+                        'Decoded': 'Translation',
+                        'Standard': True,
+                    },
+                    'Padding': 1,
+                    'Value': [
+                        {
+                            'Type': 'Value',
+                            'Struct': {
+                                'LangID': {
+                                    'Hexadecimal': '0x0409',
+                                    'Parsed': {
+                                        'MajorLanguage': '0b0000001001',
+                                        'SubLanguage': '0b000001',
+                                    },
+                                },
+                                'CodePage': {
+                                    'Decimal': 1252,
+                                    'Hexadecimal': '0x04e4'
+                                },
+                            },
+                        }
+                    ],
+                },
+            },
+            {
+                'Type': 'Var',
+                'Struct': {
+                    'wLength': 36,
+                    'wValueLength': 4,
+                    'wType': 0,
+                    'szKey': {
+                        'Bytes': b'T\x00r\x00a\x00n\x00s\x00l\x00a\x00t\x00i\x00o\x00n\x00',
+                        'Decoded': 'Translation',
+                        'Standard': True,
+                    },
+                    'Padding': 1,
+                    'Value': [
+                        {
+                            'Type': 'Value',
+                            'Struct': {
+                                'LangID': {
+                                    'Hexadecimal': '0x0411',
+                                    'Parsed': {
+                                        'MajorLanguage': '0b0000010001',
+                                        'SubLanguage': '0b000001',
+                                    },
+                                },
+                                'CodePage': {
+                                    'Decimal': 1252,
+                                    'Hexadecimal': '0x04e4'
+                                },
+                            },
+                        }
+                    ],
+                },
+            },
+        ]
+
+        output, _ = versioninfo.parser.get_var(self.txkbci_alienware, 124, 196)
+        for index, entry in enumerate(zip(expected, output)):
+            with self.subTest(var_val=index):
+                expected, output, = entry
+
+                self.assertDictEqual(expected, output, 'The Var parser output not as expected.')
+
+    def test_var_single_cursor(self):
+        """Test the cursor after parsing one Var."""
+        end = 920
+        _, cursor = versioninfo.parser.get_var(self.csrss_win7, 884, end)
+
+        self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
+
+    def test_var_two_cursor(self):
+        """Test the cursor after parsing two Vars."""
+        end = 196
+        _, cursor = versioninfo.parser.get_var(self.txkbci_alienware, 124, end)
+
+        self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
+
 
 class TestIssues(unittest.TestCase):
     """Check for closed issues on data that caused the issue."""
