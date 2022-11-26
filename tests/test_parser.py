@@ -501,6 +501,19 @@ class TestIssues(unittest.TestCase):
 
         self.assertFalse(raised, 'Problem with issue #1: Exception raised.')
 
+    def test_issue2(self):
+        """Test handling of StringTable with zero children."""
+        filename = 'fc1d53_txkbci_alienware.0x3453a4-0x3458e4.dat'
+        txkbci_alienware = THIS_DIR.joinpath('data').joinpath(filename).read_bytes()
+
+        raised = False
+        try:
+            _ = versioninfo.parser.to_json(txkbci_alienware)
+        except struct.error:
+            raised = True
+
+        self.assertFalse(raised, 'Problem with issue #1: Exception raised.')
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

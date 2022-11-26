@@ -290,7 +290,10 @@ def get_stringtable(data, cursor, end):
     stringtable['szKey']['Value']['Parsed'] = process_language_code(lang_code)
 
     # Children member of StringTable struct is an array of String structs. Parse it recursively.
-    str_children, cursor = get_string(data, cursor, table_end)
+    if cursor >= table_end:
+        str_children = list()
+    else:
+        str_children, cursor = get_string(data, cursor, table_end)
     stringtable['Children'] = str_children
 
     meta = {
