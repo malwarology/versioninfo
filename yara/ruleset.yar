@@ -68,9 +68,9 @@ rule NoFixedFileInfo
         date = "2022-11-25"
         description = "Detects PE files with no VS_FIXEDFILEINFO structure."
     strings:
-        $a = { 0000 ( 0000 | 0100 ) 56005300 5F005600 45005200 53004900 4F004E00 5F004900 4E004600 4F000000 0000  }
+        $a = { ???? 0000 ( 0000 | 0100 ) 56005300 5F005600 45005200 53004900 4F004E00 5F004900 4E004600 4F000000 0000  }
     condition:
-        WindowsPE and $a
+        for any resource in pe.resources : ( resource.type == 16 and resource.offset == @a )
 }
 
 rule TwoVars
