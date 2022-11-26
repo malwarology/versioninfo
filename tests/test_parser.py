@@ -4,7 +4,6 @@
 # license that can be found in the LICENSE file or at
 # https://opensource.org/licenses/MIT.
 """Unit test versioninfo parser module."""
-# import hashlib
 import json
 import pathlib
 import struct
