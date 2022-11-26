@@ -60,6 +60,7 @@ class TestParserFunctionsBenign(unittest.TestCase):
     def setUp(self):
         """Load testing resources from files."""
         self.csrss_win7 = THIS_DIR.joinpath('data').joinpath('cb1c60_csrss_win7.0x1798-0x1b30.dat').read_bytes()
+        self.wscwiz_intel = THIS_DIR.joinpath('data').joinpath('252797_wscwiz_intel.0x18840-0x18e30.dat').read_bytes()
 
     def test_benign_get_padding_one(self):
         """Test that the padding reader counts one padding WORD correctly."""
@@ -385,6 +386,12 @@ class TestParserFunctionsBenign(unittest.TestCase):
 
         self.assertEqual(1, len(output), 'Length of the Var Value parser not as expected.')
 
+    def test_benign_var_value_two_len(self):
+        """Test the length of the output from the Var value parser on two Values."""
+        output, _ = versioninfo.parser.get_var_value(self.wscwiz_intel, 1512, 1520)
+
+        self.assertEqual(2, len(output), 'Length of the Var Value parser not as expected.')
+
     def test_benign_var_value_single(self):
         """Test the output from the Var value parser on one Value."""
         expected = {
@@ -408,12 +415,75 @@ class TestParserFunctionsBenign(unittest.TestCase):
 
         self.assertDictEqual(expected, next(iter(output)), 'The Var Value parser output not as expected.')
 
+    def test_benign_var_value_two(self):
+        """Test the output from the Var value parser on two Values."""
+        expected = [
+            {
+                'Type': 'VarValue',
+                'Struct': {
+                    'LangID': {
+                        'Hexadecimal': '0x0000',
+                        'Parsed': {
+                            'MajorLanguage': '0b0000000000',
+                            'SubLanguage': '0b000000'
+                        }
+                    },
+                    'CodePage': {
+                        'Decimal': 1200,
+                        'Hexadecimal': '0x04b0'
+                    }
+                }
+            },
+            {
+                'Type': 'VarValue',
+                'Struct': {
+                    'LangID': {
+                        'Hexadecimal': '0x0409',
+                        'Parsed': {
+                            'MajorLanguage': '0b0000001001',
+                            'SubLanguage': '0b000001'
+                        }
+                    },
+                    'CodePage': {
+                        'Decimal': 1200,
+                        'Hexadecimal': '0x04b0'
+                    }
+                }
+            }
+        ]
+
+        output, _ = versioninfo.parser.get_var_value(self.wscwiz_intel, 1512, 1520)
+        for index, entry in enumerate(zip(expected, output)):
+            with self.subTest(var_val=index):
+                expected, output, = entry
+
+                self.assertDictEqual(expected, output, 'The Var Value parser output not as expected.')
+
     def test_benign_var_value_single_cursor(self):
         """Test the cursor after parsing one Var Value."""
         end = 920
         _, cursor = versioninfo.parser.get_var_value(self.csrss_win7, 916, end)
 
         self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
+
+    def test_benign_var_value_two_cursor(self):
+        """Test the cursor after parsing two Var Values."""
+        end = 1520
+        _, cursor = versioninfo.parser.get_var_value(self.wscwiz_intel, 1512, end)
+
+        self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
+
+    def test_benign_var_single_len(self):
+        """Test the length of the output from the Var parser on one Var."""
+        output, _ = versioninfo.parser.get_var(self.csrss_win7, 884, 920)
+
+        self.assertEqual(1, len(output), 'Length of the Var parser output not as expected.')
+
+    def test_benign_var_single_len_two_vals(self):
+        """Test the length of the output from the Var parser on one Var with two Values."""
+        output, _ = versioninfo.parser.get_var(self.wscwiz_intel, 1480, 1520)
+
+        self.assertEqual(1, len(output), 'Length of the Var parser output not as expected.')
 
 
 if __name__ == '__main__':

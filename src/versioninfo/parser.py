@@ -18,7 +18,7 @@ def convert(entry):
         raise TypeError
 
 
-def get_padding(data, cursor):
+def get_padding(data, cursor, end=None):
     """Count the number of padding WORDs."""
     size = 2
     pad_word = b'\x00\x00'
@@ -26,7 +26,7 @@ def get_padding(data, cursor):
 
     for i in range(cursor, len(data), size):
         chunk = data[i:i+size]
-        if chunk != pad_word:
+        if (chunk != pad_word) or (i == end):
             break
         else:
             padding += 1
@@ -36,7 +36,7 @@ def get_padding(data, cursor):
     return padding, cursor
 
 
-def get_wchar(data, cursor):
+def get_wchar(data, cursor, end=None):
     """Parse one WCHAR struct member string including padding."""
     # Read from the data starting at the cursor by two-byte chunks. Stop at the null terminator.
     size = 2
@@ -57,12 +57,12 @@ def get_wchar(data, cursor):
     cursor += len(wchar_str) + 2
 
     # Count padding WORDs.
-    padding, cursor = get_padding(data, cursor)
+    padding, cursor = get_padding(data, cursor, end)
 
     return wchar_str, decoded, padding, cursor
 
 
-def get_next_header(data, cursor, expected=None):
+def get_next_header(data, cursor, expected=None, boundary=False):
     """Parse the header members that exist in each struct: wLength, wValueLength, wType, szKey, and Padding."""
     h_format = 'HHH'
     wlength, wvaluelength, wtype = struct.unpack_from(h_format, data, offset=cursor)
@@ -73,9 +73,14 @@ def get_next_header(data, cursor, expected=None):
         'wType': wtype
     }
 
+    if boundary:
+        end = cursor + wlength - wvaluelength
+    else:
+        end = None
+
     cursor += struct.calcsize(h_format)
 
-    szkey, decoded, padding, cursor = get_wchar(data, cursor)
+    szkey, decoded, padding, cursor = get_wchar(data, cursor, end)
 
     # Check if the szKey content matches the expected
     if expected is None:
@@ -209,7 +214,7 @@ def get_var_value(data, cursor, end):
 def get_var(data, cursor, end):
     """Parse one Var structure with recursion."""
     start = cursor
-    var, cursor = get_next_header(data, cursor, expected='Translation')
+    var, cursor = get_next_header(data, cursor, expected='Translation', boundary=True)
     var_end = start + var['wLength']
 
     # The Value of Var is an array of DWORDs. Parse it recursively.
