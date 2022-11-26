@@ -61,6 +61,8 @@ class TestParserFunctionsBenign(unittest.TestCase):
         """Load testing resources from files."""
         self.csrss_win7 = THIS_DIR.joinpath('data').joinpath('cb1c60_csrss_win7.0x1798-0x1b30.dat').read_bytes()
         self.wscwiz_intel = THIS_DIR.joinpath('data').joinpath('252797_wscwiz_intel.0x18840-0x18e30.dat').read_bytes()
+        filename = 'fc1d53_txkbci_alienware.0x3453a4-0x3458e4.dat'
+        self.txkbci_alienware = THIS_DIR.joinpath('data').joinpath(filename).read_bytes()
 
     def test_benign_get_padding_one(self):
         """Test that the padding reader counts one padding WORD correctly."""
@@ -479,11 +481,11 @@ class TestParserFunctionsBenign(unittest.TestCase):
 
         self.assertEqual(1, len(output), 'Length of the Var parser output not as expected.')
 
-    def test_benign_var_single_len_two_vals(self):
-        """Test the length of the output from the Var parser on one Var with two Values."""
-        output, _ = versioninfo.parser.get_var(self.wscwiz_intel, 1480, 1520)
+    def test_benign_var_two_len(self):
+        """Test the length of the output from the Var parser on two Vars."""
+        output, _ = versioninfo.parser.get_var(self.txkbci_alienware, 124, 196)
 
-        self.assertEqual(1, len(output), 'Length of the Var parser output not as expected.')
+        self.assertEqual(2, len(output), 'Length of the Var parser output not as expected.')
 
 
 class TestIssues(unittest.TestCase):
