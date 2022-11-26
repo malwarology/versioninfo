@@ -701,6 +701,24 @@ class TestParserBenign(unittest.TestCase):
 
         self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
 
+    def test_get_stringtables(self):
+        """Test the output from the StringTable parser."""
+        # Pickle text content: test_get_stringtables_csrss_win7.txt
+        expected_pickle = THIS_DIR.joinpath('data').joinpath('test_get_stringtables_csrss_win7.pickle')
+        with open(expected_pickle, 'rb') as fh:
+            expected = pickle.load(fh)
+
+        output, _ = versioninfo.parser.get_stringtables(self.csrss_win7, 128, 852)
+
+        self.assertListEqual(expected, output, 'The StringTable parser output not as expected.')
+
+    def test_get_stringtables_cursor(self):
+        """Test the cursor after parsing array of StringTable structures."""
+        end = 852
+        _, cursor = versioninfo.parser.get_stringtables(self.csrss_win7, 128, end)
+
+        self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
+
 
 class TestIssues(unittest.TestCase):
     """Check for closed issues on data that caused the issue."""
