@@ -7,6 +7,7 @@
 # import hashlib
 import json
 import pathlib
+import struct
 import unittest
 
 import versioninfo.parser
@@ -484,6 +485,22 @@ class TestParserFunctionsBenign(unittest.TestCase):
         output, _ = versioninfo.parser.get_var(self.wscwiz_intel, 1480, 1520)
 
         self.assertEqual(1, len(output), 'Length of the Var parser output not as expected.')
+
+
+class TestIssues(unittest.TestCase):
+    """Check for closed issues on data that caused the issue."""
+
+    def test_issue1(self):
+        """Test handling of 0x0000 Language IDs."""
+        wscwiz_intel = THIS_DIR.joinpath('data').joinpath('252797_wscwiz_intel.0x18840-0x18e30.dat').read_bytes()
+
+        raised = False
+        try:
+            _ = versioninfo.parser.to_json(wscwiz_intel)
+        except struct.error:
+            raised = True
+
+        self.assertFalse(raised, 'Problem with issue #1: Exception raised.')
 
 
 if __name__ == '__main__':
