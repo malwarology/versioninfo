@@ -802,6 +802,10 @@ class TestParserMalicious(unittest.TestCase):
         self.pkr_ce1a = THIS_DIR.joinpath('data').joinpath('fc04e8.0x37e18-0x38004.dat').read_bytes()
         # SHA256: 9346fa76e05f175eaef6e8efc8d3e1b031db2380878eb61f8995510a3d681d11
         self.no_ffi = THIS_DIR.joinpath('data').joinpath('9346fa_noffi.0x60830-0x60960.dat').read_bytes()
+        # SHA256: 31fb243496a854255dce222035820383597a09eb06559c7fff1f472484a73b8f
+        self.hotbar = THIS_DIR.joinpath('data').joinpath('31fb24.0x5158c-0x51708.dat').read_bytes()
+        # SHA256: 98629c892c1bc7bd0516fe7276b1be24c937b4fbf471994b5b8e67a48c6300d0
+        self.loadmoney = THIS_DIR.joinpath('data').joinpath('98629c.0x4858c-0x48d94.dat').read_bytes()
 
     def test_stringfileinfo_nonstandard_szkey(self):
         """Test that the non-standard StringFileInfo szKey is parsed correctly."""
@@ -882,6 +886,26 @@ class TestParserMalicious(unittest.TestCase):
         output = versioninfo.parser.get_versioninfo(self.no_ffi)
 
         self.assertDictEqual(expected, output, 'The VS_VERSIONINFO parser output not as expected.')
+
+    def test_to_json_hotbar(self):
+        """Test the output from the JSON output function HotBar sample."""
+        expected = THIS_DIR.joinpath('data').joinpath('31fb24.0x5158c-0x51708.json').read_text()
+
+        output = versioninfo.parser.to_json(self.hotbar)
+        output_dict = json.loads(output)
+        output_json = json.dumps(output_dict, sort_keys=True, indent=4, default=versioninfo.parser.convert)
+
+        self.assertEqual(expected, output_json, 'The JSON output not as expected.')
+
+    def test_to_json_loadmoney(self):
+        """Test the output from the JSON output function LoadMoney sample."""
+        expected = THIS_DIR.joinpath('data').joinpath('98629c.0x4858c-0x48d94.json').read_text()
+
+        output = versioninfo.parser.to_json(self.loadmoney)
+        output_dict = json.loads(output)
+        output_json = json.dumps(output_dict, sort_keys=True, indent=4, default=versioninfo.parser.convert)
+
+        self.assertEqual(expected, output_json, 'The JSON output not as expected.')
 
 
 class TestIssues(unittest.TestCase):

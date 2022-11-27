@@ -1,1 +1,590 @@
-{"Type": "VS_VERSION_INFO", "Struct": {"wLength": 2056, "wValueLength": 52, "wType": 0, "szKey": {"Value": {"Bytes": "VgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A", "Decoded": "VS_VERSION_INFO"}, "Standard": true}, "Padding1": [0], "Value": {"Type": "VS_FIXEDFILEINFO", "Struct": {"dwSignature": "bd04effe", "dwStrucVersion": {"major": 1, "minor": 0}, "dwFileVersionMS": 393216, "dwFileVersionLS": 65536, "dwProductVersionMS": 393216, "dwProductVersionLS": 65536, "dwFileFlagsMask": "06000000", "dwFileFlags": 0, "dwFileOS": 262144, "dwFileType": 1, "dwFileSubtype": 0, "dwFileDateMS": 0, "dwFileDateLS": 0}}, "Padding2": [], "Children": [{"Type": "StringFileInfo", "Struct": {"wLength": 1886, "wValueLength": 0, "wType": 0, "szKey": {"Value": {"Bytes": "UwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAA==", "Decoded": "StringFileInfo"}, "Standard": true}, "Padding": [], "Children": [{"Type": "StringTable", "Struct": {"wLength": 622, "wValueLength": 0, "wType": 0, "szKey": {"Value": {"Bytes": "MAA0ADAAOQAwADQARQA0AA==", "Decoded": "040904E4", "Parsed": {"LanguageID": 1033, "CodePageNum": 1252}}, "Standard": true}, "Padding": [], "Children": [{"Type": "String", "Struct": {"wLength": 66, "wValueLength": 17, "wType": 1, "szKey": {"Value": {"Bytes": "QwBvAG0AcABhAG4AeQBOAGEAbQBlAA==", "Decoded": "CompanyName"}}, "Padding": [0], "Value": {"Bytes": "QwAuACAARwBoAGkAcwBsAGUAcgAgACYAIABDAG8ALgA=", "Decoded": "C. Ghisler & Co.", "Padding": [0]}}}, {"Type": "String", "Struct": {"wLength": 206, "wValueLength": 83, "wType": 1, "szKey": {"Value": {"Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A", "Decoded": "FileDescription"}}, "Padding": [0], "Value": {"Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIAIAAzADIAIABiAGkAdAAgAGkAbgB0AGUAcgBuAGEAdABpAG8AbgBhAGwAIAB2AGUAcgBzAGkAbwBuACwAIABmAGkAbABlACAAbQBhAG4AYQBnAGUAcgAgAHIAZQBwAGwAYQBjAGUAbQBlAG4AdAAgAGYAbwByACAAVwBpAG4AZABvAHcAcwA=", "Decoded": "Total Commander 32 bit international version, file manager replacement for Windows", "Padding": [0]}}}, {"Type": "String", "Struct": {"wLength": 42, "wValueLength": 5, "wType": 1, "szKey": {"Value": {"Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==", "Decoded": "FileVersion"}}, "Padding": [0], "Value": {"Bytes": "NgAuADAAMQA=", "Decoded": "6.01", "Padding": [0]}}}, {"Type": "String", "Struct": {"wLength": 50, "wValueLength": 9, "wType": 1, "szKey": {"Value": {"Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA", "Decoded": "InternalName"}}, "Padding": [], "Value": {"Bytes": "VABPAFQAQQBMAEMATQBEAA==", "Decoded": "TOTALCMD", "Padding": [0]}}}, {"Type": "String", "Struct": {"wLength": 116, "wValueLength": 40, "wType": 1, "szKey": {"Value": {"Bytes": "TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AA==", "Decoded": "LegalCopyright"}}, "Padding": [], "Value": {"Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIACpACAAMQA5ADkAMwAtADIAMAAwADMAIABDAGgAcgBpAHMAdABpAGEAbgAgAEcAaABpAHMAbABlAHIA", "Decoded": "Copyright \u00a9 1993-2003 Christian Ghisler", "Padding": []}}}, {"Type": "String", "Struct": {"wLength": 64, "wValueLength": 16, "wType": 1, "szKey": {"Value": {"Bytes": "UAByAG8AZAB1AGMAdABOAGEAbQBlAA==", "Decoded": "ProductName"}}, "Padding": [0], "Value": {"Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIA", "Decoded": "Total Commander", "Padding": []}}}, {"Type": "String", "Struct": {"wLength": 46, "wValueLength": 5, "wType": 1, "szKey": {"Value": {"Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==", "Decoded": "ProductVersion"}}, "Padding": [], "Value": {"Bytes": "NgAuADAAMQA=", "Decoded": "6.01", "Padding": [0]}}}]}}, {"Type": "StringTable", "Struct": {"wLength": 614, "wValueLength": 0, "wType": 0, "szKey": {"Value": {"Bytes": "MAA0ADAANwAwADQARQA0AA==", "Decoded": "040704E4", "Parsed": {"LanguageID": 1031, "CodePageNum": 1252}}, "Standard": true}, "Padding": [], "Children": [{"Type": "String", "Struct": {"wLength": 66, "wValueLength": 17, "wType": 1, "szKey": {"Value": {"Bytes": "QwBvAG0AcABhAG4AeQBOAGEAbQBlAA==", "Decoded": "CompanyName"}}, "Padding": [0], "Value": {"Bytes": "QwAuACAARwBoAGkAcwBsAGUAcgAgACYAIABDAG8ALgA=", "Decoded": "C. Ghisler & Co.", "Padding": [0]}}}, {"Type": "String", "Struct": {"wLength": 200, "wValueLength": 80, "wType": 1, "szKey": {"Value": {"Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A", "Decoded": "FileDescription"}}, "Padding": [0], "Value": {"Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIAIAAzADIAIABiAGkAdAAgAGkAbgB0AGUAcgBuAGEAdABpAG8AbgBhAGwAZQAgAFYAZQByAHMAaQBvAG4ALAAgAEQAYQB0AGUAaQBtAGEAbgBhAGcAZQByAC0ARQByAHMAYQB0AHoAIABmAHUAZQByACAAVwBpAG4AZABvAHcAcwA=", "Decoded": "Total Commander 32 bit internationale Version, Dateimanager-Ersatz fuer Windows", "Padding": []}}}, {"Type": "String", "Struct": {"wLength": 42, "wValueLength": 5, "wType": 1, "szKey": {"Value": {"Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==", "Decoded": "FileVersion"}}, "Padding": [0], "Value": {"Bytes": "NgAuADAAMQA=", "Decoded": "6.01", "Padding": [0]}}}, {"Type": "String", "Struct": {"wLength": 50, "wValueLength": 9, "wType": 1, "szKey": {"Value": {"Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA", "Decoded": "InternalName"}}, "Padding": [], "Value": {"Bytes": "VABPAFQAQQBMAEMATQBEAA==", "Decoded": "TOTALCMD", "Padding": [0]}}}, {"Type": "String", "Struct": {"wLength": 116, "wValueLength": 40, "wType": 1, "szKey": {"Value": {"Bytes": "TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AA==", "Decoded": "LegalCopyright"}}, "Padding": [], "Value": {"Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIACpACAAMQA5ADkAMwAtADIAMAAwADMAIABDAGgAcgBpAHMAdABpAGEAbgAgAEcAaABpAHMAbABlAHIA", "Decoded": "Copyright \u00a9 1993-2003 Christian Ghisler", "Padding": []}}}, {"Type": "String", "Struct": {"wLength": 64, "wValueLength": 16, "wType": 1, "szKey": {"Value": {"Bytes": "UAByAG8AZAB1AGMAdABOAGEAbQBlAA==", "Decoded": "ProductName"}}, "Padding": [0], "Value": {"Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIA", "Decoded": "Total Commander", "Padding": []}}}, {"Type": "String", "Struct": {"wLength": 46, "wValueLength": 5, "wType": 1, "szKey": {"Value": {"Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==", "Decoded": "ProductVersion"}}, "Padding": [], "Value": {"Bytes": "NgAuADAAMQA=", "Decoded": "6.01", "Padding": [0]}}}]}}, {"Type": "StringTable", "Struct": {"wLength": 610, "wValueLength": 0, "wType": 0, "szKey": {"Value": {"Bytes": "MAA0ADAAQwAwADQARQA0AA==", "Decoded": "040C04E4", "Parsed": {"LanguageID": 1036, "CodePageNum": 1252}}, "Standard": true}, "Padding": [], "Children": [{"Type": "String", "Struct": {"wLength": 66, "wValueLength": 17, "wType": 1, "szKey": {"Value": {"Bytes": "QwBvAG0AcABhAG4AeQBOAGEAbQBlAA==", "Decoded": "CompanyName"}}, "Padding": [0], "Value": {"Bytes": "QwAuACAARwBoAGkAcwBsAGUAcgAgACYAIABDAG8ALgA=", "Decoded": "C. Ghisler & Co.", "Padding": [0]}}}, {"Type": "String", "Struct": {"wLength": 194, "wValueLength": 77, "wType": 1, "szKey": {"Value": {"Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A", "Decoded": "FileDescription"}}, "Padding": [0], "Value": {"Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIAIAAzADIAIABiAGkAdAAgAHYAZQByAHMAaQBvAG4AIABpAG4AdABlAHIAbgBhAHQAaQBvAG4AYQBsAGUALAAgAHIAZQBtAHAAYQBjAGUAbQBlAG4AdAAgAHAAbwB1AHIAIABmAGkAbABlACAAbQBhAG4AYQBnAGUAcgA=", "Decoded": "Total Commander 32 bit version internationale, rempacement pour file manager", "Padding": [0]}}}, {"Type": "String", "Struct": {"wLength": 42, "wValueLength": 5, "wType": 1, "szKey": {"Value": {"Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==", "Decoded": "FileVersion"}}, "Padding": [0], "Value": {"Bytes": "NgAuADAAMQA=", "Decoded": "6.01", "Padding": [0]}}}, {"Type": "String", "Struct": {"wLength": 50, "wValueLength": 9, "wType": 1, "szKey": {"Value": {"Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA", "Decoded": "InternalName"}}, "Padding": [], "Value": {"Bytes": "VABPAFQAQQBMAEMATQBEAA==", "Decoded": "TOTALCMD", "Padding": [0]}}}, {"Type": "String", "Struct": {"wLength": 116, "wValueLength": 40, "wType": 1, "szKey": {"Value": {"Bytes": "TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AA==", "Decoded": "LegalCopyright"}}, "Padding": [], "Value": {"Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIACpACAAMQA5ADkAMwAtADIAMAAwADMAIABDAGgAcgBpAHMAdABpAGEAbgAgAEcAaABpAHMAbABlAHIA", "Decoded": "Copyright \u00a9 1993-2003 Christian Ghisler", "Padding": []}}}, {"Type": "String", "Struct": {"wLength": 64, "wValueLength": 16, "wType": 1, "szKey": {"Value": {"Bytes": "UAByAG8AZAB1AGMAdABOAGEAbQBlAA==", "Decoded": "ProductName"}}, "Padding": [0], "Value": {"Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIA", "Decoded": "Total Commander", "Padding": []}}}, {"Type": "String", "Struct": {"wLength": 46, "wValueLength": 5, "wType": 1, "szKey": {"Value": {"Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==", "Decoded": "ProductVersion"}}, "Padding": [], "Value": {"Bytes": "NgAuADAAMQA=", "Decoded": "6.01", "Padding": [0]}}}]}}]}}, {"Type": "VarFileInfo", "Struct": {"wLength": 76, "wValueLength": 0, "wType": 0, "szKey": {"Value": {"Bytes": "VgBhAHIARgBpAGwAZQBJAG4AZgBvAA==", "Decoded": "VarFileInfo"}, "Standard": true}, "Padding": [0], "Children": [{"Type": "Var", "Struct": {"wLength": 44, "wValueLength": 12, "wType": 0, "szKey": {"Value": {"Bytes": "VAByAGEAbgBzAGwAYQB0AGkAbwBuAA==", "Decoded": "Translation"}, "Standard": true}, "Padding": [0], "Children": [{"Type": "VarValue", "Struct": {"LanguageID": 1033, "CodePageNum": 1252}}, {"Type": "VarValue", "Struct": {"LanguageID": 1031, "CodePageNum": 1252}}, {"Type": "VarValue", "Struct": {"LanguageID": 1036, "CodePageNum": 1252}}]}}]}}]}}
+{
+    "Struct": {
+        "Children": [
+            {
+                "Struct": {
+                    "Children": [
+                        {
+                            "Struct": {
+                                "Children": [
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "QwAuACAARwBoAGkAcwBsAGUAcgAgACYAIABDAG8ALgA=",
+                                                "Decoded": "C. Ghisler & Co."
+                                            },
+                                            "szKey": {
+                                                "Bytes": "QwBvAG0AcABhAG4AeQBOAGEAbQBlAA==",
+                                                "Decoded": "CompanyName"
+                                            },
+                                            "wLength": 66,
+                                            "wType": 1,
+                                            "wValueLength": 17
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIAIAAzADIAIABiAGkAdAAgAGkAbgB0AGUAcgBuAGEAdABpAG8AbgBhAGwAIAB2AGUAcgBzAGkAbwBuACwAIABmAGkAbABlACAAbQBhAG4AYQBnAGUAcgAgAHIAZQBwAGwAYQBjAGUAbQBlAG4AdAAgAGYAbwByACAAVwBpAG4AZABvAHcAcwA=",
+                                                "Decoded": "Total Commander 32 bit international version, file manager replacement for Windows"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A",
+                                                "Decoded": "FileDescription"
+                                            },
+                                            "wLength": 206,
+                                            "wType": 1,
+                                            "wValueLength": 83
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "NgAuADAAMQA=",
+                                                "Decoded": "6.01"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==",
+                                                "Decoded": "FileVersion"
+                                            },
+                                            "wLength": 42,
+                                            "wType": 1,
+                                            "wValueLength": 5
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "VABPAFQAQQBMAEMATQBEAA==",
+                                                "Decoded": "TOTALCMD"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA",
+                                                "Decoded": "InternalName"
+                                            },
+                                            "wLength": 50,
+                                            "wType": 1,
+                                            "wValueLength": 9
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIACpACAAMQA5ADkAMwAtADIAMAAwADMAIABDAGgAcgBpAHMAdABpAGEAbgAgAEcAaABpAHMAbABlAHIA",
+                                                "Decoded": "Copyright \u00a9 1993-2003 Christian Ghisler"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AA==",
+                                                "Decoded": "LegalCopyright"
+                                            },
+                                            "wLength": 116,
+                                            "wType": 1,
+                                            "wValueLength": 40
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIA",
+                                                "Decoded": "Total Commander"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "UAByAG8AZAB1AGMAdABOAGEAbQBlAA==",
+                                                "Decoded": "ProductName"
+                                            },
+                                            "wLength": 64,
+                                            "wType": 1,
+                                            "wValueLength": 16
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "NgAuADAAMQA=",
+                                                "Decoded": "6.01"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==",
+                                                "Decoded": "ProductVersion"
+                                            },
+                                            "wLength": 46,
+                                            "wType": 1,
+                                            "wValueLength": 5
+                                        },
+                                        "Type": "String"
+                                    }
+                                ],
+                                "Padding": 0,
+                                "szKey": {
+                                    "Bytes": "MAA0ADAAOQAwADQARQA0AA==",
+                                    "Decoded": "040904E4",
+                                    "Parsed": {
+                                        "CodePage": {
+                                            "Decimal": 1252,
+                                            "Hexadecimal": "0x04e4"
+                                        },
+                                        "LangID": {
+                                            "Hexadecimal": "0x0409",
+                                            "Parsed": {
+                                                "MajorLanguage": "0b0000001001",
+                                                "SubLanguage": "0b000001"
+                                            }
+                                        }
+                                    }
+                                },
+                                "wLength": 622,
+                                "wType": 0,
+                                "wValueLength": 0
+                            },
+                            "Type": "StringTable"
+                        },
+                        {
+                            "Struct": {
+                                "Children": [
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "QwAuACAARwBoAGkAcwBsAGUAcgAgACYAIABDAG8ALgA=",
+                                                "Decoded": "C. Ghisler & Co."
+                                            },
+                                            "szKey": {
+                                                "Bytes": "QwBvAG0AcABhAG4AeQBOAGEAbQBlAA==",
+                                                "Decoded": "CompanyName"
+                                            },
+                                            "wLength": 66,
+                                            "wType": 1,
+                                            "wValueLength": 17
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIAIAAzADIAIABiAGkAdAAgAGkAbgB0AGUAcgBuAGEAdABpAG8AbgBhAGwAZQAgAFYAZQByAHMAaQBvAG4ALAAgAEQAYQB0AGUAaQBtAGEAbgBhAGcAZQByAC0ARQByAHMAYQB0AHoAIABmAHUAZQByACAAVwBpAG4AZABvAHcAcwA=",
+                                                "Decoded": "Total Commander 32 bit internationale Version, Dateimanager-Ersatz fuer Windows"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A",
+                                                "Decoded": "FileDescription"
+                                            },
+                                            "wLength": 200,
+                                            "wType": 1,
+                                            "wValueLength": 80
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "NgAuADAAMQA=",
+                                                "Decoded": "6.01"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==",
+                                                "Decoded": "FileVersion"
+                                            },
+                                            "wLength": 42,
+                                            "wType": 1,
+                                            "wValueLength": 5
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "VABPAFQAQQBMAEMATQBEAA==",
+                                                "Decoded": "TOTALCMD"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA",
+                                                "Decoded": "InternalName"
+                                            },
+                                            "wLength": 50,
+                                            "wType": 1,
+                                            "wValueLength": 9
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIACpACAAMQA5ADkAMwAtADIAMAAwADMAIABDAGgAcgBpAHMAdABpAGEAbgAgAEcAaABpAHMAbABlAHIA",
+                                                "Decoded": "Copyright \u00a9 1993-2003 Christian Ghisler"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AA==",
+                                                "Decoded": "LegalCopyright"
+                                            },
+                                            "wLength": 116,
+                                            "wType": 1,
+                                            "wValueLength": 40
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIA",
+                                                "Decoded": "Total Commander"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "UAByAG8AZAB1AGMAdABOAGEAbQBlAA==",
+                                                "Decoded": "ProductName"
+                                            },
+                                            "wLength": 64,
+                                            "wType": 1,
+                                            "wValueLength": 16
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "NgAuADAAMQA=",
+                                                "Decoded": "6.01"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==",
+                                                "Decoded": "ProductVersion"
+                                            },
+                                            "wLength": 46,
+                                            "wType": 1,
+                                            "wValueLength": 5
+                                        },
+                                        "Type": "String"
+                                    }
+                                ],
+                                "Padding": 0,
+                                "szKey": {
+                                    "Bytes": "MAA0ADAANwAwADQARQA0AA==",
+                                    "Decoded": "040704E4",
+                                    "Parsed": {
+                                        "CodePage": {
+                                            "Decimal": 1252,
+                                            "Hexadecimal": "0x04e4"
+                                        },
+                                        "LangID": {
+                                            "Hexadecimal": "0x0407",
+                                            "Parsed": {
+                                                "MajorLanguage": "0b0000000111",
+                                                "SubLanguage": "0b000001"
+                                            }
+                                        }
+                                    }
+                                },
+                                "wLength": 614,
+                                "wType": 0,
+                                "wValueLength": 0
+                            },
+                            "Type": "StringTable"
+                        },
+                        {
+                            "Struct": {
+                                "Children": [
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "QwAuACAARwBoAGkAcwBsAGUAcgAgACYAIABDAG8ALgA=",
+                                                "Decoded": "C. Ghisler & Co."
+                                            },
+                                            "szKey": {
+                                                "Bytes": "QwBvAG0AcABhAG4AeQBOAGEAbQBlAA==",
+                                                "Decoded": "CompanyName"
+                                            },
+                                            "wLength": 66,
+                                            "wType": 1,
+                                            "wValueLength": 17
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIAIAAzADIAIABiAGkAdAAgAHYAZQByAHMAaQBvAG4AIABpAG4AdABlAHIAbgBhAHQAaQBvAG4AYQBsAGUALAAgAHIAZQBtAHAAYQBjAGUAbQBlAG4AdAAgAHAAbwB1AHIAIABmAGkAbABlACAAbQBhAG4AYQBnAGUAcgA=",
+                                                "Decoded": "Total Commander 32 bit version internationale, rempacement pour file manager"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A",
+                                                "Decoded": "FileDescription"
+                                            },
+                                            "wLength": 194,
+                                            "wType": 1,
+                                            "wValueLength": 77
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "NgAuADAAMQA=",
+                                                "Decoded": "6.01"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==",
+                                                "Decoded": "FileVersion"
+                                            },
+                                            "wLength": 42,
+                                            "wType": 1,
+                                            "wValueLength": 5
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "VABPAFQAQQBMAEMATQBEAA==",
+                                                "Decoded": "TOTALCMD"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA",
+                                                "Decoded": "InternalName"
+                                            },
+                                            "wLength": 50,
+                                            "wType": 1,
+                                            "wValueLength": 9
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIACpACAAMQA5ADkAMwAtADIAMAAwADMAIABDAGgAcgBpAHMAdABpAGEAbgAgAEcAaABpAHMAbABlAHIA",
+                                                "Decoded": "Copyright \u00a9 1993-2003 Christian Ghisler"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AA==",
+                                                "Decoded": "LegalCopyright"
+                                            },
+                                            "wLength": 116,
+                                            "wType": 1,
+                                            "wValueLength": 40
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIA",
+                                                "Decoded": "Total Commander"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "UAByAG8AZAB1AGMAdABOAGEAbQBlAA==",
+                                                "Decoded": "ProductName"
+                                            },
+                                            "wLength": 64,
+                                            "wType": 1,
+                                            "wValueLength": 16
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "NgAuADAAMQA=",
+                                                "Decoded": "6.01"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==",
+                                                "Decoded": "ProductVersion"
+                                            },
+                                            "wLength": 46,
+                                            "wType": 1,
+                                            "wValueLength": 5
+                                        },
+                                        "Type": "String"
+                                    }
+                                ],
+                                "Padding": 0,
+                                "szKey": {
+                                    "Bytes": "MAA0ADAAQwAwADQARQA0AA==",
+                                    "Decoded": "040C04E4",
+                                    "Parsed": {
+                                        "CodePage": {
+                                            "Decimal": 1252,
+                                            "Hexadecimal": "0x04e4"
+                                        },
+                                        "LangID": {
+                                            "Hexadecimal": "0x040c",
+                                            "Parsed": {
+                                                "MajorLanguage": "0b0000001100",
+                                                "SubLanguage": "0b000001"
+                                            }
+                                        }
+                                    }
+                                },
+                                "wLength": 610,
+                                "wType": 0,
+                                "wValueLength": 0
+                            },
+                            "Type": "StringTable"
+                        }
+                    ],
+                    "Padding": 0,
+                    "szKey": {
+                        "Bytes": "UwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAA==",
+                        "Decoded": "StringFileInfo",
+                        "Standard": true
+                    },
+                    "wLength": 1886,
+                    "wType": 0,
+                    "wValueLength": 0
+                },
+                "Type": "StringFileInfo"
+            },
+            {
+                "Struct": {
+                    "Children": [
+                        {
+                            "Struct": {
+                                "Padding": 1,
+                                "Value": [
+                                    {
+                                        "Struct": {
+                                            "CodePage": {
+                                                "Decimal": 1252,
+                                                "Hexadecimal": "0x04e4"
+                                            },
+                                            "LangID": {
+                                                "Hexadecimal": "0x0409",
+                                                "Parsed": {
+                                                    "MajorLanguage": "0b0000001001",
+                                                    "SubLanguage": "0b000001"
+                                                }
+                                            }
+                                        },
+                                        "Type": "Value"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "CodePage": {
+                                                "Decimal": 1252,
+                                                "Hexadecimal": "0x04e4"
+                                            },
+                                            "LangID": {
+                                                "Hexadecimal": "0x0407",
+                                                "Parsed": {
+                                                    "MajorLanguage": "0b0000000111",
+                                                    "SubLanguage": "0b000001"
+                                                }
+                                            }
+                                        },
+                                        "Type": "Value"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "CodePage": {
+                                                "Decimal": 1252,
+                                                "Hexadecimal": "0x04e4"
+                                            },
+                                            "LangID": {
+                                                "Hexadecimal": "0x040c",
+                                                "Parsed": {
+                                                    "MajorLanguage": "0b0000001100",
+                                                    "SubLanguage": "0b000001"
+                                                }
+                                            }
+                                        },
+                                        "Type": "Value"
+                                    }
+                                ],
+                                "szKey": {
+                                    "Bytes": "VAByAGEAbgBzAGwAYQB0AGkAbwBuAA==",
+                                    "Decoded": "Translation",
+                                    "Standard": true
+                                },
+                                "wLength": 44,
+                                "wType": 0,
+                                "wValueLength": 12
+                            },
+                            "Type": "Var"
+                        }
+                    ],
+                    "Padding": 1,
+                    "szKey": {
+                        "Bytes": "VgBhAHIARgBpAGwAZQBJAG4AZgBvAA==",
+                        "Decoded": "VarFileInfo",
+                        "Standard": true
+                    },
+                    "wLength": 76,
+                    "wType": 0,
+                    "wValueLength": 0
+                },
+                "Type": "VarFileInfo"
+            }
+        ],
+        "Padding1": 1,
+        "Padding2": 0,
+        "Value": {
+            "Struct": {
+                "dwFileDateLS": 0,
+                "dwFileDateMS": 0,
+                "dwFileFlags": {
+                    "Decimal": 0,
+                    "Hexadecimal": "0x00000000"
+                },
+                "dwFileFlagsMask": {
+                    "Decimal": 6,
+                    "Hexadecimal": "0x00000006"
+                },
+                "dwFileOS": {
+                    "Decimal": 262144,
+                    "Hexadecimal": "0x00040000"
+                },
+                "dwFileSubtype": {
+                    "Decimal": 0,
+                    "Hexadecimal": "0x00000000"
+                },
+                "dwFileType": {
+                    "Decimal": 1,
+                    "Hexadecimal": "0x00000001"
+                },
+                "dwFileVersionLS": 65536,
+                "dwFileVersionMS": 393216,
+                "dwProductVersionLS": 65536,
+                "dwProductVersionMS": 393216,
+                "dwSignature": "0xfeef04bd",
+                "dwStrucVersion": {
+                    "Major": 1,
+                    "Minor": 0
+                }
+            },
+            "Type": "VS_FIXEDFILEINFO"
+        },
+        "szKey": {
+            "Bytes": "VgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A",
+            "Decoded": "VS_VERSION_INFO",
+            "Standard": true
+        },
+        "wLength": 2056,
+        "wType": 0,
+        "wValueLength": 52
+    },
+    "Type": "VS_VERSION_INFO"
+}
