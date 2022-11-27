@@ -800,6 +800,8 @@ class TestParserMalicious(unittest.TestCase):
         """Load testing resources from files."""
         # SHA256: fc04e80d343f5929aea4aac77fb12485c7b07b3a3d2fc383d68912c9ad0666da
         self.pkr_ce1a = THIS_DIR.joinpath('data').joinpath('fc04e8.0x37e18-0x38004.dat').read_bytes()
+        # SHA256: 9346fa76e05f175eaef6e8efc8d3e1b031db2380878eb61f8995510a3d681d11
+        self.no_ffi = THIS_DIR.joinpath('data').joinpath('9346fa_noffi.0x60830-0x60960.dat').read_bytes()
 
     def test_stringfileinfo_nonstandard_szkey(self):
         """Test that the non-standard StringFileInfo szKey is parsed correctly."""
@@ -869,6 +871,17 @@ class TestParserMalicious(unittest.TestCase):
         output_json = json.dumps(output_dict, sort_keys=True, indent=4, default=versioninfo.parser.convert)
 
         self.assertEqual(expected, output_json, 'The JSON output not as expected.')
+
+    def test_get_versioninfo_no_ffi(self):
+        """Test the output from the VS_VERSIONINFO parser when VS_FIXEDFILEINFO does not exist."""
+        # Pickle text content: 9346fa_noffi.0x60830-0x60960.txt
+        expected_pickle = THIS_DIR.joinpath('data').joinpath('9346fa_noffi.0x60830-0x60960.pickle')
+        with open(expected_pickle, 'rb') as fh:
+            expected = pickle.load(fh)
+
+        output = versioninfo.parser.get_versioninfo(self.no_ffi)
+
+        self.assertDictEqual(expected, output, 'The VS_VERSIONINFO parser output not as expected.')
 
 
 class TestIssues(unittest.TestCase):

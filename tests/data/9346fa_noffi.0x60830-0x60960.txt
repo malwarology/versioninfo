@@ -1,0 +1,111 @@
+{
+    'Type': 'VS_VERSION_INFO',
+    'Struct': {
+        'wLength': 304,
+        'wValueLength': 0,
+        'wType': 0,
+        'szKey': {
+            'Bytes': b'V\x00S\x00_\x00V\x00E\x00R\x00S\x00I\x00O\x00N\x00_\x00I\x00N\x00F\x00O\x00',
+            'Decoded': 'VS_VERSION_INFO',
+            'Standard': True,
+        },
+        'Padding1': 1,
+        'Children': [
+            {
+                'Type': 'StringFileInfo',
+                'Struct': {
+                    'wLength': 264,
+                    'wValueLength': 0,
+                    'wType': 1,
+                    'szKey': {
+                        'Bytes': b'S\x00t\x00r\x00i\x00n\x00g\x00F\x00i\x00l\x00e\x00I\x00n\x00f\x00o\x00',
+                        'Decoded': 'StringFileInfo',
+                        'Standard': True,
+                    },
+                    'Padding': 0,
+                    'Children': [
+                        {
+                            'Type': 'StringTable',
+                            'Struct': {
+                                'wLength': 228,
+                                'wValueLength': 0,
+                                'wType': 1,
+                                'szKey': {
+                                    'Bytes': b'0\x004\x000\x009\x000\x004\x00B\x000\x00',
+                                    'Decoded': '040904B0',
+                                    'Parsed': {
+                                        'LangID': {
+                                            'Hexadecimal': '0x0409',
+                                            'Parsed': {
+                                                'MajorLanguage': '0b0000001001',
+                                                'SubLanguage': '0b000001',
+                                            },
+                                        },
+                                        'CodePage': {
+                                            'Decimal': 1200,
+                                            'Hexadecimal': '0x04b0',
+                                        },
+                                    },
+                                },
+                                'Padding': 0,
+                                'Children': [
+                                    {
+                                        'Type': 'String',
+                                        'Struct': {
+                                            'wLength': 80,
+                                            'wValueLength': 16,
+                                            'wType': 1,
+                                            'szKey': {
+                                                'Bytes': b'T\x00h\x00i\x00n\x00A\x00p\x00p\x00B\x00u\x00i\x00l\x00d\x00D\x00a\x00t\x00e\x00T\x00i\x00m\x00e\x00',
+                                                'Decoded': 'ThinAppBuildDateTime',
+                                            },
+                                            'Padding': 0,
+                                            'Value': {
+                                                'Bytes': b'2\x000\x002\x002\x001\x001\x000\x003\x00 \x001\x006\x003\x003\x003\x009\x00',
+                                                'Decoded': '20221103 163339',
+                                            },
+                                        },
+                                    },
+                                    {
+                                        'Type': 'String',
+                                        'Struct': {
+                                            'wLength': 56,
+                                            'wValueLength': 10,
+                                            'wType': 1,
+                                            'szKey': {
+                                                'Bytes': b'T\x00h\x00i\x00n\x00A\x00p\x00p\x00L\x00i\x00c\x00e\x00n\x00s\x00e\x00',
+                                                'Decoded': 'ThinAppLicense',
+                                            },
+                                            'Padding': 0,
+                                            'Value': {
+                                                'Bytes': b'v\x00e\x00r\x00.\x005\x00.\x002\x00.\x009\x00',
+                                                'Decoded': 'ver.5.2.9',
+                                            },
+                                        },
+                                    },
+                                    {
+                                        'Type': 'String',
+                                        'Struct': {
+                                            'wLength': 68,
+                                            'wValueLength': 15,
+                                            'wType': 1,
+                                            'szKey': {
+                                                'Bytes': b'T\x00h\x00i\x00n\x00A\x00p\x00p\x00V\x00e\x00r\x00s\x00i\x00o\x00n\x00',
+                                                'Decoded': 'ThinAppVersion',
+                                            },
+                                            'Padding': 1,
+                                            'Value': {
+                                                'Bytes': b'5\x00.\x002\x00.\x009\x00-\x001\x007\x003\x004\x000\x007\x007\x008\x00',
+                                                'Decoded': '5.2.9-17340778',
+                                            },
+                                        },
+                                    },
+                                ],
+                            },
+                        }
+                    ],
+                },
+            }
+        ],
+    },
+}
