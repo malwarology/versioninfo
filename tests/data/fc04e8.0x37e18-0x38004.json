@@ -1,1 +1,213 @@
-{"Type": "VS_VERSION_INFO", "Struct": {"wLength": 492, "wValueLength": 52, "wType": 0, "szKey": {"Value": {"Bytes": "VgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A", "Decoded": "VS_VERSION_INFO"}, "Standard": true}, "Padding1": [0], "Value": {"Type": "VS_FIXEDFILEINFO", "Struct": {"dwSignature": "bd04effe", "dwStrucVersion": {"major": 1, "minor": 0}, "dwFileVersionMS": 1441792, "dwFileVersionLS": 0, "dwProductVersionMS": 3735552, "dwProductVersionLS": 0, "dwFileFlagsMask": "2a790000", "dwFileFlags": 0, "dwFileOS": 394373, "dwFileType": 0, "dwFileSubtype": 0, "dwFileDateMS": 0, "dwFileDateLS": 0}}, "Padding2": [], "Children": [{"Type": "StringFileInfo", "Struct": {"wLength": 340, "wValueLength": 0, "wType": 1, "szKey": {"Value": {"Bytes": "UwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAHIAbQA=", "Decoded": "StringFileInform"}, "Standard": false}, "Padding": [], "Children": [{"Type": "StringTable", "Struct": {"wLength": 300, "wValueLength": 0, "wType": 1, "szKey": {"Value": {"Bytes": "MQAwADgANAAwAEUAQgAyAA==", "Decoded": "10840EB2", "Parsed": {"LanguageID": 4228, "CodePageNum": 3762}}, "Standard": true}, "Padding": [], "Children": [{"Type": "String", "Struct": {"wLength": 56, "wValueLength": 12, "wType": 1, "szKey": {"Value": {"Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAHMA", "Decoded": "FileVersions"}}, "Padding": [], "Value": {"Bytes": "OQAyAC4AOAA2AC4ANAAxAC4AMQA5AA==", "Decoded": "92.86.41.19", "Padding": []}}}, {"Type": "String", "Struct": {"wLength": 72, "wValueLength": 14, "wType": 1, "szKey": {"Value": {"Bytes": "SQBuAHQAZQByAG4AYQB0AGkAbwBuAGEAbABOAGEAbQBlAA==", "Decoded": "InternationalName"}}, "Padding": [0], "Value": {"Bytes": "cABvAHYAZwB3AGEAbwBjAGkALgBpAHcAZQA=", "Decoded": "povgwaoci.iwe", "Padding": []}}}, {"Type": "String", "Struct": {"wLength": 86, "wValueLength": 29, "wType": 1, "szKey": {"Value": {"Bytes": "QwBvAHAAeQByAGkAZwBoAHQA", "Decoded": "Copyright"}}, "Padding": [0], "Value": {"Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIAAoAEMAKQAgADIAMAAyADIALAAgAHMAbwBtAG8AawBsAG8AcwA=", "Decoded": "Copyright (C) 2022, somoklos", "Padding": [0]}}}, {"Type": "String", "Struct": {"wLength": 60, "wValueLength": 12, "wType": 1, "szKey": {"Value": {"Bytes": "UAByAG8AagBlAGMAdABWAGUAcgBzAGkAbwBuAA==", "Decoded": "ProjectVersion"}}, "Padding": [], "Value": {"Bytes": "NQA3AC4ANAAwAC4AOAAxAC4AMQA3AA==", "Decoded": "57.40.81.17", "Padding": []}}}]}}]}}, {"Type": "VarFileInfo", "Struct": {"wLength": 60, "wValueLength": 0, "wType": 1, "szKey": {"Value": {"Bytes": "UwBvAG0AZQBJAG4AZgBvAA==", "Decoded": "SomeInfo"}, "Standard": false}, "Padding": [], "Children": [{"Type": "Var", "Struct": {"wLength": 36, "wValueLength": 4, "wType": 0, "szKey": {"Value": {"Bytes": "VAByAGEAbgBzAGwAYQB0AGkAbwBuAHMA", "Decoded": "Translations"}, "Standard": false}, "Padding": [], "Children": [{"Type": "VarValue", "Struct": {"LanguageID": 2105, "CodePageNum": 160}}]}}]}}]}}
+{
+    "Struct": {
+        "Children": [
+            {
+                "Struct": {
+                    "Children": [
+                        {
+                            "Struct": {
+                                "Children": [
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "OQAyAC4AOAA2AC4ANAAxAC4AMQA5AA==",
+                                                "Decoded": "92.86.41.19"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAHMA",
+                                                "Decoded": "FileVersions"
+                                            },
+                                            "wLength": 56,
+                                            "wType": 1,
+                                            "wValueLength": 12
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "cABvAHYAZwB3AGEAbwBjAGkALgBpAHcAZQA=",
+                                                "Decoded": "povgwaoci.iwe"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "SQBuAHQAZQByAG4AYQB0AGkAbwBuAGEAbABOAGEAbQBlAA==",
+                                                "Decoded": "InternationalName"
+                                            },
+                                            "wLength": 72,
+                                            "wType": 1,
+                                            "wValueLength": 14
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIAAoAEMAKQAgADIAMAAyADIALAAgAHMAbwBtAG8AawBsAG8AcwA=",
+                                                "Decoded": "Copyright (C) 2022, somoklos"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "QwBvAHAAeQByAGkAZwBoAHQA",
+                                                "Decoded": "Copyright"
+                                            },
+                                            "wLength": 86,
+                                            "wType": 1,
+                                            "wValueLength": 29
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "NQA3AC4ANAAwAC4AOAAxAC4AMQA3AA==",
+                                                "Decoded": "57.40.81.17"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "UAByAG8AagBlAGMAdABWAGUAcgBzAGkAbwBuAA==",
+                                                "Decoded": "ProjectVersion"
+                                            },
+                                            "wLength": 60,
+                                            "wType": 1,
+                                            "wValueLength": 12
+                                        },
+                                        "Type": "String"
+                                    }
+                                ],
+                                "Padding": 0,
+                                "szKey": {
+                                    "Bytes": "MQAwADgANAAwAEUAQgAyAA==",
+                                    "Decoded": "10840EB2",
+                                    "Parsed": {
+                                        "CodePage": {
+                                            "Decimal": 3762,
+                                            "Hexadecimal": "0x0eb2"
+                                        },
+                                        "LangID": {
+                                            "Hexadecimal": "0x1084",
+                                            "Parsed": {
+                                                "MajorLanguage": "0b0010000100",
+                                                "SubLanguage": "0b000100"
+                                            }
+                                        }
+                                    }
+                                },
+                                "wLength": 300,
+                                "wType": 1,
+                                "wValueLength": 0
+                            },
+                            "Type": "StringTable"
+                        }
+                    ],
+                    "Padding": 0,
+                    "szKey": {
+                        "Bytes": "UwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAHIAbQA=",
+                        "Decoded": "StringFileInform",
+                        "Standard": false
+                    },
+                    "wLength": 340,
+                    "wType": 1,
+                    "wValueLength": 0
+                },
+                "Type": "StringFileInfo"
+            },
+            {
+                "Struct": {
+                    "Children": [
+                        {
+                            "Struct": {
+                                "Padding": 0,
+                                "Value": [
+                                    {
+                                        "Struct": {
+                                            "CodePage": {
+                                                "Decimal": 160,
+                                                "Hexadecimal": "0x00a0"
+                                            },
+                                            "LangID": {
+                                                "Hexadecimal": "0x0839",
+                                                "Parsed": {
+                                                    "MajorLanguage": "0b0000111001",
+                                                    "SubLanguage": "0b000010"
+                                                }
+                                            }
+                                        },
+                                        "Type": "Value"
+                                    }
+                                ],
+                                "szKey": {
+                                    "Bytes": "VAByAGEAbgBzAGwAYQB0AGkAbwBuAHMA",
+                                    "Decoded": "Translations",
+                                    "Standard": false
+                                },
+                                "wLength": 36,
+                                "wType": 0,
+                                "wValueLength": 4
+                            },
+                            "Type": "Var"
+                        }
+                    ],
+                    "Padding": 0,
+                    "szKey": {
+                        "Bytes": "UwBvAG0AZQBJAG4AZgBvAA==",
+                        "Decoded": "SomeInfo",
+                        "Standard": false
+                    },
+                    "wLength": 60,
+                    "wType": 1,
+                    "wValueLength": 0
+                },
+                "Type": "VarFileInfo"
+            }
+        ],
+        "Padding1": 1,
+        "Padding2": 0,
+        "Value": {
+            "Struct": {
+                "dwFileDateLS": 0,
+                "dwFileDateMS": 0,
+                "dwFileFlags": {
+                    "Decimal": 0,
+                    "Hexadecimal": "0x00000000"
+                },
+                "dwFileFlagsMask": {
+                    "Decimal": 31018,
+                    "Hexadecimal": "0x0000792a"
+                },
+                "dwFileOS": {
+                    "Decimal": 394373,
+                    "Hexadecimal": "0x00060485"
+                },
+                "dwFileSubtype": {
+                    "Decimal": 0,
+                    "Hexadecimal": "0x00000000"
+                },
+                "dwFileType": {
+                    "Decimal": 0,
+                    "Hexadecimal": "0x00000000"
+                },
+                "dwFileVersionLS": 0,
+                "dwFileVersionMS": 1441792,
+                "dwProductVersionLS": 0,
+                "dwProductVersionMS": 3735552,
+                "dwSignature": "0xfeef04bd",
+                "dwStrucVersion": {
+                    "Major": 1,
+                    "Minor": 0
+                }
+            },
+            "Type": "VS_FIXEDFILEINFO"
+        },
+        "szKey": {
+            "Bytes": "VgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A",
+            "Decoded": "VS_VERSION_INFO",
+            "Standard": true
+        },
+        "wLength": 492,
+        "wType": 0,
+        "wValueLength": 52
+    },
+    "Type": "VS_VERSION_INFO"
+}

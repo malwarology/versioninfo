@@ -1,0 +1,213 @@
+{
+    'Type': 'VS_VERSION_INFO',
+    'Struct': {
+        'wLength': 492,
+        'wValueLength': 52,
+        'wType': 0,
+        'szKey': {
+            'Bytes': b'V\x00S\x00_\x00V\x00E\x00R\x00S\x00I\x00O\x00N\x00_\x00I\x00N\x00F\x00O\x00',
+            'Decoded': 'VS_VERSION_INFO',
+            'Standard': True,
+        },
+        'Padding1': 1,
+        'Value': {
+            'Type': 'VS_FIXEDFILEINFO',
+            'Struct': {
+                'dwSignature': '0xfeef04bd',
+                'dwStrucVersion': {
+                    'Major': 1,
+                    'Minor': 0
+                },
+                'dwFileVersionMS': 1441792,
+                'dwFileVersionLS': 0,
+                'dwProductVersionMS': 3735552,
+                'dwProductVersionLS': 0,
+                'dwFileFlagsMask': {
+                    'Decimal': 31018,
+                    'Hexadecimal': '0x0000792a'
+                },
+                'dwFileFlags': {
+                    'Decimal': 0,
+                    'Hexadecimal': '0x00000000'
+                },
+                'dwFileOS': {
+                    'Decimal': 394373,
+                    'Hexadecimal': '0x00060485'
+                },
+                'dwFileType': {
+                    'Decimal': 0,
+                    'Hexadecimal': '0x00000000'
+                },
+                'dwFileSubtype': {
+                    'Decimal': 0,
+                    'Hexadecimal': '0x00000000'
+                },
+                'dwFileDateMS': 0,
+                'dwFileDateLS': 0,
+            },
+        },
+        'Padding2': 0,
+        'Children': [
+            {
+                'Type': 'StringFileInfo',
+                'Struct': {
+                    'wLength': 340,
+                    'wValueLength': 0,
+                    'wType': 1,
+                    'szKey': {
+                        'Bytes': b'S\x00t\x00r\x00i\x00n\x00g\x00F\x00i\x00l\x00e\x00I\x00n\x00f\x00o\x00r\x00m\x00',
+                        'Decoded': 'StringFileInform',
+                        'Standard': False,
+                    },
+                    'Padding': 0,
+                    'Children': [
+                        {
+                            'Type': 'StringTable',
+                            'Struct': {
+                                'wLength': 300,
+                                'wValueLength': 0,
+                                'wType': 1,
+                                'szKey': {
+                                    'Bytes': b'1\x000\x008\x004\x000\x00E\x00B\x002\x00',
+                                    'Decoded': '10840EB2',
+                                    'Parsed': {
+                                        'LangID': {
+                                            'Hexadecimal': '0x1084',
+                                            'Parsed': {
+                                                'MajorLanguage': '0b0010000100',
+                                                'SubLanguage': '0b000100',
+                                            },
+                                        },
+                                        'CodePage': {
+                                            'Decimal': 3762,
+                                            'Hexadecimal': '0x0eb2',
+                                        },
+                                    },
+                                },
+                                'Padding': 0,
+                                'Children': [
+                                    {
+                                        'Type': 'String',
+                                        'Struct': {
+                                            'wLength': 56,
+                                            'wValueLength': 12,
+                                            'wType': 1,
+                                            'szKey': {
+                                                'Bytes': b'F\x00i\x00l\x00e\x00V\x00e\x00r\x00s\x00i\x00o\x00n\x00s\x00',
+                                                'Decoded': 'FileVersions',
+                                            },
+                                            'Padding': 0,
+                                            'Value': {
+                                                'Bytes': b'9\x002\x00.\x008\x006\x00.\x004\x001\x00.\x001\x009\x00',
+                                                'Decoded': '92.86.41.19',
+                                            },
+                                        },
+                                    },
+                                    {
+                                        'Type': 'String',
+                                        'Struct': {
+                                            'wLength': 72,
+                                            'wValueLength': 14,
+                                            'wType': 1,
+                                            'szKey': {
+                                                'Bytes': b'I\x00n\x00t\x00e\x00r\x00n\x00a\x00t\x00i\x00o\x00n\x00a\x00l\x00N\x00a\x00m\x00e\x00',
+                                                'Decoded': 'InternationalName',
+                                            },
+                                            'Padding': 0,
+                                            'Value': {
+                                                'Bytes': b'p\x00o\x00v\x00g\x00w\x00a\x00o\x00c\x00i\x00.\x00i\x00w\x00e\x00',
+                                                'Decoded': 'povgwaoci.iwe',
+                                            },
+                                        },
+                                    },
+                                    {
+                                        'Type': 'String',
+                                        'Struct': {
+                                            'wLength': 86,
+                                            'wValueLength': 29,
+                                            'wType': 1,
+                                            'szKey': {
+                                                'Bytes': b'C\x00o\x00p\x00y\x00r\x00i\x00g\x00h\x00t\x00',
+                                                'Decoded': 'Copyright',
+                                            },
+                                            'Padding': 1,
+                                            'Value': {
+                                                'Bytes': b'C\x00o\x00p\x00y\x00r\x00i\x00g\x00h\x00t\x00 \x00(\x00C\x00)\x00 \x002\x000\x002\x002\x00,\x00 \x00s\x00o\x00m\x00o\x00k\x00l\x00o\x00s\x00',
+                                                'Decoded': 'Copyright (C) 2022, somoklos',
+                                            },
+                                        },
+                                    },
+                                    {
+                                        'Type': 'String',
+                                        'Struct': {
+                                            'wLength': 60,
+                                            'wValueLength': 12,
+                                            'wType': 1,
+                                            'szKey': {
+                                                'Bytes': b'P\x00r\x00o\x00j\x00e\x00c\x00t\x00V\x00e\x00r\x00s\x00i\x00o\x00n\x00',
+                                                'Decoded': 'ProjectVersion',
+                                            },
+                                            'Padding': 0,
+                                            'Value': {
+                                                'Bytes': b'5\x007\x00.\x004\x000\x00.\x008\x001\x00.\x001\x007\x00',
+                                                'Decoded': '57.40.81.17',
+                                            },
+                                        },
+                                    },
+                                ],
+                            },
+                        }
+                    ],
+                },
+            },
+            {
+                'Type': 'VarFileInfo',
+                'Struct': {
+                    'wLength': 60,
+                    'wValueLength': 0,
+                    'wType': 1,
+                    'szKey': {
+                        'Bytes': b'S\x00o\x00m\x00e\x00I\x00n\x00f\x00o\x00',
+                        'Decoded': 'SomeInfo',
+                        'Standard': False,
+                    },
+                    'Padding': 0,
+                    'Children': [
+                        {
+                            'Type': 'Var',
+                            'Struct': {
+                                'wLength': 36,
+                                'wValueLength': 4,
+                                'wType': 0,
+                                'szKey': {
+                                    'Bytes': b'T\x00r\x00a\x00n\x00s\x00l\x00a\x00t\x00i\x00o\x00n\x00s\x00',
+                                    'Decoded': 'Translations',
+                                    'Standard': False,
+                                },
+                                'Padding': 0,
+                                'Value': [
+                                    {
+                                        'Type': 'Value',
+                                        'Struct': {
+                                            'LangID': {
+                                                'Hexadecimal': '0x0839',
+                                                'Parsed': {
+                                                    'MajorLanguage': '0b0000111001',
+                                                    'SubLanguage': '0b000010',
+                                                },
+                                            },
+                                            'CodePage': {
+                                                'Decimal': 160,
+                                                'Hexadecimal': '0x00a0',
+                                            },
+                                        },
+                                    }
+                                ],
+                            },
+                        }
+                    ],
+                },
+            },
+        ],
+    },
+}

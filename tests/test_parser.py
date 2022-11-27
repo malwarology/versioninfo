@@ -793,6 +793,84 @@ class TestParserBenign(unittest.TestCase):
         self.assertEqual(expected, output_json, 'The JSON output not as expected.')
 
 
+class TestParserMalicious(unittest.TestCase):
+    """Check specific parsing function against malicuous Windows EXEs."""
+
+    def setUp(self):
+        """Load testing resources from files."""
+        # SHA256: fc04e80d343f5929aea4aac77fb12485c7b07b3a3d2fc383d68912c9ad0666da
+        self.pkr_ce1a = THIS_DIR.joinpath('data').joinpath('fc04e8.0x37e18-0x38004.dat').read_bytes()
+
+    def test_stringfileinfo_nonstandard_szkey(self):
+        """Test that the non-standard StringFileInfo szKey is parsed correctly."""
+        structure, _ = versioninfo.parser.get_header(self.pkr_ce1a, 92, expected='StringFileInfo')
+
+        self.assertEqual('StringFileInform', structure['szKey']['Decoded'], 'Non-standard szKey content not parsed.')
+
+    def test_stringfileinfo_nonstandard_field(self):
+        """Test that the non-standard StringFileInfo szKey is marked correctly."""
+        structure, _ = versioninfo.parser.get_header(self.pkr_ce1a, 92, expected='StringFileInfo')
+
+        self.assertFalse(structure['szKey']['Standard'], 'Non-standard szKey content not marked correctly.')
+
+    def test_stringfileinfo_type_id(self):
+        """Test that this non-standard StringFileInfo structure has its type identified correctly."""
+        output = versioninfo.parser.get_fileinfo_type(self.pkr_ce1a, 92)
+
+        self.assertEqual('StringFileInfo', output, 'Non-standard structure type not detected.')
+
+    def test_varfileinfo_nonstandard_szkey(self):
+        """Test that the non-standard VarFileInfo szKey is parsed correctly."""
+        structure, _ = versioninfo.parser.get_header(self.pkr_ce1a, 432, expected='VarFileInfo')
+
+        self.assertEqual('SomeInfo', structure['szKey']['Decoded'], 'Non-standard szKey content not parsed.')
+
+    def test_varfileinfo_nonstandard_field(self):
+        """Test that the non-standard VarFileInfo szKey is marked correctly."""
+        structure, _ = versioninfo.parser.get_header(self.pkr_ce1a, 432, expected='VarFileInfo')
+
+        self.assertFalse(structure['szKey']['Standard'], 'Non-standard szKey content not marked correctly.')
+
+    def test_Varfileinfo_type_id(self):
+        """Test that this non-standard VarFileInfo structure has its type identified correctly."""
+        output = versioninfo.parser.get_fileinfo_type(self.pkr_ce1a, 432)
+
+        self.assertEqual('VarFileInfo', output, 'Non-standard structure type not detected.')
+
+    def test_var_nonstandard_szkey(self):
+        """Test that the non-standard Var szKey is parsed correctly."""
+        structure, _ = versioninfo.parser.get_header(self.pkr_ce1a, 456, expected='Translation')
+
+        self.assertEqual('Translations', structure['szKey']['Decoded'], 'Non-standard szKey content not parsed.')
+
+    def test_var_nonstandard_field(self):
+        """Test that the non-standard Var szKey is marked correctly."""
+        structure, _ = versioninfo.parser.get_header(self.pkr_ce1a, 456, expected='Translation')
+
+        self.assertFalse(structure['szKey']['Standard'], 'Non-standard szKey content not marked correctly.')
+
+    def test_get_versioninfo(self):
+        """Test the output from the VS_VERSIONINFO parser."""
+        # Pickle text content: fc04e8.0x37e18-0x38004.txt
+        expected_pickle = THIS_DIR.joinpath('data').joinpath('fc04e8.0x37e18-0x38004.pickle')
+        with open(expected_pickle, 'rb') as fh:
+            expected = pickle.load(fh)
+
+        output = versioninfo.parser.get_versioninfo(self.pkr_ce1a)
+
+        self.assertDictEqual(expected, output, 'The VS_VERSIONINFO parser output not as expected.')
+
+    def test_to_json(self):
+        """Test the output from the JSON output function."""
+        expected = THIS_DIR.joinpath('data').joinpath('fc04e8.0x37e18-0x38004.json').read_text()
+
+        output = versioninfo.parser.to_json(self.pkr_ce1a)
+        output_dict = json.loads(output)
+        output_json = json.dumps(output_dict, sort_keys=True, indent=4, default=versioninfo.parser.convert)
+
+        self.assertEqual(expected, output_json, 'The JSON output not as expected.')
+
+
 class TestIssues(unittest.TestCase):
     """Check for closed issues on data that caused the issue."""
 
