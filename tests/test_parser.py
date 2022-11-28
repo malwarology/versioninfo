@@ -934,7 +934,68 @@ class TestIssues(unittest.TestCase):
         except struct.error:
             raised = True
 
-        self.assertFalse(raised, 'Problem with issue #1: Exception raised.')
+        self.assertFalse(raised, 'Problem with issue #2: Exception raised.')
+
+    def test_issue3_get_strings_output(self):
+        """Test that the String structure with zero length is parsed correctly."""
+        expected = {
+            'Type': 'String',
+            'Struct': {
+                'wLength': 24,
+                'wValueLength': 0,
+                'wType': 1,
+                'szKey': {
+                    'Bytes': b'C\x00o\x00m\x00m\x00e\x00n\x00t\x00s\x00',
+                    'Decoded': 'Comments',
+                },
+                'Padding': 0,
+                'Value': {},
+            },
+        }
+
+        dridex_56a902 = THIS_DIR.joinpath('data').joinpath('56a902_dridex.0x2d060-0x2d3fc.dat').read_bytes()
+        strings, _ = versioninfo.parser.get_strings(dridex_56a902, 152, 176)
+
+        self.assertDictEqual(expected, next(iter(strings)), 'Problem with issue #3: String output incorrect.')
+
+    def test_issue3_get_strings_cursor(self):
+        """Test the cursor after parsing array of String structures."""
+        end = 176
+        dridex_56a902 = THIS_DIR.joinpath('data').joinpath('56a902_dridex.0x2d060-0x2d3fc.dat').read_bytes()
+        _, cursor = versioninfo.parser.get_strings(dridex_56a902, 152, end)
+
+        self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
+
+    def test_issue3_get_stringtables(self):
+        """Test the output from the StringTable parser."""
+        # Pickle text content: 56a902_dridex_stringtables.0x2d060-0x2d3fc.txt
+        expected_pickle = THIS_DIR.joinpath('data').joinpath('56a902_dridex_stringtables.0x2d060-0x2d3fc.pickle')
+        with open(expected_pickle, 'rb') as fh:
+            expected = pickle.load(fh)
+
+        dridex_56a902 = THIS_DIR.joinpath('data').joinpath('56a902_dridex.0x2d060-0x2d3fc.dat').read_bytes()
+        output, _ = versioninfo.parser.get_stringtables(dridex_56a902, 128, 856)
+
+        self.assertListEqual(expected, output, 'The StringTable parser output not as expected.')
+
+    def test_issue3_get_stringtables_cursor(self):
+        """Test the cursor after parsing array of StringTable structures."""
+        end = 856
+        dridex_56a902 = THIS_DIR.joinpath('data').joinpath('56a902_dridex.0x2d060-0x2d3fc.dat').read_bytes()
+        _, cursor = versioninfo.parser.get_stringtables(dridex_56a902, 128, end)
+
+        self.assertEqual(end, cursor, 'Resulting cursor not as expected.')
+
+    def test_issue3_to_json(self):
+        """Test the output from the JSON output function."""
+        expected = THIS_DIR.joinpath('data').joinpath('56a902_dridex.0x2d060-0x2d3fc.json').read_text()
+
+        dridex_56a902 = THIS_DIR.joinpath('data').joinpath('56a902_dridex.0x2d060-0x2d3fc.dat').read_bytes()
+        output = versioninfo.parser.to_json(dridex_56a902)
+        output_dict = json.loads(output)
+        output_json = json.dumps(output_dict, sort_keys=True, indent=4, default=versioninfo.parser.convert)
+
+        self.assertEqual(expected, output_json, 'The JSON output not as expected.')
 
 
 if __name__ == '__main__':

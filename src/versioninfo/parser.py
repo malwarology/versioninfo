@@ -244,12 +244,16 @@ def get_strings(data, cursor, end):
     """Parse String structures recursively."""
     string_member, cursor = get_header(data, cursor)
 
-    # Each String has only one Value member WCHAR.
-    value, cursor = get_wchar(data, cursor)
-    string_member['Value'] = value
+    # Each String has zero or one Value member WCHAR.
+    if string_member['wValueLength']:
+        value, cursor = get_wchar(data, cursor)
+        string_member['Value'] = value
 
-    padding, cursor = get_padding(data, cursor)
-    string_member['Padding'] = padding
+        padding, cursor = get_padding(data, cursor)
+        string_member['Padding'] = padding
+    else:
+        string_member['Value'] = dict()
+        string_member['Padding'] = 0
 
     meta = {
         'Type': 'String',

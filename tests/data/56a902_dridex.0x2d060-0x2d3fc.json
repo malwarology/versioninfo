@@ -1,0 +1,357 @@
+{
+    "Struct": {
+        "Children": [
+            {
+                "Struct": {
+                    "Children": [
+                        {
+                            "Struct": {
+                                "Children": [
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {},
+                                            "szKey": {
+                                                "Bytes": "QwBvAG0AbQBlAG4AdABzAA==",
+                                                "Decoded": "Comments"
+                                            },
+                                            "wLength": 24,
+                                            "wType": 1,
+                                            "wValueLength": 0
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "VABoAGUAIABQAEgAUAAgAEcAcgBvAHUAcAA=",
+                                                "Decoded": "The PHP Group"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "QwBvAG0AcABhAG4AeQBOAGEAbQBlAA==",
+                                                "Decoded": "CompanyName"
+                                            },
+                                            "wLength": 60,
+                                            "wType": 1,
+                                            "wValueLength": 14
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "UABIAFAAIABTAGMAcgBpAHAAdAAgAEkAbgB0AGUAcgBwAHIAZQB0AGUAcgA=",
+                                                "Decoded": "PHP Script Interpreter"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A",
+                                                "Decoded": "FileDescription"
+                                            },
+                                            "wLength": 86,
+                                            "wType": 1,
+                                            "wValueLength": 23
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "NwAuADMALgAwAC4AMAA=",
+                                                "Decoded": "7.3.0.0"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==",
+                                                "Decoded": "FileVersion"
+                                            },
+                                            "wLength": 48,
+                                            "wType": 1,
+                                            "wValueLength": 8
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "bwB2AG8A",
+                                                "Decoded": "ovo"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA",
+                                                "Decoded": "InternalName"
+                                            },
+                                            "wLength": 40,
+                                            "wType": 1,
+                                            "wValueLength": 4
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIACpACAAMgAwADAANgAgAFQAaABlACAAUABIAFAAIABHAHIAbwB1AHAA",
+                                                "Decoded": "Copyright \u00a9 2006 The PHP Group"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AA==",
+                                                "Decoded": "LegalCopyright"
+                                            },
+                                            "wLength": 98,
+                                            "wType": 1,
+                                            "wValueLength": 31
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "cABoAHAA",
+                                                "Decoded": "php"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "TABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMA",
+                                                "Decoded": "LegalTrademarks"
+                                            },
+                                            "wLength": 48,
+                                            "wType": 1,
+                                            "wValueLength": 4
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "bwB2AG8ANABoAGQALgBkAGwAbAA=",
+                                                "Decoded": "ovo4hd.dll"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "TwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBhAG0AZQA=",
+                                                "Decoded": "OriginalFilename"
+                                            },
+                                            "wLength": 62,
+                                            "wType": 1,
+                                            "wValueLength": 11
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {},
+                                            "szKey": {
+                                                "Bytes": "UAByAGkAdgBhAHQAZQBCAHUAaQBsAGQA",
+                                                "Decoded": "PrivateBuild"
+                                            },
+                                            "wLength": 32,
+                                            "wType": 1,
+                                            "wValueLength": 0
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "TwBWAE8AIABIAGQAcwB5AG4AbgAgAE8AcwBzAGQA",
+                                                "Decoded": "OVO Hdsynn Ossd"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "UAByAG8AZAB1AGMAdABOAGEAbQBlAA==",
+                                                "Decoded": "ProductName"
+                                            },
+                                            "wLength": 64,
+                                            "wType": 1,
+                                            "wValueLength": 16
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "NwAuADMALgAwAA==",
+                                                "Decoded": "7.3.0"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==",
+                                                "Decoded": "ProductVersion"
+                                            },
+                                            "wLength": 48,
+                                            "wType": 1,
+                                            "wValueLength": 6
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {},
+                                            "szKey": {
+                                                "Bytes": "UwBwAGUAYwBpAGEAbABCAHUAaQBsAGQA",
+                                                "Decoded": "SpecialBuild"
+                                            },
+                                            "wLength": 32,
+                                            "wType": 1,
+                                            "wValueLength": 0
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "aAB0AHQAcAA6AC8ALwB3AHcAdwAuAHAAaABwAC4AbgBlAHQA",
+                                                "Decoded": "http://www.php.net"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "VQBSAEwA",
+                                                "Decoded": "URL"
+                                            },
+                                            "wLength": 54,
+                                            "wType": 1,
+                                            "wValueLength": 19
+                                        },
+                                        "Type": "String"
+                                    }
+                                ],
+                                "Padding": 0,
+                                "szKey": {
+                                    "Bytes": "MAA0ADAAOQAwADQAYgAwAA==",
+                                    "Decoded": "040904b0",
+                                    "Parsed": {
+                                        "CodePage": {
+                                            "Decimal": 1200,
+                                            "Hexadecimal": "0x04b0"
+                                        },
+                                        "LangID": {
+                                            "Hexadecimal": "0x0409",
+                                            "Parsed": {
+                                                "MajorLanguage": "0b0000001001",
+                                                "SubLanguage": "0b000001"
+                                            }
+                                        }
+                                    }
+                                },
+                                "wLength": 726,
+                                "wType": 1,
+                                "wValueLength": 0
+                            },
+                            "Type": "StringTable"
+                        }
+                    ],
+                    "Padding": 0,
+                    "szKey": {
+                        "Bytes": "UwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAA==",
+                        "Decoded": "StringFileInfo",
+                        "Standard": true
+                    },
+                    "wLength": 762,
+                    "wType": 1,
+                    "wValueLength": 0
+                },
+                "Type": "StringFileInfo"
+            },
+            {
+                "Struct": {
+                    "Children": [
+                        {
+                            "Struct": {
+                                "Padding": 1,
+                                "Value": [
+                                    {
+                                        "Struct": {
+                                            "CodePage": {
+                                                "Decimal": 1200,
+                                                "Hexadecimal": "0x04b0"
+                                            },
+                                            "LangID": {
+                                                "Hexadecimal": "0x0409",
+                                                "Parsed": {
+                                                    "MajorLanguage": "0b0000001001",
+                                                    "SubLanguage": "0b000001"
+                                                }
+                                            }
+                                        },
+                                        "Type": "Value"
+                                    }
+                                ],
+                                "szKey": {
+                                    "Bytes": "VAByAGEAbgBzAGwAYQB0AGkAbwBuAA==",
+                                    "Decoded": "Translation",
+                                    "Standard": true
+                                },
+                                "wLength": 36,
+                                "wType": 0,
+                                "wValueLength": 4
+                            },
+                            "Type": "Var"
+                        }
+                    ],
+                    "Padding": 1,
+                    "szKey": {
+                        "Bytes": "VgBhAHIARgBpAGwAZQBJAG4AZgBvAA==",
+                        "Decoded": "VarFileInfo",
+                        "Standard": true
+                    },
+                    "wLength": 68,
+                    "wType": 1,
+                    "wValueLength": 0
+                },
+                "Type": "VarFileInfo"
+            }
+        ],
+        "Padding1": 1,
+        "Padding2": 0,
+        "Value": {
+            "Struct": {
+                "dwFileDateLS": 0,
+                "dwFileDateMS": 0,
+                "dwFileFlags": {
+                    "Decimal": 0,
+                    "Hexadecimal": "0x00000000"
+                },
+                "dwFileFlagsMask": {
+                    "Decimal": 63,
+                    "Hexadecimal": "0x0000003f"
+                },
+                "dwFileOS": {
+                    "Decimal": 4,
+                    "Hexadecimal": "0x00000004"
+                },
+                "dwFileSubtype": {
+                    "Decimal": 0,
+                    "Hexadecimal": "0x00000000"
+                },
+                "dwFileType": {
+                    "Decimal": 2,
+                    "Hexadecimal": "0x00000002"
+                },
+                "dwFileVersionLS": 0,
+                "dwFileVersionMS": 458755,
+                "dwProductVersionLS": 0,
+                "dwProductVersionMS": 458755,
+                "dwSignature": "0xfeef04bd",
+                "dwStrucVersion": {
+                    "Major": 1,
+                    "Minor": 0
+                }
+            },
+            "Type": "VS_FIXEDFILEINFO"
+        },
+        "szKey": {
+            "Bytes": "VgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A",
+            "Decoded": "VS_VERSION_INFO",
+            "Standard": true
+        },
+        "wLength": 924,
+        "wType": 0,
+        "wValueLength": 52
+    },
+    "Type": "VS_VERSION_INFO"
+}
