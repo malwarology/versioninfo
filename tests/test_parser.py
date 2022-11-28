@@ -934,7 +934,7 @@ class TestIssues(unittest.TestCase):
         except struct.error:
             raised = True
 
-        self.assertFalse(raised, 'Problem with issue #1: Exception raised.')
+        self.assertFalse(raised, 'Problem with issue #2: Exception raised.')
 
 
 if __name__ == '__main__':
