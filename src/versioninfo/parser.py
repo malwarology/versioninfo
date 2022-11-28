@@ -350,8 +350,11 @@ def get_versioninfo(data):
         padding, cursor = get_padding(data, cursor)
         vs_versioninfo['Padding2'] = padding
 
-    children = get_fileinfo(data, cursor, end)
-    vs_versioninfo['Children'] = children
+    if cursor < end:
+        children = get_fileinfo(data, cursor, end)
+        vs_versioninfo['Children'] = children
+    else:
+        vs_versioninfo['Children'] = list()
 
     meta = {
         'Type': 'VS_VERSION_INFO',

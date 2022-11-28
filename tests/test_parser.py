@@ -997,6 +997,66 @@ class TestIssues(unittest.TestCase):
 
         self.assertEqual(expected, output_json, 'The JSON output not as expected.')
 
+    def test_issue5_get_versioninfo(self):
+        """Test the output from the VS_VERSIONINFO parser."""
+        expected = {
+            'Type': 'VS_VERSION_INFO',
+            'Struct': {
+                'wLength': 92,
+                'wValueLength': 52,
+                'wType': 0,
+                'szKey': {
+                    'Bytes': b'V\x00S\x00_\x00V\x00E\x00R\x00S\x00I\x00O\x00N\x00_\x00I\x00N\x00F\x00O\x00',
+                    'Decoded': 'VS_VERSION_INFO',
+                    'Standard': True,
+                },
+                'Padding1': 1,
+                'Value': {
+                    'Type': 'VS_FIXEDFILEINFO',
+                    'Struct': {
+                        'dwSignature': '0xfeef04bd',
+                        'dwStrucVersion': {
+                            'Major': 1,
+                            'Minor': 0
+                        },
+                        'dwFileVersionMS': 131072,
+                        'dwFileVersionLS': 262144,
+                        'dwProductVersionMS': 131072,
+                        'dwProductVersionLS': 262144,
+                        'dwFileFlagsMask': {
+                            'Decimal': 63,
+                            'Hexadecimal': '0x0000003f'
+                        },
+                        'dwFileFlags': {
+                            'Decimal': 0,
+                            'Hexadecimal': '0x00000000'
+                        },
+                        'dwFileOS': {
+                            'Decimal': 262148,
+                            'Hexadecimal': '0x00040004'
+                        },
+                        'dwFileType': {
+                            'Decimal': 1,
+                            'Hexadecimal': '0x00000001'
+                        },
+                        'dwFileSubtype': {
+                            'Decimal': 0,
+                            'Hexadecimal': '0x00000000'
+                        },
+                        'dwFileDateMS': 0,
+                        'dwFileDateLS': 0,
+                    },
+                },
+                'Padding2': 0,
+                'Children': [],
+            },
+        }
+
+        gandcrab_6b5151 = THIS_DIR.joinpath('data').joinpath('6b5151_gandcrab.0x31ba0-0x31bfc.dat').read_bytes()
+        output = versioninfo.parser.get_versioninfo(gandcrab_6b5151)
+
+        self.assertDictEqual(expected, output, 'The VS_VERSIONINFO parser output not as expected.')
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
