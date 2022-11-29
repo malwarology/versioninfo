@@ -263,10 +263,9 @@ def get_strings(data, cursor, end):
         string_member['Value'] = value
 
         padding, cursor = get_padding(data, cursor)
-        string_member['Padding'] = padding
+        string_member['Value']['Padding'] = padding
     else:
         string_member['Value'] = dict()
-        string_member['Padding'] = 0
 
     meta = {
         'Type': 'String',
