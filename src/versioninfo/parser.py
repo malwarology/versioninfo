@@ -8,6 +8,8 @@ import base64
 import json
 import struct
 
+from versioninfo.exceptions import TruncatedInputError
+
 
 def convert(entry):
     """Convert objects to JSON serializable formats."""
@@ -367,6 +369,9 @@ def get_versioninfo(data):
     cursor = 0
     vs_versioninfo, cursor = get_header(data, cursor, expected='VS_VERSION_INFO')
     end = vs_versioninfo['wLength']
+
+    if len(data) < end:
+        raise TruncatedInputError('Input data size is less than VS_VERSION_INFO structure wLength.')
 
     # Change key name because Padding2 added later.
     vs_versioninfo['Padding1'] = vs_versioninfo.pop('Padding')

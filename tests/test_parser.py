@@ -11,6 +11,7 @@ import struct
 import unittest
 
 import versioninfo.parser
+from versioninfo.exceptions import TruncatedInputError
 
 THIS_DIR = pathlib.Path(__file__).parent
 
@@ -71,6 +72,13 @@ class TestFailures(unittest.TestCase):
             _ = versioninfo.parser.get_versioninfo(b'')
         except ValueError as e:
             self.assertEqual(expected, str(e), 'Error message is not as expected.')
+
+    def test_truncated_input(self):
+        """Test that the correct TruncatedInputError is raised when the input is smaller then the top level header."""
+        truncated = bytes.fromhex('980334000000560053005F00560045005200530049004F004E005F0049004E0046004F00')
+
+        with self.assertRaises(TruncatedInputError, msg='Failed to raise TruncatedInputError.'):
+            _ = versioninfo.parser.get_versioninfo(truncated)
 
 
 class TestParserBenign(unittest.TestCase):
