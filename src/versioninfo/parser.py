@@ -151,7 +151,15 @@ def get_ffi(data, cursor):
 def get_fileinfo_type(data, cursor):
     """Determine the type of the FileInfo struct based on the wValueLength member of the immediate child."""
     file_info, cursor = get_header(data, cursor)
-    child_header, cursor = get_header(data, cursor)
+    try:
+        child_header, cursor = get_header(data, cursor)
+    except struct.error:
+        if file_info['szKey']['Decoded'] == 'VarFileInfo':
+            return 'VarFileInfo'
+        elif file_info['szKey']['Decoded'] == 'StringFileInfo':
+            return 'StringFileInfo'
+        else:
+            return 'Unknown'
 
     fileinfo_type = 'StringFileInfo' if not child_header['wValueLength'] else 'VarFileInfo'
 
@@ -229,7 +237,10 @@ def get_varfileinfo(data, cursor):
     end = start + varfileinfo['wLength']
 
     # Children member of VarFileInfo struct is an array of Var structs. Parse it recursively.
-    children, cursor = get_vars(data, cursor, end)
+    if cursor >= end:
+        children = list()
+    else:
+        children, cursor = get_vars(data, cursor, end)
     varfileinfo['Children'] = children
 
     meta = {
@@ -311,7 +322,10 @@ def get_stringfileinfo(data, cursor):
     end = start + stringfileinfo['wLength']
 
     # Children member of StringFileInfo struct is an array of StringTable structs. Parse it recursively.
-    children, cursor = get_stringtables(data, cursor, end)
+    if cursor >= end:
+        children = list()
+    else:
+        children, cursor = get_stringtables(data, cursor, end)
     stringfileinfo['Children'] = children
 
     meta = {
@@ -328,8 +342,14 @@ def get_fileinfo(data, cursor, end):
 
     if fileinfo_type == 'StringFileInfo':
         fileinfo, cursor = get_stringfileinfo(data, cursor)
-    else:
+    elif fileinfo_type == 'VarFileInfo':
         fileinfo, cursor = get_varfileinfo(data, cursor)
+    else:
+        header, cursor = get_header(data, cursor)
+        fileinfo = {
+            'Type': fileinfo_type,
+            'Struct': header
+        }
 
     if cursor >= end:
         return [fileinfo]

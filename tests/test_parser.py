@@ -908,6 +908,111 @@ class TestParserMalicious(unittest.TestCase):
         self.assertEqual(expected, output_json, 'The JSON output not as expected.')
 
 
+class TestParserSynthetic(unittest.TestCase):
+    """Check each individual parsing function works against a synthetic structure to test specific code areas."""
+
+    def setUp(self):
+        """Load testing resources from files."""
+        self.synth_sfo_noc = THIS_DIR.joinpath('data').joinpath('synthetic_stringfileinfo_no_children.dat').read_bytes()
+        self.synth_unk = THIS_DIR.joinpath('data').joinpath('synthetic_unknownfileinfo_no_children.dat').read_bytes()
+
+    def test_get_fileinfo_type_stringfileinfo(self):
+        """Test the FileInfo structure type determiner on StringFileInfo."""
+        output = versioninfo.parser.get_fileinfo_type(self.synth_sfo_noc, 268)
+
+        self.assertEqual('StringFileInfo', output, 'Expected type for StringFileInfo not correct.')
+
+    def test_get_stringfileinfo(self):
+        """Test the output from the StringFileInfo parser."""
+        expected = {
+            'Type': 'StringFileInfo',
+            'Struct': {
+                'wLength': 36,
+                'wValueLength': 0,
+                'wType': 1,
+                'szKey': {
+                    'Bytes': b'S\x00t\x00r\x00i\x00n\x00g\x00F\x00i\x00l\x00e\x00I\x00n\x00f\x00o\x00',
+                    'Decoded': 'StringFileInfo',
+                    'Standard': True,
+                },
+                'Padding': 0,
+                'Children': [],
+            },
+        }
+
+        output, _ = versioninfo.parser.get_stringfileinfo(self.synth_sfo_noc, 268)
+
+        self.assertDictEqual(expected, output, 'The StringFileInfo parser output not as expected.')
+
+    def test_get_stringfileinfo_cursor(self):
+        """Test the cursor after parsing StringFileInfo structure."""
+        _, cursor = versioninfo.parser.get_stringfileinfo(self.synth_sfo_noc, 268)
+
+        self.assertEqual(304, cursor, 'Resulting cursor not as expected.')
+
+    def test_get_fileinfo(self):
+        """Test the output from the FileInfo parser."""
+        expected = [
+            {
+                'Type': 'StringFileInfo',
+                'Struct': {
+                    'wLength': 36,
+                    'wValueLength': 0,
+                    'wType': 1,
+                    'szKey': {
+                        'Bytes': b'S\x00t\x00r\x00i\x00n\x00g\x00F\x00i\x00l\x00e\x00I\x00n\x00f\x00o\x00',
+                        'Decoded': 'StringFileInfo',
+                        'Standard': True,
+                    },
+                    'Padding': 0,
+                    'Children': [],
+                },
+            }
+        ]
+
+        output = versioninfo.parser.get_fileinfo(self.synth_sfo_noc, 268, 304)
+
+        self.assertListEqual(expected, output, 'The FileInfo parser output not as expected.')
+
+    def test_get_fileinfo_type_unknown(self):
+        """Test the FileInfo structure type determiner on Unknown type."""
+        output = versioninfo.parser.get_fileinfo_type(self.synth_unk, 268)
+
+        self.assertEqual('Unknown', output, 'Expected type for Unknown not correct.')
+
+    def test_get_fileinfo_unknown(self):
+        """Test the output from the FileInfo parser."""
+        expected = [
+            {
+                'Type': 'Unknown',
+                'Struct': {
+                    'wLength': 36,
+                    'wValueLength': 0,
+                    'wType': 1,
+                    'szKey': {
+                        'Bytes': b'T\x00E\x00S\x00T\x00T\x00E\x00S\x00T\x00T\x00E\x00S\x00T\x00T\x00E\x00',
+                        'Decoded': 'TESTTESTTESTTE',
+                    },
+                    'Padding': 0,
+                },
+            }
+        ]
+
+        output = versioninfo.parser.get_fileinfo(self.synth_unk, 268, 304)
+
+        self.assertListEqual(expected, output, 'The FileInfo parser output not as expected.')
+
+    def test_to_json_unknown(self):
+        """Test the output from the JSON output function: sample has one unknown structure."""
+        expected = THIS_DIR.joinpath('data').joinpath('synthetic_unknownfileinfo_no_children.json').read_text()
+
+        output = versioninfo.parser.to_json(self.synth_unk)
+        output_dict = json.loads(output)
+        output_json = json.dumps(output_dict, sort_keys=True, indent=4, default=versioninfo.parser.convert)
+
+        self.assertEqual(expected, output_json, 'The JSON output not as expected.')
+
+
 class TestIssues(unittest.TestCase):
     """Check for closed issues on data that caused the issue."""
 
@@ -1080,6 +1185,80 @@ class TestIssues(unittest.TestCase):
         output, _ = versioninfo.parser.get_stringtables(gandcrab_c7dc40, 128, 392)
 
         self.assertListEqual(expected, output, 'The StringTable parser output not as expected.')
+
+    def test_issue9_exception(self):
+        """Test handling of VarFileInfo structures with zero Vars."""
+        phorpiex_f3c4bb = THIS_DIR.joinpath('data').joinpath('f3c4bb_phorpiex.0x268d0-0x269fc.dat').read_bytes()
+
+        raised = False
+        try:
+            _ = versioninfo.parser.to_json(phorpiex_f3c4bb)
+        except struct.error:
+            raised = True
+
+        self.assertFalse(raised, 'Problem with issue #7: Exception raised.')
+
+    def test_issue9_get_fileinfo_type_varfileinfo(self):
+        """Test the FileInfo structure type determiner on VarFileInfo."""
+        phorpiex_f3c4bb = THIS_DIR.joinpath('data').joinpath('f3c4bb_phorpiex.0x268d0-0x269fc.dat').read_bytes()
+        output = versioninfo.parser.get_fileinfo_type(phorpiex_f3c4bb, 268)
+
+        self.assertEqual('VarFileInfo', output, 'Expected type for VarFileInfo not correct.')
+
+    def test_issue9_get_varfileinfo(self):
+        """Test the output from the VarFileInfo parser."""
+        expected = {
+            'Type': 'VarFileInfo',
+            'Struct': {
+                'wLength': 32,
+                'wValueLength': 0,
+                'wType': 1,
+                'szKey': {
+                    'Bytes': b'V\x00a\x00r\x00F\x00i\x00l\x00e\x00I\x00n\x00f\x00o\x00',
+                    'Decoded': 'VarFileInfo',
+                    'Standard': True,
+                },
+                'Padding': 1,
+                'Children': [],
+            },
+        }
+
+        phorpiex_f3c4bb = THIS_DIR.joinpath('data').joinpath('f3c4bb_phorpiex.0x268d0-0x269fc.dat').read_bytes()
+        output, _ = versioninfo.parser.get_varfileinfo(phorpiex_f3c4bb, 268)
+
+        self.assertDictEqual(expected, output, 'The VarFileInfo parser output not as expected.')
+
+    def test_issue9_get_varfileinfo_cursor(self):
+        """Test the cursor after parsing one VarFileInfo."""
+        phorpiex_f3c4bb = THIS_DIR.joinpath('data').joinpath('f3c4bb_phorpiex.0x268d0-0x269fc.dat').read_bytes()
+        _, cursor = versioninfo.parser.get_varfileinfo(phorpiex_f3c4bb, 268)
+
+        self.assertEqual(300, cursor, 'Resulting cursor not as expected.')
+
+    def test_issue9_get_fileinfo(self):
+        """Test the output from the FileInfo parser."""
+        expected = [
+            {
+                'Type': 'VarFileInfo',
+                'Struct': {
+                    'wLength': 32,
+                    'wValueLength': 0,
+                    'wType': 1,
+                    'szKey': {
+                        'Bytes': b'V\x00a\x00r\x00F\x00i\x00l\x00e\x00I\x00n\x00f\x00o\x00',
+                        'Decoded': 'VarFileInfo',
+                        'Standard': True,
+                    },
+                    'Padding': 1,
+                    'Children': [],
+                },
+            }
+        ]
+
+        phorpiex_f3c4bb = THIS_DIR.joinpath('data').joinpath('f3c4bb_phorpiex.0x268d0-0x269fc.dat').read_bytes()
+        output = versioninfo.parser.get_fileinfo(phorpiex_f3c4bb, 268, 300)
+
+        self.assertListEqual(expected, output, 'The FileInfo parser output not as expected.')
 
 
 if __name__ == '__main__':

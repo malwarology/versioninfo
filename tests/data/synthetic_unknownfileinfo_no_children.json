@@ -1,0 +1,144 @@
+{
+    "Struct": {
+        "Children": [
+            {
+                "Struct": {
+                    "Children": [
+                        {
+                            "Struct": {
+                                "Children": [
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "dABnAGEAdABoAHIAeQBqAC4AZQB4AGUA",
+                                                "Decoded": "tgathryj.exe"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA",
+                                                "Decoded": "InternalName"
+                                            },
+                                            "wLength": 58,
+                                            "wType": 1,
+                                            "wValueLength": 13
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "MQAuADAALgAwAC4AMQAxAA==",
+                                                "Decoded": "1.0.0.11"
+                                            },
+                                            "szKey": {
+                                                "Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==",
+                                                "Decoded": "ProductVersion"
+                                            },
+                                            "wLength": 54,
+                                            "wType": 1,
+                                            "wValueLength": 9
+                                        },
+                                        "Type": "String"
+                                    }
+                                ],
+                                "Padding": 0,
+                                "szKey": {
+                                    "Bytes": "NAA1ADcAYQBhADUANgBiAA==",
+                                    "Decoded": "457aa56b",
+                                    "Parsed": {
+                                        "CodePage": {
+                                            "Decimal": 42347,
+                                            "Hexadecimal": "0xa56b"
+                                        },
+                                        "LangID": {
+                                            "Hexadecimal": "0x457a",
+                                            "Parsed": {
+                                                "MajorLanguage": "0b0101111010",
+                                                "SubLanguage": "0b010001"
+                                            }
+                                        }
+                                    }
+                                },
+                                "wLength": 138,
+                                "wType": 1,
+                                "wValueLength": 0
+                            },
+                            "Type": "StringTable"
+                        }
+                    ],
+                    "Padding": 0,
+                    "szKey": {
+                        "Bytes": "UwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAA==",
+                        "Decoded": "StringFileInfo",
+                        "Standard": true
+                    },
+                    "wLength": 174,
+                    "wType": 1,
+                    "wValueLength": 0
+                },
+                "Type": "StringFileInfo"
+            },
+            {
+                "Struct": {
+                    "Padding": 0,
+                    "szKey": {
+                        "Bytes": "VABFAFMAVABUAEUAUwBUAFQARQBTAFQAVABFAA==",
+                        "Decoded": "TESTTESTTESTTE"
+                    },
+                    "wLength": 36,
+                    "wType": 1,
+                    "wValueLength": 0
+                },
+                "Type": "Unknown"
+            }
+        ],
+        "Padding1": 1,
+        "Padding2": 0,
+        "Value": {
+            "Struct": {
+                "dwFileDateLS": 0,
+                "dwFileDateMS": 0,
+                "dwFileFlags": {
+                    "Decimal": 0,
+                    "Hexadecimal": "0x00000000"
+                },
+                "dwFileFlagsMask": {
+                    "Decimal": 79,
+                    "Hexadecimal": "0x0000004f"
+                },
+                "dwFileOS": {
+                    "Decimal": 263476,
+                    "Hexadecimal": "0x00040534"
+                },
+                "dwFileSubtype": {
+                    "Decimal": 0,
+                    "Hexadecimal": "0x00000000"
+                },
+                "dwFileType": {
+                    "Decimal": 1,
+                    "Hexadecimal": "0x00000001"
+                },
+                "dwFileVersionLS": 0,
+                "dwFileVersionMS": 458752,
+                "dwProductVersionLS": 0,
+                "dwProductVersionMS": 196608,
+                "dwSignature": "0xfeef04bd",
+                "dwStrucVersion": {
+                    "Major": 1,
+                    "Minor": 0
+                }
+            },
+            "Type": "VS_FIXEDFILEINFO"
+        },
+        "szKey": {
+            "Bytes": "VgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A",
+            "Decoded": "VS_VERSION_INFO",
+            "Standard": true
+        },
+        "wLength": 304,
+        "wType": 0,
+        "wValueLength": 52
+    },
+    "Type": "VS_VERSION_INFO"
+}
