@@ -9,10 +9,11 @@
                                 "Children": [
                                     {
                                         "Struct": {
-                                            "Padding": 1,
+                                            "Padding": 0,
                                             "Value": {
                                                 "Bytes": "dABnAGEAdABoAHIAeQBqAC4AZQB4AGUA",
-                                                "Decoded": "tgathryj.exe"
+                                                "Decoded": "tgathryj.exe",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA",
@@ -26,10 +27,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 1,
+                                            "Padding": 0,
                                             "Value": {
                                                 "Bytes": "MQAuADAALgAwAC4AMQAxAA==",
-                                                "Decoded": "1.0.0.11"
+                                                "Decoded": "1.0.0.11",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==",

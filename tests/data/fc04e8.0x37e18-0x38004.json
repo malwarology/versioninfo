@@ -12,7 +12,8 @@
                                             "Padding": 0,
                                             "Value": {
                                                 "Bytes": "OQAyAC4AOAA2AC4ANAAxAC4AMQA5AA==",
-                                                "Decoded": "92.86.41.19"
+                                                "Decoded": "92.86.41.19",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAHMA",
@@ -26,10 +27,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "cABvAHYAZwB3AGEAbwBjAGkALgBpAHcAZQA=",
-                                                "Decoded": "povgwaoci.iwe"
+                                                "Decoded": "povgwaoci.iwe",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "SQBuAHQAZQByAG4AYQB0AGkAbwBuAGEAbABOAGEAbQBlAA==",
@@ -46,7 +48,8 @@
                                             "Padding": 1,
                                             "Value": {
                                                 "Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIAAoAEMAKQAgADIAMAAyADIALAAgAHMAbwBtAG8AawBsAG8AcwA=",
-                                                "Decoded": "Copyright (C) 2022, somoklos"
+                                                "Decoded": "Copyright (C) 2022, somoklos",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "QwBvAHAAeQByAGkAZwBoAHQA",
@@ -63,7 +66,8 @@
                                             "Padding": 0,
                                             "Value": {
                                                 "Bytes": "NQA3AC4ANAAwAC4AOAAxAC4AMQA3AA==",
-                                                "Decoded": "57.40.81.17"
+                                                "Decoded": "57.40.81.17",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "UAByAG8AagBlAGMAdABWAGUAcgBzAGkAbwBuAA==",

@@ -12,7 +12,8 @@
                                             "Padding": 1,
                                             "Value": {
                                                 "Bytes": "QwAuACAARwBoAGkAcwBsAGUAcgAgACYAIABDAG8ALgA=",
-                                                "Decoded": "C. Ghisler & Co."
+                                                "Decoded": "C. Ghisler & Co.",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "QwBvAG0AcABhAG4AeQBOAGEAbQBlAA==",
@@ -29,7 +30,8 @@
                                             "Padding": 1,
                                             "Value": {
                                                 "Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIAIAAzADIAIABiAGkAdAAgAGkAbgB0AGUAcgBuAGEAdABpAG8AbgBhAGwAIAB2AGUAcgBzAGkAbwBuACwAIABmAGkAbABlACAAbQBhAG4AYQBnAGUAcgAgAHIAZQBwAGwAYQBjAGUAbQBlAG4AdAAgAGYAbwByACAAVwBpAG4AZABvAHcAcwA=",
-                                                "Decoded": "Total Commander 32 bit international version, file manager replacement for Windows"
+                                                "Decoded": "Total Commander 32 bit international version, file manager replacement for Windows",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A",
@@ -46,7 +48,8 @@
                                             "Padding": 1,
                                             "Value": {
                                                 "Bytes": "NgAuADAAMQA=",
-                                                "Decoded": "6.01"
+                                                "Decoded": "6.01",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==",
@@ -60,10 +63,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 1,
+                                            "Padding": 0,
                                             "Value": {
                                                 "Bytes": "VABPAFQAQQBMAEMATQBEAA==",
-                                                "Decoded": "TOTALCMD"
+                                                "Decoded": "TOTALCMD",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA",
@@ -80,7 +84,8 @@
                                             "Padding": 0,
                                             "Value": {
                                                 "Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIACpACAAMQA5ADkAMwAtADIAMAAwADMAIABDAGgAcgBpAHMAdABpAGEAbgAgAEcAaABpAHMAbABlAHIA",
-                                                "Decoded": "Copyright \u00a9 1993-2003 Christian Ghisler"
+                                                "Decoded": "Copyright \u00a9 1993-2003 Christian Ghisler",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AA==",
@@ -94,10 +99,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIA",
-                                                "Decoded": "Total Commander"
+                                                "Decoded": "Total Commander",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "UAByAG8AZAB1AGMAdABOAGEAbQBlAA==",
@@ -111,10 +117,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 1,
+                                            "Padding": 0,
                                             "Value": {
                                                 "Bytes": "NgAuADAAMQA=",
-                                                "Decoded": "6.01"
+                                                "Decoded": "6.01",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==",
@@ -159,7 +166,8 @@
                                             "Padding": 1,
                                             "Value": {
                                                 "Bytes": "QwAuACAARwBoAGkAcwBsAGUAcgAgACYAIABDAG8ALgA=",
-                                                "Decoded": "C. Ghisler & Co."
+                                                "Decoded": "C. Ghisler & Co.",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "QwBvAG0AcABhAG4AeQBOAGEAbQBlAA==",
@@ -173,10 +181,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIAIAAzADIAIABiAGkAdAAgAGkAbgB0AGUAcgBuAGEAdABpAG8AbgBhAGwAZQAgAFYAZQByAHMAaQBvAG4ALAAgAEQAYQB0AGUAaQBtAGEAbgBhAGcAZQByAC0ARQByAHMAYQB0AHoAIABmAHUAZQByACAAVwBpAG4AZABvAHcAcwA=",
-                                                "Decoded": "Total Commander 32 bit internationale Version, Dateimanager-Ersatz fuer Windows"
+                                                "Decoded": "Total Commander 32 bit internationale Version, Dateimanager-Ersatz fuer Windows",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A",
@@ -193,7 +202,8 @@
                                             "Padding": 1,
                                             "Value": {
                                                 "Bytes": "NgAuADAAMQA=",
-                                                "Decoded": "6.01"
+                                                "Decoded": "6.01",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==",
@@ -207,10 +217,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 1,
+                                            "Padding": 0,
                                             "Value": {
                                                 "Bytes": "VABPAFQAQQBMAEMATQBEAA==",
-                                                "Decoded": "TOTALCMD"
+                                                "Decoded": "TOTALCMD",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA",
@@ -227,7 +238,8 @@
                                             "Padding": 0,
                                             "Value": {
                                                 "Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIACpACAAMQA5ADkAMwAtADIAMAAwADMAIABDAGgAcgBpAHMAdABpAGEAbgAgAEcAaABpAHMAbABlAHIA",
-                                                "Decoded": "Copyright \u00a9 1993-2003 Christian Ghisler"
+                                                "Decoded": "Copyright \u00a9 1993-2003 Christian Ghisler",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AA==",
@@ -241,10 +253,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIA",
-                                                "Decoded": "Total Commander"
+                                                "Decoded": "Total Commander",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "UAByAG8AZAB1AGMAdABOAGEAbQBlAA==",
@@ -258,10 +271,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 1,
+                                            "Padding": 0,
                                             "Value": {
                                                 "Bytes": "NgAuADAAMQA=",
-                                                "Decoded": "6.01"
+                                                "Decoded": "6.01",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==",
@@ -306,7 +320,8 @@
                                             "Padding": 1,
                                             "Value": {
                                                 "Bytes": "QwAuACAARwBoAGkAcwBsAGUAcgAgACYAIABDAG8ALgA=",
-                                                "Decoded": "C. Ghisler & Co."
+                                                "Decoded": "C. Ghisler & Co.",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "QwBvAG0AcABhAG4AeQBOAGEAbQBlAA==",
@@ -323,7 +338,8 @@
                                             "Padding": 1,
                                             "Value": {
                                                 "Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIAIAAzADIAIABiAGkAdAAgAHYAZQByAHMAaQBvAG4AIABpAG4AdABlAHIAbgBhAHQAaQBvAG4AYQBsAGUALAAgAHIAZQBtAHAAYQBjAGUAbQBlAG4AdAAgAHAAbwB1AHIAIABmAGkAbABlACAAbQBhAG4AYQBnAGUAcgA=",
-                                                "Decoded": "Total Commander 32 bit version internationale, rempacement pour file manager"
+                                                "Decoded": "Total Commander 32 bit version internationale, rempacement pour file manager",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A",
@@ -340,7 +356,8 @@
                                             "Padding": 1,
                                             "Value": {
                                                 "Bytes": "NgAuADAAMQA=",
-                                                "Decoded": "6.01"
+                                                "Decoded": "6.01",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==",
@@ -354,10 +371,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 1,
+                                            "Padding": 0,
                                             "Value": {
                                                 "Bytes": "VABPAFQAQQBMAEMATQBEAA==",
-                                                "Decoded": "TOTALCMD"
+                                                "Decoded": "TOTALCMD",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA",
@@ -374,7 +392,8 @@
                                             "Padding": 0,
                                             "Value": {
                                                 "Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIACpACAAMQA5ADkAMwAtADIAMAAwADMAIABDAGgAcgBpAHMAdABpAGEAbgAgAEcAaABpAHMAbABlAHIA",
-                                                "Decoded": "Copyright \u00a9 1993-2003 Christian Ghisler"
+                                                "Decoded": "Copyright \u00a9 1993-2003 Christian Ghisler",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AA==",
@@ -388,10 +407,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "VABvAHQAYQBsACAAQwBvAG0AbQBhAG4AZABlAHIA",
-                                                "Decoded": "Total Commander"
+                                                "Decoded": "Total Commander",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "UAByAG8AZAB1AGMAdABOAGEAbQBlAA==",
@@ -405,10 +425,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 1,
+                                            "Padding": 0,
                                             "Value": {
                                                 "Bytes": "NgAuADAAMQA=",
-                                                "Decoded": "6.01"
+                                                "Decoded": "6.01",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==",

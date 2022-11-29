@@ -9,10 +9,11 @@
                                 "Children": [
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "TQBpAGMAcgBvAHMAbwBmAHQAIABDAG8AcgBwAG8AcgBhAHQAaQBvAG4A",
-                                                "Decoded": "Microsoft Corporation"
+                                                "Decoded": "Microsoft Corporation",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "QwBvAG0AcABhAG4AeQBOAGEAbQBlAA==",
@@ -26,10 +27,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "QwBsAGkAZQBuAHQAIABTAGUAcgB2AGUAcgAgAFIAdQBuAHQAaQBtAGUAIABQAHIAbwBjAGUAcwBzAA==",
-                                                "Decoded": "Client Server Runtime Process"
+                                                "Decoded": "Client Server Runtime Process",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A",
@@ -43,10 +45,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "NgAuADEALgA3ADYAMAAwAC4AMQA2ADMAOAA1ACAAKAB3AGkAbgA3AF8AcgB0AG0ALgAwADkAMAA3ADEAMwAtADEAMgA1ADUAKQA=",
-                                                "Decoded": "6.1.7600.16385 (win7_rtm.090713-1255)"
+                                                "Decoded": "6.1.7600.16385 (win7_rtm.090713-1255)",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==",
@@ -63,7 +66,8 @@
                                             "Padding": 0,
                                             "Value": {
                                                 "Bytes": "QwBTAFIAUwBTAC4ARQB4AGUA",
-                                                "Decoded": "CSRSS.Exe"
+                                                "Decoded": "CSRSS.Exe",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA",
@@ -80,7 +84,8 @@
                                             "Padding": 0,
                                             "Value": {
                                                 "Bytes": "qQAgAE0AaQBjAHIAbwBzAG8AZgB0ACAAQwBvAHIAcABvAHIAYQB0AGkAbwBuAC4AIABBAGwAbAAgAHIAaQBnAGgAdABzACAAcgBlAHMAZQByAHYAZQBkAC4A",
-                                                "Decoded": "\u00a9 Microsoft Corporation. All rights reserved."
+                                                "Decoded": "\u00a9 Microsoft Corporation. All rights reserved.",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AA==",
@@ -97,7 +102,8 @@
                                             "Padding": 0,
                                             "Value": {
                                                 "Bytes": "QwBTAFIAUwBTAC4ARQB4AGUA",
-                                                "Decoded": "CSRSS.Exe"
+                                                "Decoded": "CSRSS.Exe",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "TwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBhAG0AZQA=",
@@ -114,7 +120,8 @@
                                             "Padding": 1,
                                             "Value": {
                                                 "Bytes": "TQBpAGMAcgBvAHMAbwBmAHQArgAgAFcAaQBuAGQAbwB3AHMArgAgAE8AcABlAHIAYQB0AGkAbgBnACAAUwB5AHMAdABlAG0A",
-                                                "Decoded": "Microsoft\u00ae Windows\u00ae Operating System"
+                                                "Decoded": "Microsoft\u00ae Windows\u00ae Operating System",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "UAByAG8AZAB1AGMAdABOAGEAbQBlAA==",
@@ -128,10 +135,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 1,
+                                            "Padding": 0,
                                             "Value": {
                                                 "Bytes": "NgAuADEALgA3ADYAMAAwAC4AMQA2ADMAOAA1AA==",
-                                                "Decoded": "6.1.7600.16385"
+                                                "Decoded": "6.1.7600.16385",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==",

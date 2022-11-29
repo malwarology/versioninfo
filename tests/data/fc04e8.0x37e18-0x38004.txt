@@ -100,6 +100,7 @@
                                             'Value': {
                                                 'Bytes': b'9\x002\x00.\x008\x006\x00.\x004\x001\x00.\x001\x009\x00',
                                                 'Decoded': '92.86.41.19',
+                                                'Padding': 0,
                                             },
                                         },
                                     },
@@ -113,10 +114,11 @@
                                                 'Bytes': b'I\x00n\x00t\x00e\x00r\x00n\x00a\x00t\x00i\x00o\x00n\x00a\x00l\x00N\x00a\x00m\x00e\x00',
                                                 'Decoded': 'InternationalName',
                                             },
-                                            'Padding': 0,
+                                            'Padding': 1,
                                             'Value': {
                                                 'Bytes': b'p\x00o\x00v\x00g\x00w\x00a\x00o\x00c\x00i\x00.\x00i\x00w\x00e\x00',
                                                 'Decoded': 'povgwaoci.iwe',
+                                                'Padding': 0,
                                             },
                                         },
                                     },
@@ -134,6 +136,7 @@
                                             'Value': {
                                                 'Bytes': b'C\x00o\x00p\x00y\x00r\x00i\x00g\x00h\x00t\x00 \x00(\x00C\x00)\x00 \x002\x000\x002\x002\x00,\x00 \x00s\x00o\x00m\x00o\x00k\x00l\x00o\x00s\x00',
                                                 'Decoded': 'Copyright (C) 2022, somoklos',
+                                                'Padding': 1,
                                             },
                                         },
                                     },
@@ -151,6 +154,7 @@
                                             'Value': {
                                                 'Bytes': b'5\x007\x00.\x004\x000\x00.\x008\x001\x00.\x001\x007\x00',
                                                 'Decoded': '57.40.81.17',
+                                                'Padding': 0,
                                             },
                                         },
                                     },
