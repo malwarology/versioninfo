@@ -276,8 +276,13 @@ def get_stringtables(data, cursor, end):
 
     # StringTable has a big endian hex string DWORD containing language info in the WCHAR szKey.
     decoded = stringtable['szKey']['Decoded']
-    lang_code = struct.unpack('!HH', bytes.fromhex(decoded))
-    stringtable['szKey']['Parsed'] = process_language_code(lang_code)
+    try:
+        hd = bytes.fromhex(decoded)
+    except ValueError:
+        stringtable['szKey']['Standard'] = False
+    else:
+        lang_code = struct.unpack('!HH', hd)
+        stringtable['szKey']['Parsed'] = process_language_code(lang_code)
 
     # Children member of StringTable struct is an array of String structs. Parse it recursively.
     if cursor >= table_end:
