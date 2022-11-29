@@ -255,17 +255,19 @@ def get_varfileinfo(data, cursor):
 
 def get_strings(data, cursor, end):
     """Parse String structures recursively."""
+    start = cursor
     string_member, cursor = get_header(data, cursor)
+    string_end = start + string_member['wLength']
 
     # Each String has zero or one Value member WCHAR.
-    if string_member['wValueLength']:
+    if cursor >= string_end:
+        string_member['Value'] = dict()
+    else:
         value, cursor = get_wchar(data, cursor)
         string_member['Value'] = value
 
         padding, cursor = get_padding(data, cursor)
         string_member['Value']['Padding'] = padding
-    else:
-        string_member['Value'] = dict()
 
     meta = {
         'Type': 'String',
