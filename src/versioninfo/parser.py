@@ -361,6 +361,9 @@ def get_fileinfo(data, cursor, end):
 
 def get_versioninfo(data):
     """Parse the outermost VS_VERSIONINFO structure."""
+    if not data:
+        raise ValueError('Data input is zero bytes.')
+
     cursor = 0
     vs_versioninfo, cursor = get_header(data, cursor, expected='VS_VERSION_INFO')
     end = vs_versioninfo['wLength']

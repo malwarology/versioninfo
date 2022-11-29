@@ -55,6 +55,24 @@ class TestHelpers(unittest.TestCase):
             _ = json.dumps(testdict, default=versioninfo.parser.convert)
 
 
+class TestFailures(unittest.TestCase):
+    """Test handled failure conditions and exceptions."""
+
+    def test_zero_input(self):
+        """Test that a ValueError is raised when the input is zero bytes."""
+        with self.assertRaises(ValueError, msg='Failed to raise ValueError when input zero bytes.'):
+            _ = versioninfo.parser.get_versioninfo(b'')
+
+    def test_zero_input_message(self):
+        """Test that the correct error message is sent when raising ValueError on zero byte input."""
+        expected = 'Data input is zero bytes.'
+
+        try:
+            _ = versioninfo.parser.get_versioninfo(b'')
+        except ValueError as e:
+            self.assertEqual(expected, str(e), 'Error message is not as expected.')
+
+
 class TestParserBenign(unittest.TestCase):
     """Check each individual parsing function works against a known good Windows EXEs."""
 
