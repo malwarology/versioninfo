@@ -63,6 +63,7 @@
                                             'Value': {
                                                 'Bytes': b'2\x000\x002\x002\x001\x001\x000\x003\x00 \x001\x006\x003\x003\x003\x009\x00',
                                                 'Decoded': '20221103 163339',
+                                                'Padding': 0,
                                             },
                                         },
                                     },
@@ -80,6 +81,7 @@
                                             'Value': {
                                                 'Bytes': b'v\x00e\x00r\x00.\x005\x00.\x002\x00.\x009\x00',
                                                 'Decoded': 'ver.5.2.9',
+                                                'Padding': 0,
                                             },
                                         },
                                     },
@@ -93,10 +95,11 @@
                                                 'Bytes': b'T\x00h\x00i\x00n\x00A\x00p\x00p\x00V\x00e\x00r\x00s\x00i\x00o\x00n\x00',
                                                 'Decoded': 'ThinAppVersion',
                                             },
-                                            'Padding': 1,
+                                            'Padding': 0,
                                             'Value': {
                                                 'Bytes': b'5\x00.\x002\x00.\x009\x00-\x001\x007\x003\x004\x000\x007\x007\x008\x00',
                                                 'Decoded': '5.2.9-17340778',
+                                                'Padding': 1,
                                             },
                                         },
                                     },

@@ -23,10 +23,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "VABoAGUAIABQAEgAUAAgAEcAcgBvAHUAcAA=",
-                                                "Decoded": "The PHP Group"
+                                                "Decoded": "The PHP Group",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "QwBvAG0AcABhAG4AeQBOAGEAbQBlAA==",
@@ -43,7 +44,8 @@
                                             "Padding": 1,
                                             "Value": {
                                                 "Bytes": "UABIAFAAIABTAGMAcgBpAHAAdAAgAEkAbgB0AGUAcgBwAHIAZQB0AGUAcgA=",
-                                                "Decoded": "PHP Script Interpreter"
+                                                "Decoded": "PHP Script Interpreter",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A",
@@ -57,10 +59,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "NwAuADMALgAwAC4AMAA=",
-                                                "Decoded": "7.3.0.0"
+                                                "Decoded": "7.3.0.0",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==",
@@ -77,7 +80,8 @@
                                             "Padding": 0,
                                             "Value": {
                                                 "Bytes": "bwB2AG8A",
-                                                "Decoded": "ovo"
+                                                "Decoded": "ovo",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "SQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA",
@@ -91,10 +95,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 1,
+                                            "Padding": 0,
                                             "Value": {
                                                 "Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIACpACAAMgAwADAANgAgAFQAaABlACAAUABIAFAAIABHAHIAbwB1AHAA",
-                                                "Decoded": "Copyright \u00a9 2006 The PHP Group"
+                                                "Decoded": "Copyright \u00a9 2006 The PHP Group",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AA==",
@@ -108,10 +113,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "cABoAHAA",
-                                                "Decoded": "php"
+                                                "Decoded": "php",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "TABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMA",
@@ -125,10 +131,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 1,
+                                            "Padding": 0,
                                             "Value": {
                                                 "Bytes": "bwB2AG8ANABoAGQALgBkAGwAbAA=",
-                                                "Decoded": "ovo4hd.dll"
+                                                "Decoded": "ovo4hd.dll",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "TwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBhAG0AZQA=",
@@ -156,10 +163,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "TwBWAE8AIABIAGQAcwB5AG4AbgAgAE8AcwBzAGQA",
-                                                "Decoded": "OVO Hdsynn Ossd"
+                                                "Decoded": "OVO Hdsynn Ossd",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "UAByAG8AZAB1AGMAdABOAGEAbQBlAA==",
@@ -176,7 +184,8 @@
                                             "Padding": 0,
                                             "Value": {
                                                 "Bytes": "NwAuADMALgAwAA==",
-                                                "Decoded": "7.3.0"
+                                                "Decoded": "7.3.0",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==",
@@ -207,7 +216,8 @@
                                             "Padding": 1,
                                             "Value": {
                                                 "Bytes": "aAB0AHQAcAA6AC8ALwB3AHcAdwAuAHAAaABwAC4AbgBlAHQA",
-                                                "Decoded": "http://www.php.net"
+                                                "Decoded": "http://www.php.net",
+                                                "Padding": 1
                                             },
                                             "szKey": {
                                                 "Bytes": "VQBSAEwA",

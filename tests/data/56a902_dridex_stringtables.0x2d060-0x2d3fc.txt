@@ -16,10 +16,7 @@
                             'SubLanguage': '0b000001',
                         },
                     },
-                    'CodePage': {
-                        'Decimal': 1200,
-                        'Hexadecimal': '0x04b0'
-                    },
+                    'CodePage': {'Decimal': 1200, 'Hexadecimal': '0x04b0'},
                 },
             },
             'Padding': 0,
@@ -48,10 +45,11 @@
                             'Bytes': b'C\x00o\x00m\x00p\x00a\x00n\x00y\x00N\x00a\x00m\x00e\x00',
                             'Decoded': 'CompanyName',
                         },
-                        'Padding': 0,
+                        'Padding': 1,
                         'Value': {
                             'Bytes': b'T\x00h\x00e\x00 \x00P\x00H\x00P\x00 \x00G\x00r\x00o\x00u\x00p\x00',
                             'Decoded': 'The PHP Group',
+                            'Padding': 0,
                         },
                     },
                 },
@@ -69,6 +67,7 @@
                         'Value': {
                             'Bytes': b'P\x00H\x00P\x00 \x00S\x00c\x00r\x00i\x00p\x00t\x00 \x00I\x00n\x00t\x00e\x00r\x00p\x00r\x00e\x00t\x00e\x00r\x00',
                             'Decoded': 'PHP Script Interpreter',
+                            'Padding': 1,
                         },
                     },
                 },
@@ -82,10 +81,11 @@
                             'Bytes': b'F\x00i\x00l\x00e\x00V\x00e\x00r\x00s\x00i\x00o\x00n\x00',
                             'Decoded': 'FileVersion',
                         },
-                        'Padding': 0,
+                        'Padding': 1,
                         'Value': {
                             'Bytes': b'7\x00.\x003\x00.\x000\x00.\x000\x00',
                             'Decoded': '7.3.0.0',
+                            'Padding': 0,
                         },
                     },
                 },
@@ -102,7 +102,8 @@
                         'Padding': 0,
                         'Value': {
                             'Bytes': b'o\x00v\x00o\x00',
-                            'Decoded': 'ovo'
+                            'Decoded': 'ovo',
+                            'Padding': 0,
                         },
                     },
                 },
@@ -116,10 +117,11 @@
                             'Bytes': b'L\x00e\x00g\x00a\x00l\x00C\x00o\x00p\x00y\x00r\x00i\x00g\x00h\x00t\x00',
                             'Decoded': 'LegalCopyright',
                         },
-                        'Padding': 1,
+                        'Padding': 0,
                         'Value': {
                             'Bytes': b'C\x00o\x00p\x00y\x00r\x00i\x00g\x00h\x00t\x00 \x00\xa9\x00 \x002\x000\x000\x006\x00 \x00T\x00h\x00e\x00 \x00P\x00H\x00P\x00 \x00G\x00r\x00o\x00u\x00p\x00',
                             'Decoded': 'Copyright © 2006 The PHP Group',
+                            'Padding': 1,
                         },
                     },
                 },
@@ -133,10 +135,11 @@
                             'Bytes': b'L\x00e\x00g\x00a\x00l\x00T\x00r\x00a\x00d\x00e\x00m\x00a\x00r\x00k\x00s\x00',
                             'Decoded': 'LegalTrademarks',
                         },
-                        'Padding': 0,
+                        'Padding': 1,
                         'Value': {
                             'Bytes': b'p\x00h\x00p\x00',
-                            'Decoded': 'php'
+                            'Decoded': 'php',
+                            'Padding': 0,
                         },
                     },
                 },
@@ -150,10 +153,11 @@
                             'Bytes': b'O\x00r\x00i\x00g\x00i\x00n\x00a\x00l\x00F\x00i\x00l\x00e\x00n\x00a\x00m\x00e\x00',
                             'Decoded': 'OriginalFilename',
                         },
-                        'Padding': 1,
+                        'Padding': 0,
                         'Value': {
                             'Bytes': b'o\x00v\x00o\x004\x00h\x00d\x00.\x00d\x00l\x00l\x00',
                             'Decoded': 'ovo4hd.dll',
+                            'Padding': 1,
                         },
                     },
                 },
@@ -181,10 +185,11 @@
                             'Bytes': b'P\x00r\x00o\x00d\x00u\x00c\x00t\x00N\x00a\x00m\x00e\x00',
                             'Decoded': 'ProductName',
                         },
-                        'Padding': 0,
+                        'Padding': 1,
                         'Value': {
                             'Bytes': b'O\x00V\x00O\x00 \x00H\x00d\x00s\x00y\x00n\x00n\x00 \x00O\x00s\x00s\x00d\x00',
                             'Decoded': 'OVO Hdsynn Ossd',
+                            'Padding': 0,
                         },
                     },
                 },
@@ -202,6 +207,7 @@
                         'Value': {
                             'Bytes': b'7\x00.\x003\x00.\x000\x00',
                             'Decoded': '7.3.0',
+                            'Padding': 0,
                         },
                     },
                 },
@@ -230,6 +236,7 @@
                         'Value': {
                             'Bytes': b'h\x00t\x00t\x00p\x00:\x00/\x00/\x00w\x00w\x00w\x00.\x00p\x00h\x00p\x00.\x00n\x00e\x00t\x00',
                             'Decoded': 'http://www.php.net',
+                            'Padding': 1,
                         },
                     },
                 },

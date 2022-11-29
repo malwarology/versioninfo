@@ -9,10 +9,11 @@
                                 "Children": [
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "UwBlAHQAdQBwAA==",
-                                                "Decoded": "Setup"
+                                                "Decoded": "Setup",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A",
@@ -26,10 +27,11 @@
                                     },
                                     {
                                         "Struct": {
-                                            "Padding": 0,
+                                            "Padding": 1,
                                             "Value": {
                                                 "Bytes": "MwAuADAALgAxADEAMgAuADYA",
-                                                "Decoded": "3.0.112.6"
+                                                "Decoded": "3.0.112.6",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==",
@@ -46,7 +48,8 @@
                                             "Padding": 0,
                                             "Value": {
                                                 "Bytes": "MwAuADAALgAxADEAMgAuADYA",
-                                                "Decoded": "3.0.112.6"
+                                                "Decoded": "3.0.112.6",
+                                                "Padding": 0
                                             },
                                             "szKey": {
                                                 "Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==",

@@ -9,10 +9,11 @@
                 'Bytes': b'C\x00o\x00m\x00p\x00a\x00n\x00y\x00N\x00a\x00m\x00e\x00',
                 'Decoded': 'CompanyName',
             },
-            'Padding': 0,
+            'Padding': 1,
             'Value': {
                 'Bytes': b'M\x00i\x00c\x00r\x00o\x00s\x00o\x00f\x00t\x00 \x00C\x00o\x00r\x00p\x00o\x00r\x00a\x00t\x00i\x00o\x00n\x00',
                 'Decoded': 'Microsoft Corporation',
+                'Padding': 0,
             },
         },
     },
@@ -26,10 +27,11 @@
                 'Bytes': b'F\x00i\x00l\x00e\x00D\x00e\x00s\x00c\x00r\x00i\x00p\x00t\x00i\x00o\x00n\x00',
                 'Decoded': 'FileDescription',
             },
-            'Padding': 0,
+            'Padding': 1,
             'Value': {
                 'Bytes': b'C\x00l\x00i\x00e\x00n\x00t\x00 \x00S\x00e\x00r\x00v\x00e\x00r\x00 \x00R\x00u\x00n\x00t\x00i\x00m\x00e\x00 \x00P\x00r\x00o\x00c\x00e\x00s\x00s\x00',
                 'Decoded': 'Client Server Runtime Process',
+                'Padding': 0,
             },
         },
     },
@@ -43,10 +45,11 @@
                 'Bytes': b'F\x00i\x00l\x00e\x00V\x00e\x00r\x00s\x00i\x00o\x00n\x00',
                 'Decoded': 'FileVersion',
             },
-            'Padding': 0,
+            'Padding': 1,
             'Value': {
                 'Bytes': b'6\x00.\x001\x00.\x007\x006\x000\x000\x00.\x001\x006\x003\x008\x005\x00 \x00(\x00w\x00i\x00n\x007\x00_\x00r\x00t\x00m\x00.\x000\x009\x000\x007\x001\x003\x00-\x001\x002\x005\x005\x00)\x00',
                 'Decoded': '6.1.7600.16385 (win7_rtm.090713-1255)',
+                'Padding': 0,
             },
         },
     },
@@ -64,6 +67,7 @@
             'Value': {
                 'Bytes': b'C\x00S\x00R\x00S\x00S\x00.\x00E\x00x\x00e\x00',
                 'Decoded': 'CSRSS.Exe',
+                'Padding': 0,
             },
         },
     },
@@ -81,6 +85,7 @@
             'Value': {
                 'Bytes': b'\xa9\x00 \x00M\x00i\x00c\x00r\x00o\x00s\x00o\x00f\x00t\x00 \x00C\x00o\x00r\x00p\x00o\x00r\x00a\x00t\x00i\x00o\x00n\x00.\x00 \x00A\x00l\x00l\x00 \x00r\x00i\x00g\x00h\x00t\x00s\x00 \x00r\x00e\x00s\x00e\x00r\x00v\x00e\x00d\x00.\x00',
                 'Decoded': '© Microsoft Corporation. All rights reserved.',
+                'Padding': 0,
             },
         },
     },
@@ -98,6 +103,7 @@
             'Value': {
                 'Bytes': b'C\x00S\x00R\x00S\x00S\x00.\x00E\x00x\x00e\x00',
                 'Decoded': 'CSRSS.Exe',
+                'Padding': 0,
             },
         },
     },
@@ -115,6 +121,7 @@
             'Value': {
                 'Bytes': b'M\x00i\x00c\x00r\x00o\x00s\x00o\x00f\x00t\x00\xae\x00 \x00W\x00i\x00n\x00d\x00o\x00w\x00s\x00\xae\x00 \x00O\x00p\x00e\x00r\x00a\x00t\x00i\x00n\x00g\x00 \x00S\x00y\x00s\x00t\x00e\x00m\x00',
                 'Decoded': 'Microsoft® Windows® Operating System',
+                'Padding': 1,
             },
         },
     },
@@ -128,10 +135,11 @@
                 'Bytes': b'P\x00r\x00o\x00d\x00u\x00c\x00t\x00V\x00e\x00r\x00s\x00i\x00o\x00n\x00',
                 'Decoded': 'ProductVersion',
             },
-            'Padding': 1,
+            'Padding': 0,
             'Value': {
                 'Bytes': b'6\x00.\x001\x00.\x007\x006\x000\x000\x00.\x001\x006\x003\x008\x005\x00',
                 'Decoded': '6.1.7600.16385',
+                'Padding': 1,
             },
         },
     },
