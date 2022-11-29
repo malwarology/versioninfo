@@ -1057,6 +1057,30 @@ class TestIssues(unittest.TestCase):
 
         self.assertDictEqual(expected, output, 'The VS_VERSIONINFO parser output not as expected.')
 
+    def test_issue7_exception(self):
+        """Test handling of mangled Language IDs."""
+        gandcrab_c7dc40 = THIS_DIR.joinpath('data').joinpath('c7dc40_gandcrab.0x4a598-0x4a764.dat').read_bytes()
+
+        raised = False
+        try:
+            _ = versioninfo.parser.to_json(gandcrab_c7dc40)
+        except ValueError:
+            raised = True
+
+        self.assertFalse(raised, 'Problem with issue #7: Exception raised.')
+
+    def test_issue7_get_stringtables(self):
+        """Test the output from the StringTable parser."""
+        # Pickle text content: c7dc40_gandcrab.0x4a598-0x4a764.txt
+        expected_pickle = THIS_DIR.joinpath('data').joinpath('c7dc40_gandcrab.0x4a598-0x4a764.pickle')
+        with open(expected_pickle, 'rb') as fh:
+            expected = pickle.load(fh)
+
+        gandcrab_c7dc40 = THIS_DIR.joinpath('data').joinpath('c7dc40_gandcrab.0x4a598-0x4a764.dat').read_bytes()
+        output, _ = versioninfo.parser.get_stringtables(gandcrab_c7dc40, 128, 392)
+
+        self.assertListEqual(expected, output, 'The StringTable parser output not as expected.')
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
