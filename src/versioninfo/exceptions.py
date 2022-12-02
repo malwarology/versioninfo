@@ -16,3 +16,9 @@ class BadHeaderError(Exception):
     """The header is not parsable and potentially corrupted."""
 
     pass
+
+
+class CorruptedStringError(Exception):
+    """A String appears to have a premature null terminator indicating data corruption."""
+
+    pass
