@@ -10,3 +10,9 @@ class TruncatedInputError(Exception):
     """The size of actual data input is less than the size of the structure shown in the first header."""
 
     pass
+
+
+class BadHeaderError(Exception):
+    """The header is not parsable and potentially corrupted."""
+
+    pass
