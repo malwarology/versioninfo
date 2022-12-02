@@ -8,7 +8,7 @@ import base64
 import json
 import struct
 
-from versioninfo.exceptions import BadHeaderError, TruncatedInputError
+from versioninfo.exceptions import BadHeaderError, CorruptedStringError, TruncatedInputError
 
 
 def convert(entry):
@@ -282,6 +282,9 @@ def get_strings(data, cursor, end):
         'Type': 'String',
         'Struct': string_member
     }
+
+    if cursor < string_end:
+        raise CorruptedStringError(f'Potentially corrupted String structure at offset {start}')
 
     if cursor >= end:
         return [meta], cursor

@@ -12,7 +12,7 @@ import struct
 import unittest
 
 import versioninfo.parser
-from versioninfo.exceptions import BadHeaderError, TruncatedInputError
+from versioninfo.exceptions import BadHeaderError, CorruptedStringError, TruncatedInputError
 
 THIS_DIR = pathlib.Path(__file__).parent
 
@@ -1304,6 +1304,13 @@ class TestIssues(unittest.TestCase):
         output_json = json.dumps(output_dict, sort_keys=True, indent=4, default=versioninfo.parser.convert)
 
         self.assertEqual(expected, output_json, 'The JSON output not as expected.')
+
+    def test_issue18_premature_null_term_string(self):
+        """Test that when a premature null terminator is detected that CorruptedStringError is raised."""
+        dridex_03e447 = THIS_DIR.joinpath('data').joinpath('03e447_dridex.0xc00a0-0xc0410.dat').read_bytes()
+
+        with self.assertRaises(CorruptedStringError, msg='Failed to raise CorruptedStringError.'):
+            _ = versioninfo.parser.get_versioninfo(dridex_03e447)
 
 
 if __name__ == '__main__':
