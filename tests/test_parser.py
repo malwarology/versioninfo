@@ -1294,6 +1294,17 @@ class TestIssues(unittest.TestCase):
         with self.assertRaises(BadHeaderError, msg='Failed to raise BadHeaderError.'):
             _ = versioninfo.parser.get_versioninfo(data)
 
+    def test_issue15_to_json(self):
+        """Test the output from the JSON output function."""
+        expected = THIS_DIR.joinpath('data').joinpath('325003_parite.0x52714-0x52b9a.json').read_text()
+
+        parite_325003 = THIS_DIR.joinpath('data').joinpath('325003_parite.0x52714-0x52b9a.dat').read_bytes()
+        output = versioninfo.parser.to_json(parite_325003)
+        output_dict = json.loads(output)
+        output_json = json.dumps(output_dict, sort_keys=True, indent=4, default=versioninfo.parser.convert)
+
+        self.assertEqual(expected, output_json, 'The JSON output not as expected.')
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

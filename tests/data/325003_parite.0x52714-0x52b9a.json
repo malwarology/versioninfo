@@ -1,0 +1,393 @@
+{
+    "Struct": {
+        "Children": [
+            {
+                "Struct": {
+                    "Children": [
+                        {
+                            "Struct": {
+                                "Children": [
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "QQBkAG8AYgBlACAAUwB5AHMAdABlAG0AcwAgAEkAbgBjAG8AcgBwAG8AcgBhAHQAZQBkAA==",
+                                                "Decoded": "Adobe Systems Incorporated",
+                                                "Padding": 1
+                                            },
+                                            "szKey": {
+                                                "Bytes": "QwBvAG0AcABhAG4AeQBOAGEAbQBlAA==",
+                                                "Decoded": "CompanyName"
+                                            },
+                                            "wLength": 86,
+                                            "wType": 1,
+                                            "wValueLength": 27
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "QQBkAG8AYgBlACAAUgBlAGEAZABlAHIAIAA4AC4AMAA=",
+                                                "Decoded": "Adobe Reader 8.0",
+                                                "Padding": 1
+                                            },
+                                            "szKey": {
+                                                "Bytes": "RgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A",
+                                                "Decoded": "FileDescription"
+                                            },
+                                            "wLength": 74,
+                                            "wType": 1,
+                                            "wValueLength": 17
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "OAAuADAALgAwAC4AMgAwADAANgAxADAAMgAzADAAMAA=",
+                                                "Decoded": "8.0.0.2006102300",
+                                                "Padding": 1
+                                            },
+                                            "szKey": {
+                                                "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==",
+                                                "Decoded": "FileVersion"
+                                            },
+                                            "wLength": 66,
+                                            "wType": 1,
+                                            "wValueLength": 17
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "QwBvAHAAeQByAGkAZwBoAHQAIAAxADkAOAA0AC0AMgAwADAANgAgAEEAZABvAGIAZQAgAFMAeQBzAHQAZQBtAHMAIABJAG4AYwBvAHIAcABvAHIAYQB0AGUAZAAgAGEAbgBkACAAaQB0AHMAIABsAGkAYwBlAG4AcwBvAHIAcwAuACAAQQBsAGwAIAByAGkAZwBoAHQAcwAgAHIAZQBzAGUAcgB2AGUAZAAuAA==",
+                                                "Decoded": "Copyright 1984-2006 Adobe Systems Incorporated and its licensors. All rights reserved.",
+                                                "Padding": 1
+                                            },
+                                            "szKey": {
+                                                "Bytes": "TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AA==",
+                                                "Decoded": "LegalCopyright"
+                                            },
+                                            "wLength": 210,
+                                            "wType": 1,
+                                            "wValueLength": 87
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 1,
+                                            "Value": {
+                                                "Bytes": "QQBkAG8AYgBlACAAUgBlAGEAZABlAHIA",
+                                                "Decoded": "Adobe Reader",
+                                                "Padding": 1
+                                            },
+                                            "szKey": {
+                                                "Bytes": "UAByAG8AZAB1AGMAdABOAGEAbQBlAA==",
+                                                "Decoded": "ProductName"
+                                            },
+                                            "wLength": 58,
+                                            "wType": 1,
+                                            "wValueLength": 13
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "OAAuADAALgAwAC4AMgAwADAANgAxADAAMgAzADAAMAA=",
+                                                "Decoded": "8.0.0.2006102300",
+                                                "Padding": 1
+                                            },
+                                            "szKey": {
+                                                "Bytes": "UAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAA==",
+                                                "Decoded": "ProductVersion"
+                                            },
+                                            "wLength": 70,
+                                            "wType": 1,
+                                            "wValueLength": 17
+                                        },
+                                        "Type": "String"
+                                    },
+                                    {
+                                        "Struct": {
+                                            "Padding": 0,
+                                            "Value": {
+                                                "Bytes": "QQBjAHIAbwBSAGQAMwAyAC4AZQB4AGUA",
+                                                "Decoded": "AcroRd32.exe",
+                                                "Padding": 1
+                                            },
+                                            "szKey": {
+                                                "Bytes": "TwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBhAG0AZQA=",
+                                                "Decoded": "OriginalFilename"
+                                            },
+                                            "wLength": 66,
+                                            "wType": 1,
+                                            "wValueLength": 13
+                                        },
+                                        "Type": "String"
+                                    }
+                                ],
+                                "Padding": 0,
+                                "szKey": {
+                                    "Bytes": "MAA0ADAAOQAwADQARQA0AA==",
+                                    "Decoded": "040904E4",
+                                    "Parsed": {
+                                        "CodePage": {
+                                            "Decimal": 1252,
+                                            "Hexadecimal": "0x04e4"
+                                        },
+                                        "LangID": {
+                                            "Hexadecimal": "0x0409",
+                                            "Parsed": {
+                                                "MajorLanguage": "0b0000001001",
+                                                "SubLanguage": "0b000001"
+                                            }
+                                        }
+                                    }
+                                },
+                                "wLength": 666,
+                                "wType": 1,
+                                "wValueLength": 0
+                            },
+                            "Type": "StringTable"
+                        }
+                    ],
+                    "Padding": 0,
+                    "szKey": {
+                        "Bytes": "UwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAA==",
+                        "Decoded": "StringFileInfo",
+                        "Standard": true
+                    },
+                    "wLength": 702,
+                    "wType": 1,
+                    "wValueLength": 0
+                },
+                "Type": "StringFileInfo"
+            },
+            {
+                "Struct": {
+                    "Children": [
+                        {
+                            "Struct": {
+                                "Padding": 1,
+                                "Value": {
+                                    "Bytes": "MQAwADIAMwAwADYAYQB0AA==",
+                                    "Decoded": "102306at",
+                                    "Padding": 1
+                                },
+                                "szKey": {
+                                    "Bytes": "YgB1AGkAbABkAA==",
+                                    "Decoded": "build"
+                                },
+                                "wLength": 38,
+                                "wType": 1,
+                                "wValueLength": 9
+                            },
+                            "Type": "String"
+                        }
+                    ],
+                    "Padding": 1,
+                    "szKey": {
+                        "Bytes": "QgB1AGkAbABkAEkAbgBmAG8A",
+                        "Decoded": "BuildInfo",
+                        "Standard": false
+                    },
+                    "wLength": 66,
+                    "wType": 1,
+                    "wValueLength": 0
+                },
+                "Type": "Unknown"
+            },
+            {
+                "Struct": {
+                    "Children": [
+                        {
+                            "Struct": {
+                                "Padding": 1,
+                                "Value": [
+                                    {
+                                        "Struct": {
+                                            "CodePage": {
+                                                "Decimal": 1252,
+                                                "Hexadecimal": "0x04e4"
+                                            },
+                                            "LangID": {
+                                                "Hexadecimal": "0x0409",
+                                                "Parsed": {
+                                                    "MajorLanguage": "0b0000001001",
+                                                    "SubLanguage": "0b000001"
+                                                }
+                                            }
+                                        },
+                                        "Type": "Value"
+                                    }
+                                ],
+                                "szKey": {
+                                    "Bytes": "VAByAGEAbgBzAGwAYQB0AGkAbwBuAA==",
+                                    "Decoded": "Translation",
+                                    "Standard": true
+                                },
+                                "wLength": 36,
+                                "wType": 0,
+                                "wValueLength": 4
+                            },
+                            "Type": "Var"
+                        }
+                    ],
+                    "Padding": 1,
+                    "szKey": {
+                        "Bytes": "VgBhAHIARgBpAGwAZQBJAG4AZgBvAA==",
+                        "Decoded": "VarFileInfo",
+                        "Standard": true
+                    },
+                    "wLength": 68,
+                    "wType": 1,
+                    "wValueLength": 0
+                },
+                "Type": "VarFileInfo"
+            },
+            {
+                "Struct": {
+                    "Children": [
+                        {
+                            "Struct": {
+                                "Padding": 1,
+                                "Value": {
+                                    "Bytes": "RQBuAGcAbABpAHMAaAA=",
+                                    "Decoded": "English",
+                                    "Padding": 0
+                                },
+                                "szKey": {
+                                    "Bytes": "RQBuAGcAbABpAHMAaABOAGEAbQBlAA==",
+                                    "Decoded": "EnglishName"
+                                },
+                                "wLength": 48,
+                                "wType": 1,
+                                "wValueLength": 8
+                            },
+                            "Type": "String"
+                        },
+                        {
+                            "Struct": {
+                                "Padding": 0,
+                                "Value": {
+                                    "Bytes": "MAA0ADAAOQA=",
+                                    "Decoded": "0409",
+                                    "Padding": 1
+                                },
+                                "szKey": {
+                                    "Bytes": "TABhAG4AZwB1AGEAZwBlAEkAZAA=",
+                                    "Decoded": "LanguageId"
+                                },
+                                "wLength": 38,
+                                "wType": 1,
+                                "wValueLength": 5
+                            },
+                            "Type": "String"
+                        },
+                        {
+                            "Struct": {
+                                "Padding": 1,
+                                "Value": {
+                                    "Bytes": "OAAuADAALgAwAC4AMgAwADAANgAxADAAMgAzADAAMAA=",
+                                    "Decoded": "8.0.0.2006102300",
+                                    "Padding": 1
+                                },
+                                "szKey": {
+                                    "Bytes": "RgBpAGwAZQBWAGUAcgBzAGkAbwBuAA==",
+                                    "Decoded": "FileVersion"
+                                },
+                                "wLength": 66,
+                                "wType": 1,
+                                "wValueLength": 17
+                            },
+                            "Type": "String"
+                        },
+                        {
+                            "Struct": {
+                                "Padding": 1,
+                                "Value": {
+                                    "Bytes": "UgBlAGEAZAA=",
+                                    "Decoded": "Read",
+                                    "Padding": 0
+                                },
+                                "szKey": {
+                                    "Bytes": "UwBpAGcAbgBhAHQAdQByAGUA",
+                                    "Decoded": "Signature"
+                                },
+                                "wLength": 38,
+                                "wType": 1,
+                                "wValueLength": 5
+                            },
+                            "Type": "String"
+                        }
+                    ],
+                    "Padding": 0,
+                    "szKey": {
+                        "Bytes": "TABhAG4AZwB1AGEAZwBlAEkAbgBmAG8A",
+                        "Decoded": "LanguageInfo",
+                        "Standard": false
+                    },
+                    "wLength": 226,
+                    "wType": 1,
+                    "wValueLength": 0
+                },
+                "Type": "Unknown"
+            }
+        ],
+        "Padding1": 1,
+        "Padding2": 0,
+        "Value": {
+            "Struct": {
+                "dwFileDateLS": 0,
+                "dwFileDateMS": 0,
+                "dwFileFlags": {
+                    "Decimal": 0,
+                    "Hexadecimal": "0x00000000"
+                },
+                "dwFileFlagsMask": {
+                    "Decimal": 63,
+                    "Hexadecimal": "0x0000003f"
+                },
+                "dwFileOS": {
+                    "Decimal": 327684,
+                    "Hexadecimal": "0x00050004"
+                },
+                "dwFileSubtype": {
+                    "Decimal": 0,
+                    "Hexadecimal": "0x00000000"
+                },
+                "dwFileType": {
+                    "Decimal": 1,
+                    "Hexadecimal": "0x00000001"
+                },
+                "dwFileVersionLS": 456,
+                "dwFileVersionMS": 524288,
+                "dwProductVersionLS": 456,
+                "dwProductVersionMS": 524288,
+                "dwSignature": "0xfeef04bd",
+                "dwStrucVersion": {
+                    "Major": 1,
+                    "Minor": 0
+                }
+            },
+            "Type": "VS_FIXEDFILEINFO"
+        },
+        "szKey": {
+            "Bytes": "VgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A",
+            "Decoded": "VS_VERSION_INFO",
+            "Standard": true
+        },
+        "wLength": 1158,
+        "wType": 0,
+        "wValueLength": 52
+    },
+    "Type": "VS_VERSION_INFO"
+}

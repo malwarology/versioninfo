@@ -163,9 +163,12 @@ def get_fileinfo_type(data, cursor):
         else:
             return 'Unknown'
 
-    fileinfo_type = 'StringFileInfo' if not child_header['wValueLength'] else 'VarFileInfo'
-
-    return fileinfo_type
+    if not child_header['wValueLength']:
+        return 'StringFileInfo'
+    elif child_header['wType'] == 0:
+        return 'VarFileInfo'
+    else:
+        return 'VarFileInfoStringContainer'
 
 
 def process_language_code(lang_code):
@@ -232,7 +235,7 @@ def get_vars(data, cursor, end):
         return children, cursor
 
 
-def get_varfileinfo(data, cursor):
+def get_varfileinfo(data, cursor, with_str=False):
     """Parse the outer VarFileInfo structure and call the recusive function that gets the Var children list."""
     start = cursor
     varfileinfo, cursor = get_header(data, cursor, expected='VarFileInfo')
@@ -242,13 +245,19 @@ def get_varfileinfo(data, cursor):
     if cursor >= end:
         children = list()
     else:
-        children, cursor = get_vars(data, cursor, end)
+        if with_str:
+            children, cursor = get_strings(data, cursor, end)
+        else:
+            children, cursor = get_vars(data, cursor, end)
     varfileinfo['Children'] = children
 
     meta = {
         'Type': 'VarFileInfo',
         'Struct': varfileinfo
     }
+
+    if with_str:
+        meta['Type'] = 'Unknown'
 
     return meta, cursor
 
@@ -347,6 +356,8 @@ def get_fileinfo(data, cursor, end):
         fileinfo, cursor = get_stringfileinfo(data, cursor)
     elif fileinfo_type == 'VarFileInfo':
         fileinfo, cursor = get_varfileinfo(data, cursor)
+    elif fileinfo_type == 'VarFileInfoStringContainer':
+        fileinfo, cursor = get_varfileinfo(data, cursor, with_str=True)
     else:
         header, cursor = get_header(data, cursor)
         fileinfo = {
