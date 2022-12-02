@@ -7,11 +7,12 @@
 import json
 import pathlib
 import pickle
+import random
 import struct
 import unittest
 
 import versioninfo.parser
-from versioninfo.exceptions import TruncatedInputError
+from versioninfo.exceptions import BadHeaderError, TruncatedInputError
 
 THIS_DIR = pathlib.Path(__file__).parent
 
@@ -1285,6 +1286,13 @@ class TestIssues(unittest.TestCase):
         output = versioninfo.parser.get_fileinfo(phorpiex_f3c4bb, 268, 300)
 
         self.assertListEqual(expected, output, 'The FileInfo parser output not as expected.')
+
+    def test_issue15_random_input(self):
+        """Test that the unicode error raised when input is random bytes is handled."""
+        data = random.randbytes(0x2f0)
+
+        with self.assertRaises(BadHeaderError, msg='Failed to raise BadHeaderError.'):
+            _ = versioninfo.parser.get_versioninfo(data)
 
 
 if __name__ == '__main__':

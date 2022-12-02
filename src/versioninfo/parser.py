@@ -8,7 +8,7 @@ import base64
 import json
 import struct
 
-from versioninfo.exceptions import TruncatedInputError
+from versioninfo.exceptions import BadHeaderError, TruncatedInputError
 
 
 def convert(entry):
@@ -368,7 +368,10 @@ def get_versioninfo(data):
         raise ValueError('Data input is zero bytes.')
 
     cursor = 0
-    vs_versioninfo, cursor = get_header(data, cursor, expected='VS_VERSION_INFO')
+    try:
+        vs_versioninfo, cursor = get_header(data, cursor, expected='VS_VERSION_INFO')
+    except UnicodeDecodeError:
+        raise BadHeaderError('Header is not parsable and may be corrupted.')
     end = vs_versioninfo['wLength']
 
     if len(data) < end:
