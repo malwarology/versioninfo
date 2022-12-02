@@ -22,3 +22,9 @@ class CorruptedStringError(Exception):
     """A String appears to have a premature null terminator indicating data corruption."""
 
     pass
+
+
+class ZeroStompingError(Exception):
+    """A part of the structure may have been overwritten with zeros."""
+
+    pass

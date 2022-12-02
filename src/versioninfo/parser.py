@@ -8,7 +8,7 @@ import base64
 import json
 import struct
 
-from versioninfo.exceptions import BadHeaderError, CorruptedStringError, TruncatedInputError
+from versioninfo.exceptions import BadHeaderError, CorruptedStringError, TruncatedInputError, ZeroStompingError
 
 
 def convert(entry):
@@ -390,6 +390,8 @@ def get_versioninfo(data):
 
     if len(data) < end:
         raise TruncatedInputError('Input data size is less than VS_VERSION_INFO structure wLength.')
+    if not vs_versioninfo['szKey']['Bytes']:
+        raise ZeroStompingError('VS_VERSION_INFO szKey may be overwritten with null bytes.')
 
     # Change key name because Padding2 added later.
     vs_versioninfo['Padding1'] = vs_versioninfo.pop('Padding')
