@@ -12,7 +12,7 @@ import struct
 import unittest
 
 import versioninfo.parser
-from versioninfo.exceptions import BadHeaderError, CorruptedStringError, TruncatedInputError
+from versioninfo.exceptions import BadHeaderError, CorruptedStringError, TruncatedInputError, ZeroStompingError
 
 THIS_DIR = pathlib.Path(__file__).parent
 
@@ -1311,6 +1311,13 @@ class TestIssues(unittest.TestCase):
 
         with self.assertRaises(CorruptedStringError, msg='Failed to raise CorruptedStringError.'):
             _ = versioninfo.parser.get_versioninfo(dridex_03e447)
+
+    def test_issue20_zero_stomping(self):
+        """Test that a file with zero stomping is detected and ZeroStompingError is raised."""
+        dotnet_ceb059 = THIS_DIR.joinpath('data').joinpath('ceb059_dotnet.0x1bd60-0x1c010.dat').read_bytes()
+
+        with self.assertRaises(ZeroStompingError, msg='Failed to raise ZeroStompingError.'):
+            _ = versioninfo.parser.get_versioninfo(dotnet_ceb059)
 
 
 if __name__ == '__main__':
